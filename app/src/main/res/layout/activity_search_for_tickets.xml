@@ -25,9 +25,10 @@
             android:layout_height="wrap_content"
             android:background="@drawable/searchviewbackground"
             android:queryHint="@string/searchViewHint"
+            android:paddingLeft="25dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"></SearchView>
+            app:layout_constraintTop_toTopOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
