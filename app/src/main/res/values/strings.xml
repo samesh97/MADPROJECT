@@ -5,5 +5,7 @@
     <string name="description">Description:</string>
     <string name="dateText">Date:</string>
     <string name="up_coming_events">UP COMING EVENTS</string>
+    <string name="searchViewHint">Enter Film Name</string>
+    <string name="filmName">Minority Reports</string>
 
 </resources>
