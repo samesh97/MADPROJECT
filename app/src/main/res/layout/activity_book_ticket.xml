@@ -10,9 +10,12 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:srcCompat="@drawable/blackpanther"
-        tools:layout_editor_absoluteX="76dp"
-        tools:layout_editor_absoluteY="-3dp" />
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/blackpanther" />
 
     <TextView
         android:id="@+id/textView7"

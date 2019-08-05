@@ -14,7 +14,8 @@ public class thara2 extends AppCompatActivity {
         setContentView(R.layout.activity_thara2);
     }
 
-    public void thara1(View view) {
+    public void thara1(View view)
+    {
         startActivity(new Intent(thara2.this,thara1.class));
     }
 }

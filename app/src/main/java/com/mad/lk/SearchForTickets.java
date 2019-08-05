@@ -2,9 +2,14 @@ package com.mad.lk;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -14,6 +19,28 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class SearchForTickets extends AppCompatActivity {
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        int x = item.getItemId();
+        if(x == R.id.settings)
+        {
+            Intent intent = new Intent(getApplicationContext(),NoticeUserDisplayNotices.class);
+            startActivity(intent);
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.notices_menu, menu);
+        return true;
+
+    }
 
     SearchView filmSearchView;
     String keyWord = null;
@@ -72,6 +99,15 @@ public class SearchForTickets extends AppCompatActivity {
 
         ListViewAdapter adapter = new ListViewAdapter();
         filmSearchList.setAdapter(adapter);
+
+        filmSearchList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                Intent intent = new Intent(getApplicationContext(),thara2.class);
+                startActivity(intent);
+            }
+        });
     }
     public class ListViewAdapter extends BaseAdapter
     {
@@ -106,7 +142,7 @@ public class SearchForTickets extends AppCompatActivity {
 
             filmName.setText("Film Name : " + "Minority Reports");
             filmRatings.setText("Rankings : " + "1.9");
-            filmShowingDate.setText("Showing date : "+"2019/08/20");
+            filmShowingDate.setText("Showing Date : "+"2019/08/20");
             availableSeats.setText("Available Seats : " + "250");
             filmShowingTime.setText("Showing Time : " + "10.30am");
             return view;

@@ -9,26 +9,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".thara2"></activity>
-        <activity android:name=".thara1" />
-        <activity android:name=".RegisterScreen" />
-        <activity android:name=".LoginScreen" />
-        <activity android:name=".SearchForTickets">
+        <activity android:name=".RegisterScreen">
 
-        </activity>
-        <activity android:name=".NoticeAddNotices" />
-        <activity android:name=".FirstActivity" />
-        <activity android:name=".NoticeAdminDisplayNotices">
-
-    </activity>
-
-        <activity android:name=".NoticeUserDisplayNotices">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".LoginScreen" />
+        <activity android:name=".SearchForTickets">
+
+        </activity>
+        <activity android:name=".NoticeAddNotices" />
+        <activity android:name=".FirstActivity" />
+        <activity android:name=".thara1" />
+        <activity android:name=".thara2" />
+        <activity android:name=".NoticeAdminDisplayNotices" />
+        <activity android:name=".NoticeUserDisplayNotices" />
     </application>
 
 </manifest>

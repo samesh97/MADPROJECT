@@ -25,54 +25,45 @@
 
     <TextView
         android:id="@+id/textViewDate3"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginLeft="72dp"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="32dp"
         android:text="@string/dateText"
         android:textColor="@color/red"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/textView5"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewUpComingEvents3" />
 
     <TextView
         android:id="@+id/textViewDescription3"
-        android:layout_width="108dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginLeft="56dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
         android:text="@string/description"
         android:textColor="@color/red"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/textView"
-        app:layout_constraintHorizontal_bias="0.727"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textViewDate3"
         app:layout_constraintTop_toBottomOf="@+id/textViewDate3" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="164dp"
-        android:layout_marginRight="164dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textViewDate3"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:text="@string/sampleDate"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewDate3"
+        app:layout_constraintStart_toEndOf="@+id/textViewDate3"
+        app:layout_constraintTop_toTopOf="@+id/textViewDate3" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="121dp"
         android:layout_height="68dp"
-        android:layout_marginEnd="96dp"
-        android:layout_marginRight="96dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textViewDescription3"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:text="@string/sample_description_text"
+        app:layout_constraintStart_toStartOf="@+id/textView5"
+        app:layout_constraintTop_toTopOf="@+id/textViewDescription3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
