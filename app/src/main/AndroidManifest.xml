@@ -9,17 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NoticeAdminDisplayNotices"></activity>
-        <activity android:name=".NoticeAddNotices" >
+        <activity android:name=".NoticeUserDisplayNotices"></activity>
+        <activity android:name=".NoticeAdminDisplayNotices" />
+        <activity android:name=".NoticeAddNotices">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FirstActivity">
-
-        </activity>
+        <activity android:name=".FirstActivity"></activity>
     </application>
 
 </manifest>
