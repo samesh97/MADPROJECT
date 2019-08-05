@@ -1,18 +1,21 @@
 <resources>
     <string name="app_name">MAD</string>
-    <string name="enter_film">Film Name:</string>
+    <string name="enter_film">Film:</string>
     <string name="add_details">Add</string>
     <string name="description">Description:</string>
-    <string name="dateText">Arriving Date:</string>
-    <string name="up_coming_events">UP COMING EVENTS</string>
+    <string name="dateText">Date:</string>
+    <string name="up_coming_events">NOTICES</string>
     <string name="searchViewHint">Enter Film Name</string>
     <string name="filmName">Minority Reports</string>
+    <string name="login_text">Login</string>
+    <string name="register_email_hint">Email</string>
+    <string name="register_password_hint">Password</string>
+    <string name="register_forgot_password_text">Forgot password? Click Here</string>
+    <string name="register_name_text">Name</string>
+    <string name="register_text">Register</string>
+    <string name="already_registered_text">Already Registered? Sign in Here</string>
+    <string name="confirm_password_text">Confirm Password</string>
     <string name="edit_details">Edit</string>
     <string name="delete_details">Delete</string>
-    <string name="date">Date</string>
-    <string name="time">Time</string>
-    <string name="Phone">Phone Number</string>
-    <string name="adult">Adult</string>
-    <string name="child">Child</string>
 
 </resources>
