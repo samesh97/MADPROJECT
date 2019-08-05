@@ -22,21 +22,6 @@
         app:layout_constraintStart_toEndOf="@+id/textViewDate2" />
 
     <TextView
-        android:id="@+id/textViewDisplayFilm"
-        android:layout_width="187dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text=""
-        android:textColor="@color/colorPrimary"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textViewFilm2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.22"
-        app:layout_constraintStart_toEndOf="@+id/textViewFilm2" />
-
-    <TextView
         android:id="@+id/textViewDisplayDescription"
         android:layout_width="206dp"
         android:layout_height="136dp"
@@ -65,30 +50,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewFilm2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginLeft="36dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/enter_film"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDate2" />
-
-    <TextView
         android:id="@+id/textViewDescription2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginLeft="36dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="68dp"
         android:text="@string/description"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewFilm2" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewDate2" />
 
     <TextView
         android:id="@+id/textViewUpComingEvents2"
@@ -96,7 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="@string/up_coming_events"
-        android:textColor="@color/upComingEventColor"
+        android:textColor="@color/red"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textViewDisplayDate"
@@ -115,13 +87,13 @@
         android:layout_marginRight="84dp"
         android:background="@color/btnColor"
         android:text="@string/delete_details"
-        android:textColor="@color/upComingEventColor"
+        android:textColor="@color/red"
         android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnEdit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.709"
-        app:layout_constraintStart_toEndOf="@+id/btnEdit"
-        tools:layout_editor_absoluteY="412dp" />
+        app:layout_constraintStart_toEndOf="@+id/btnEdit" />
 
     <Button
         android:id="@+id/btnEdit"
@@ -132,7 +104,7 @@
         android:layout_marginTop="160dp"
         android:background="@color/btnColor"
         android:text="@string/edit_details"
-        android:textColor="@color/upComingEventColor"
+        android:textColor="@color/red"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"

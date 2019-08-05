@@ -20,13 +20,13 @@ public class NoticeAddNotices extends AppCompatActivity {
         Intent intentDisplay= new Intent(this,NoticeAdminDisplayNotices.class);
 
         EditText Date= findViewById(R.id.editTextDate);
-        EditText Film=findViewById((R.id.editTextFilm));
+
         EditText Description=findViewById(R.id.editTextDescription);
         Button Add=findViewById(R.id.btnAdd);
 
 
         intentDisplay.putExtra("msg1",Date.getText().toString());
-        intentDisplay.putExtra("msg2",Film.getText().toString());
+
         intentDisplay.putExtra("msg3",Description.getText().toString());
 
         startActivity(intentDisplay);

@@ -15,14 +15,13 @@ public class NoticeAdminDisplayNotices extends AppCompatActivity {
 
         Intent intentGet = getIntent();
         String date = intentGet.getStringExtra("msg1");
-        String film = intentGet.getStringExtra("msg2");
+
         String description=intentGet.getStringExtra("msg3");
 
         TextView Date= findViewById(R.id.textViewDisplayDate);
         Date.setText(date);
 
-        TextView Film=findViewById(R.id.textViewDisplayFilm);
-        Film.setText(film);
+
 
         TextView Description=findViewById(R.id.textViewDisplayDescription);
         Description.setText(description);
