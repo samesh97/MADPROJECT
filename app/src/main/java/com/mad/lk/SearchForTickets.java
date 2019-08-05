@@ -67,18 +67,18 @@ public class SearchForTickets extends AppCompatActivity {
         filmPosters.add(R.drawable.missionimpossible);
         filmPosters.add(R.drawable.purge);
         filmPosters.add(R.drawable.blackpanther);
-        //filmPosters.add(R.drawable.bladerunner);
+        filmPosters.add(R.drawable.bladerunner);
         filmPosters.add(R.drawable.fantasticfour);
         filmPosters.add(R.drawable.ghoststories);
         filmPosters.add(R.drawable.hitman);
         filmPosters.add(R.drawable.ironman);
-        //filmPosters.add(R.drawable.minorityreport);
-        //filmPosters.add(R.drawable.moonlight);
-        //filmPosters.add(R.drawable.robinhood);
-        //filmPosters.add(R.drawable.strangerthings);
-        //filmPosters.add(R.drawable.theneondemon);
-        //filmPosters.add(R.drawable.thor);
-        //filmPosters.add(R.drawable.venom);
+        filmPosters.add(R.drawable.minorityreport);
+        filmPosters.add(R.drawable.moonlight);
+        filmPosters.add(R.drawable.robinhood);
+        filmPosters.add(R.drawable.strangerthings);
+        filmPosters.add(R.drawable.theneondemon);
+        filmPosters.add(R.drawable.thor);
+        filmPosters.add(R.drawable.venom);
 
 
 

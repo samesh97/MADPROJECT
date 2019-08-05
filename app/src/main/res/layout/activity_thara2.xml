@@ -84,7 +84,7 @@
         android:layout_marginTop="32dp"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button5">
+        app:layout_constraintTop_toBottomOf="@+id/booking">
 
 
         <ImageView
@@ -97,7 +97,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/booking"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -120,7 +120,7 @@
         android:layout_marginTop="32dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button5">
+        app:layout_constraintTop_toBottomOf="@+id/booking">
 
         <ImageView
             android:id="@+id/imageView6"
