@@ -22,5 +22,18 @@
     <string name="Phone">Phone Number</string>
     <string name="adult">Adult</string>
     <string name="child">Child</string>
+    <string name="filmadd">ADD</string>
+    <string name="filmupdate">UPDATE</string>
+    <string name="filmdelete">DELETE</string>
+    <string name="filmclear">CLEAR</string>
+    <string name="filmname">Film Name</string>
+    <string name="filmRole1">Role1</string>
+    <string name="filmRole2">Role 2</string>
+    <string name="filmRole3">Role 3</string>
+    <string name="filmRole4">Role 4</string>
+    <string name="filmphoto1">Photo 1</string>
+    <string name="filmphoto2">Photo 2</string>
+    <string name="filmCharacters">Main Roles</string>
+    <string name="filmBooking">Booking</string>
 
 </resources>
