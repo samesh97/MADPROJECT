@@ -17,24 +17,9 @@
     <string name="confirm_password_text">Confirm Password</string>
     <string name="edit_details">Edit</string>
     <string name="delete_details">Delete</string>
-    <string name="date">Date</string>
-    <string name="time">Time</string>
-    <string name="Phone">Phone Number</string>
-    <string name="adult">Adult</string>
-    <string name="child">Child</string>
-    <string name="filmadd">ADD</string>
-    <string name="filmupdate">UPDATE</string>
-    <string name="filmdelete">DELETE</string>
-    <string name="filmclear">CLEAR</string>
-    <string name="filmname">Film Name</string>
-    <string name="filmRole1">Role1</string>
-    <string name="filmRole2">Role 2</string>
-    <string name="filmRole3">Role 3</string>
-    <string name="filmRole4">Role 4</string>
-    <string name="filmphoto1">Photo 1</string>
-    <string name="filmphoto2">Photo 2</string>
-    <string name="filmCharacters">Main Roles</string>
-    <string name="filmBooking">Booking</string>
-    <string name="filmEdit">EDIT</string>
+    <string name="sampleDate">2019/08/20</string>
+    <string name="ranking">1.5</string>
+    <string name="showTime">10.30</string>
+    <string name="seats">250</string>
 
 </resources>

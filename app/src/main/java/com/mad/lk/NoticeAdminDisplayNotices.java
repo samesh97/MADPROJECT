@@ -21,8 +21,6 @@ public class NoticeAdminDisplayNotices extends AppCompatActivity {
         TextView Date= findViewById(R.id.textViewDisplayDate);
         Date.setText(date);
 
-
-
         TextView Description=findViewById(R.id.textViewDisplayDescription);
         Description.setText(description);
 

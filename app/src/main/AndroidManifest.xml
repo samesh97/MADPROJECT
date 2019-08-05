@@ -14,14 +14,21 @@
         <activity android:name=".RegisterScreen" />
         <activity android:name=".LoginScreen" />
         <activity android:name=".SearchForTickets">
+
+        </activity>
+        <activity android:name=".NoticeAddNotices" />
+        <activity android:name=".FirstActivity" />
+        <activity android:name=".NoticeAdminDisplayNotices">
+
+    </activity>
+
+        <activity android:name=".NoticeUserDisplayNotices">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NoticeAddNotices" />
-        <activity android:name=".FirstActivity" />
     </application>
 
 </manifest>
