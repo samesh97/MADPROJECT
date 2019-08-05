@@ -17,5 +17,10 @@
     <string name="confirm_password_text">Confirm Password</string>
     <string name="edit_details">Edit</string>
     <string name="delete_details">Delete</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="Phone">Phone Number</string>
+    <string name="adult">Adult</string>
+    <string name="child">Child</string>
 
 </resources>
