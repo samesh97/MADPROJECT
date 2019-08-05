@@ -4,7 +4,7 @@
     <string name="add_details">Add</string>
     <string name="description">Description:</string>
     <string name="dateText">Date:</string>
-    <string name="up_coming_events">UP COMING EVENTS</string>
+    <string name="up_coming_events">NOTICES</string>
     <string name="searchViewHint">Enter Film Name</string>
     <string name="filmName">Minority Reports</string>
     <string name="login_text">Login</string>
@@ -15,5 +15,7 @@
     <string name="register_text">Register</string>
     <string name="already_registered_text">Already Registered? Sign in Here</string>
     <string name="confirm_password_text">Confirm Password</string>
+    <string name="edit_details">Edit</string>
+    <string name="delete_details">Delete</string>
 
 </resources>
