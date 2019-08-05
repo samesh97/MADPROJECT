@@ -45,7 +45,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
-        android:text="1.5"
+        android:text="@string/ranking"
         app:layout_constraintBottom_toTopOf="@+id/filmShowingDate"
         app:layout_constraintStart_toEndOf="@+id/filmPoster"
         app:layout_constraintTop_toBottomOf="@+id/filmName" />
@@ -58,7 +58,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
-        android:text="2019/08/20"
+        android:text="@string/sampleDate"
         app:layout_constraintBottom_toTopOf="@+id/filmShowingTime"
         app:layout_constraintStart_toEndOf="@+id/filmPoster"
         app:layout_constraintTop_toBottomOf="@+id/filmRatings" />
@@ -72,7 +72,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
-        android:text="10.30"
+        android:text="@string/showTime"
         app:layout_constraintBottom_toTopOf="@+id/availableSeats"
         app:layout_constraintStart_toEndOf="@+id/filmPoster"
         app:layout_constraintTop_toBottomOf="@+id/filmShowingDate" />
@@ -85,7 +85,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="8dp"
-        android:text="250"
+        android:text="@string/seats"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/filmPoster"
         app:layout_constraintTop_toBottomOf="@+id/filmShowingTime" />
