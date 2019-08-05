@@ -166,7 +166,7 @@
         android:layout_marginBottom="8dp"
         android:background="@color/colorAccent"
         android:onClick="thara1"
-        android:text="@string/filmEdit"
+        android:text="@string/filmEDIT"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
