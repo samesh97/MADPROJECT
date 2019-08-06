@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -17,6 +18,7 @@ import android.widget.SearchView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class SearchForTickets extends AppCompatActivity {
 
@@ -128,15 +130,17 @@ public class SearchForTickets extends AppCompatActivity {
         }
 
         @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
+        public View getView(final int position, View convertView, ViewGroup parent) {
 
             View view = getLayoutInflater().inflate(R.layout.moviesearchrow,null);
             TextView filmName = view.findViewById(R.id.filmName);
             TextView filmRatings = view.findViewById(R.id.filmRatings);
             TextView filmShowingDate = view.findViewById(R.id.filmShowingDate);
             TextView availableSeats = view.findViewById(R.id.availableSeats);
-            ImageView filmPoster = view.findViewById(R.id.filmPoster);
+            final ImageView filmPoster = view.findViewById(R.id.filmPoster);
             TextView filmShowingTime = view.findViewById(R.id.filmShowingTime);
+
+
 
             filmPoster.setImageResource(filmPosters.get(position));
 

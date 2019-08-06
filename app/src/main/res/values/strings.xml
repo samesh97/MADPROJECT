@@ -7,7 +7,7 @@
     <string name="up_coming_events">NOTICES</string>
     <string name="searchViewHint">Enter Film Name</string>
     <string name="filmName">Minority Reports</string>
-    <string name="login_text">Login as a User</string>
+    <string name="login_text">Login</string>
     <string name="register_email_hint">Email</string>
     <string name="register_password_hint">Password</string>
     <string name="register_forgot_password_text">Forgot password? Click Here</string>
@@ -46,6 +46,6 @@
     <string name="enter_role_3">Enter Role 3</string>
     <string name="enter_role_4_text">Enter Role 4</string>
     <string name="filmEDIT">Edit</string>
-    <string name="login_as_an_admin_button_text">Login as an Admin</string>
+    <string name="login_as_an_admin_button_text">Login</string>
 
 </resources>

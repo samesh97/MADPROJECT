@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/red"
+    android:background="@drawable/gradient"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -22,7 +22,7 @@
         android:layout_height="100dp"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:src="@drawable/logo"
@@ -40,13 +40,13 @@
         android:layout_marginTop="40dp"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
-        android:alpha="0.4"
+        android:alpha="0.9"
         android:background="@drawable/opaciy"
         android:hint="@string/register_email_hint"
         android:inputType="textEmailAddress"
-        android:padding="10dp"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
+        android:padding="15dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -62,13 +62,13 @@
         android:layout_marginTop="14dp"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
-        android:alpha="0.4"
+        android:alpha="0.9"
         android:background="@drawable/opaciy"
         android:hint="@string/register_password_hint"
         android:inputType="textPassword"
-        android:padding="10dp"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
+        android:padding="15dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -86,31 +86,13 @@
         android:background="@drawable/border"
         android:onClick="OpenLoggedOnScreen"
         android:text="@string/login_text"
-        android:textColor="@color/white"
+        android:textColor="@color/red"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginPassword" />
 
-
-    <Button
-        android:id="@+id/adminButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
-        android:background="@drawable/border"
-        android:text="@string/login_as_an_admin_button_text"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginButton" />
 
     <TextView
         android:id="@+id/forgotPasswordTextView"
@@ -122,11 +104,11 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="@string/register_forgot_password_text"
-        android:textColor="@color/white"
+        android:textColor="@color/red"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adminButton" />
+        app:layout_constraintTop_toBottomOf="@+id/loginButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
