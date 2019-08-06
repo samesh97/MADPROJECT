@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class NoticeAdminDisplayNotices extends AppCompatActivity {
@@ -24,6 +26,16 @@ public class NoticeAdminDisplayNotices extends AppCompatActivity {
         TextView Description=findViewById(R.id.textViewDisplayDescription);
         Description.setText(description);
 
+
+
+
+    }
+
+    public void sendMessage(View view){
+        Intent intentGoBack =new Intent(this,NoticeAddNotices.class);
+
+        Button Edit= findViewById(R.id.btnEdit);
+            startActivity(intentGoBack);
 
     }
 }

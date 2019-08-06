@@ -11,17 +11,19 @@
         android:theme="@style/AppTheme">
         <activity android:name=".RegisterScreen">
 
+
+        </activity>
+        <activity android:name=".LoginScreen" />
+        <activity android:name=".SearchForTickets">
+
+        </activity>
+        <activity android:name=".NoticeAddNotices" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginScreen" />
-        <activity android:name=".SearchForTickets">
-
-        </activity>
-        <activity android:name=".NoticeAddNotices" />
         <activity android:name=".FirstActivity" />
         <activity android:name=".thara1" />
         <activity android:name=".thara2" />
