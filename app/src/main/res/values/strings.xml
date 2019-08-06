@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MAD</string>
+    <string name="app_name">AMC Cinema</string>
     <string name="enter_film">Film:</string>
     <string name="add_details">Add</string>
     <string name="description">Description:</string>
@@ -11,7 +11,7 @@
     <string name="register_email_hint">Email</string>
     <string name="register_password_hint">Password</string>
     <string name="register_forgot_password_text">Forgot password? Click Here</string>
-    <string name="register_name_text">Name</string>
+    <string name="register_name_text">Username</string>
     <string name="register_text">Register</string>
     <string name="already_registered_text">Already Registered? Sign in Here</string>
     <string name="confirm_password_text">Confirm Password</string>

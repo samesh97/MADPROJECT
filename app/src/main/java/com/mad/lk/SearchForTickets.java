@@ -1,6 +1,8 @@
 package com.mad.lk;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,11 +18,17 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.material.bottomnavigation.BottomNavigationItemView;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class SearchForTickets extends AppCompatActivity {
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
@@ -49,6 +57,7 @@ public class SearchForTickets extends AppCompatActivity {
     ListView filmSearchList;
     ArrayList<Integer> filmPosters;
     ArrayList<String> filmname,date,ranking,time,availableSets;
+    com.google.android.material.bottomnavigation.BottomNavigationView bottomNavigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +66,28 @@ public class SearchForTickets extends AppCompatActivity {
 
         filmSearchView = (SearchView)findViewById(R.id.filmSearchView);
         filmSearchList = (ListView) findViewById(R.id.filmSearchList);
+        bottomNavigation = (com.google.android.material.bottomnavigation.BottomNavigationView) findViewById(R.id.bottomNavigation);
+
+
+        bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem)
+            {
+                if(menuItem.getItemId() == R.id.navigationProfile)
+                {
+                    bottomNavigation.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gradient2));
+                }
+                if(menuItem.getItemId() == R.id.navigationFavorite)
+                {
+
+                }
+                if(menuItem.getItemId() == R.id.navigationOrders)
+                {
+                    bottomNavigation.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.navigation_gradient));
+                }
+                return false;
+            }
+        });
 
         filmPosters = new ArrayList<>();
         filmname = new ArrayList<>();

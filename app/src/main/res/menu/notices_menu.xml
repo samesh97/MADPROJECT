@@ -4,6 +4,6 @@
         android:id="@+id/settings"
         android:icon="@drawable/ic_notifications"
         android:orderInCategory="100"
-        android:title="Post"
+        android:title="Notifications"
         app:showAsAction="always" />
 </menu>
