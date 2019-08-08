@@ -1,0 +1,26 @@
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/navigationProfile"
+        android:icon="@drawable/ic_profile"
+        android:orderInCategory="100"
+        android:title="Profile"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/navigationFavorite"
+        android:icon="@drawable/ic_favorite"
+        android:orderInCategory="100"
+        android:title="Favorite"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/navigationOrders"
+        android:icon="@drawable/ic_orders"
+        android:orderInCategory="100"
+        android:title="Orders"
+        app:showAsAction="always" />
+
+
+</menu>

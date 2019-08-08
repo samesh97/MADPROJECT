@@ -4,22 +4,30 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".thara2"></activity>
-        <activity android:name=".thara1" />
-        <activity android:name=".SearchForTickets">
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".RegisterScreen">
+        </activity>
+        <activity android:name=".LoginScreen" />
+        <activity android:name=".SearchForTickets"></activity>
         <activity android:name=".NoticeAddNotices" />
         <activity android:name=".FirstActivity" />
+        <activity android:name=".thara1" />
+        <activity android:name=".thara2" />
+        <activity android:name=".NoticeAdminDisplayNotices" />
+        <activity android:name=".NoticeUserDisplayNotices" />
+        <activity android:name=".afterBooking" />
+        <activity android:name=".bookTicket" />
     </application>
 
 </manifest>

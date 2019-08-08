@@ -1,12 +1,27 @@
 <resources>
-    <string name="app_name">MAD</string>
+    <string name="app_name">AMC Cinema</string>
     <string name="enter_film">Film:</string>
     <string name="add_details">Add</string>
     <string name="description">Description:</string>
     <string name="dateText">Date:</string>
-    <string name="up_coming_events">UP COMING EVENTS</string>
+    <string name="up_coming_events">NOTICES</string>
     <string name="searchViewHint">Enter Film Name</string>
     <string name="filmName">Minority Reports</string>
+    <string name="login_text">Login</string>
+    <string name="register_email_hint">Email</string>
+    <string name="register_password_hint">Password</string>
+    <string name="register_forgot_password_text">Forgot password? Click Here</string>
+    <string name="register_name_text">Username</string>
+    <string name="register_text">Register</string>
+    <string name="already_registered_text">Already Registered? Sign in Here</string>
+    <string name="confirm_password_text">Confirm Password</string>
+    <string name="edit_details">Edit</string>
+    <string name="delete_details">Delete</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="Phone">Phone Number</string>
+    <string name="adult">Adult</string>
+    <string name="child">Child</string>
     <string name="filmadd">ADD</string>
     <string name="filmupdate">UPDATE</string>
     <string name="filmdelete">DELETE</string>
@@ -20,5 +35,17 @@
     <string name="filmphoto2">Photo 2</string>
     <string name="filmCharacters">Main Roles</string>
     <string name="filmBooking">Booking</string>
+    <string name="ranking">1.5</string>
+    <string name="sampleDate">2019/08/20</string>
+    <string name="showTime">10.30</string>
+    <string name="seats">250</string>
+    <string name="sample_description_text">Lorem Ipsum is\nsimply dummy text\nof the printing and\ntypesetting industry.</string>
+    <string name="enter_film_name_text">Enter Film Name</string>
+    <string name="enter_role_1_text">Enter Role 1</string>
+    <string name="enter_role_2_text">Enter Role 2</string>
+    <string name="enter_role_3">Enter Role 3</string>
+    <string name="enter_role_4_text">Enter Role 4</string>
+    <string name="filmEDIT">Edit</string>
+    <string name="login_as_an_admin_button_text">Login</string>
 
 </resources>
