@@ -47,5 +47,7 @@
     <string name="enter_role_4_text">Enter Role 4</string>
     <string name="filmEDIT">Edit</string>
     <string name="login_as_an_admin_button_text">Login</string>
+    <string name="film_maintain">Maintain Film Details.</string>
+    <string name="filmdirector">Enter Director</string>
 
 </resources>

@@ -14,7 +14,7 @@ public class thara2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_thara2);
+        setContentView(R.layout.activity_film_details_view);
 
         booking = (Button) findViewById(R.id.booking);
 
@@ -29,6 +29,6 @@ public class thara2 extends AppCompatActivity {
 
     public void thara1(View view)
     {
-        startActivity(new Intent(thara2.this,thara1.class));
+        startActivity(new Intent(thara2.this, film_details_maintain.class));
     }
 }
