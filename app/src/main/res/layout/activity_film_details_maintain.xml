@@ -7,14 +7,19 @@
     android:layout_height="match_parent"
     tools:context=".film_details_maintain">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/id1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:paddingBottom="50dp">
 
         <TextView
             android:id="@+id/id2"
+
             android:layout_width="wrap_content"
             android:layout_height="72dp"
             android:layout_gravity="center"
@@ -316,8 +321,84 @@
             app:srcCompat="@drawable/t2" />
 
 
+        <Button
+            android:id="@+id/fimadd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp"
+            android:background="@drawable/border"
 
+            android:text="@string/filmadd"
+            android:textColor="@color/red"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+
+          ></Button>
+
+        <Button
+            android:id="@+id/filmclear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp"
+            android:background="@drawable/border"
+
+            android:text="@string/filmclear"
+            android:textColor="@color/red"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+
+         />
+
+        <Button
+            android:id="@+id/filmupdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp"
+            android:background="@drawable/border"
+
+            android:text="@string/filmupdate"
+            android:textColor="@color/red"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+           />
+
+        <Button
+            android:id="@+id/filmdelete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginRight="24dp"
+            android:background="@drawable/border"
+
+            android:text="@string/filmdelete"
+            android:textColor="@color/red"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+
+         />
     </LinearLayout>
 
 </ScrollView>
-

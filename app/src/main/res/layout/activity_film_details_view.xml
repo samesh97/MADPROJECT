@@ -1,170 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/t"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="70dp"
-    tools:context=".thara2">
 
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="Film Name........."
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.136"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="Role 3 Name"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.127"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView20" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="Role 1 Name....."
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.145"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="Role 4 Name"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.136"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/opaciy"
+      >
 
     <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/booking">
-
-
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_weight="1"
-            android:scaleType="fitXY"
-            app:srcCompat="@drawable/t2" />
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/booking"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/id56"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:background="@color/colorAccent"
-        android:text="@string/filmBooking"
-        android:textColor="@android:color/white"
-        android:textStyle="bold|italic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:paddingBottom="50dp">
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp"
+            android:width="350dp"
+            android:height="100dp"
+            android:text="ttttttttttttt"
+            android:textColor="@color/black"
+            android:textSize="36sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <Button
+            android:id="@+id/loginButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp"
+            android:background="@drawable/border"
+            android:onClick="OpenLoggedOnScreen"
+            android:text="@string/login_text"
+            android:textColor="@color/red"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/loginPassword"
+            tools:text="@string/filmBooking" />
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginEnd="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_topOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="340dp"
+                    android:layout_height="280dp"
+                    android:layout_marginRight="24dp"
+                    android:background="@color/white"
+                    android:orientation="horizontal">
+
+
+                    <ImageView
+                        android:id="@+id/image85"
+                        android:layout_width="300dp"
+                        android:layout_height="230dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginRight="20dp"
+                        android:scaleType="fitXY"
+                        app:srcCompat="@drawable/t1" />
+
+
+                </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="340dp"
+                android:layout_height="280dp"
+                android:layout_marginRight="24dp"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/image95"
+                    android:layout_width="300dp"
+                    android:layout_height="230dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="22dp"
+                    android:layout_marginRight="20dp"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/t2"/>
+
+
+            </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="340dp"
+                    android:layout_height="280dp"
+                    android:layout_marginRight="24dp"
+                    android:background="@color/white"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/image98"
+                        android:layout_width="300dp"
+                        android:layout_height="230dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginRight="20dp"
+                        android:scaleType="fitXY"
+                        app:srcCompat="@drawable/t3" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="340dp"
+                    android:layout_height="280dp"
+                    android:layout_marginRight="24dp"
+                    android:background="@color/white"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/image91"
+                        android:layout_width="300dp"
+                        android:layout_height="230dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginRight="20dp"
+                        android:scaleType="fitXY"
+                        app:srcCompat="@drawable/t4" />
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </HorizontalScrollView>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/booking">
+        android:layout_width="340dp"
+        android:layout_height="500dp"
+        android:layout_marginRight="30dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="50dp">
 
-        <ImageView
-            android:id="@+id/imageView6"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_weight="1"
-            android:scaleType="fitXY"
-            app:srcCompat="@drawable/t1" />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/textView20"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="Role 2 Name"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.136"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
-
-    <Button
-        android:id="@+id/button6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:background="@color/colorAccent"
-        android:onClick="thara1"
-        android:text="@string/filmEDIT"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
-
+    </LinearLayout>
 </ScrollView>

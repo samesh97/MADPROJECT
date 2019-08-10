@@ -6,7 +6,6 @@ import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -18,13 +17,10 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class SearchForTickets extends AppCompatActivity {
 
@@ -137,7 +133,7 @@ public class SearchForTickets extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
-                Intent intent = new Intent(getApplicationContext(),thara2.class);
+                Intent intent = new Intent(getApplicationContext(), activity_film_details_view.class);
                 startActivity(intent);
             }
         });

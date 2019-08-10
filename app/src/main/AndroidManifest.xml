@@ -23,7 +23,7 @@
         <activity android:name=".NoticeAddNotices" />
         <activity android:name=".FirstActivity" />
         <activity android:name=".film_details_maintain" />
-        <activity android:name=".thara2" />
+        <activity android:name=".activity_film_details_view" />
         <activity android:name=".NoticeAdminDisplayNotices" />
         <activity android:name=".NoticeUserDisplayNotices" />
         <activity android:name=".afterBooking" />
