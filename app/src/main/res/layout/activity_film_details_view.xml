@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-    <ScrollView
+    <ScrollView app:layout_constraintTop_toTopOf="parent"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -8,7 +8,6 @@
         android:layout_height="match_parent"
         android:background="@drawable/opaciy"
       >
-
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/id56"
@@ -20,6 +19,7 @@
 
 
         <TextView
+            android:id="@+id/idviewfilmname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
@@ -28,7 +28,7 @@
             android:width="350dp"
             android:height="100dp"
             android:inputType="textMultiLine"
-            android:text="ttttttttttttt"
+            android:text=""
             android:textColor="@color/black"
             android:textSize="36sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +36,7 @@
 
 
         <Button
-            android:id="@+id/loginButton"
+            android:id="@+id/idbtnbooking"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -55,7 +55,7 @@
             app:layout_constraintTop_toBottomOf="@+id/loginPassword"
             tools:text="@string/filmBooking" />
 
-        <HorizontalScrollView
+        <HorizontalScrollView app:layout_constraintTop_toTopOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
@@ -80,7 +80,7 @@
 
 
                     <ImageView
-                        android:id="@+id/image85"
+                        android:id="@+id/idviewimage1"
                         android:layout_width="300dp"
                         android:layout_height="230dp"
                         android:layout_marginLeft="16dp"
@@ -100,7 +100,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/image95"
+                    android:id="@+id/idviewimage2"
                     android:layout_width="300dp"
                     android:layout_height="230dp"
                     android:layout_marginLeft="16dp"
@@ -121,7 +121,7 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:id="@+id/image98"
+                        android:id="@+id/idviewimage3"
                         android:layout_width="300dp"
                         android:layout_height="230dp"
                         android:layout_marginLeft="16dp"
@@ -142,7 +142,7 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:id="@+id/image91"
+                        android:id="@+id/idviewimage4"
                         android:layout_width="300dp"
                         android:layout_height="230dp"
                         android:layout_marginLeft="16dp"
@@ -197,7 +197,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/idviewrole1"
             android:layout_width="300dp"
             android:layout_height="70dp"
             android:layout_marginTop="20dp"
@@ -209,7 +209,7 @@
 
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/idviewrole2"
             android:layout_width="300dp"
             android:layout_height="70dp"
             android:layout_marginTop="20dp"
@@ -220,7 +220,7 @@
          />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/idviewrole3"
             android:layout_width="300dp"
             android:layout_height="70dp"
             android:layout_marginTop="20dp"
@@ -231,7 +231,7 @@
            />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/idviewrole4"
             android:layout_width="300dp"
             android:layout_height="70dp"
             android:layout_marginTop="20dp"
@@ -261,7 +261,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/idviewdirector"
             android:layout_width="300dp"
             android:layout_height="70dp"
             android:layout_marginTop="20dp"
@@ -271,8 +271,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             />
 
-
-</LinearLayout>
+        </LinearLayout>
     </LinearLayout>
     </LinearLayout>
 </ScrollView>
+

@@ -60,7 +60,7 @@
         app:layout_constraintVertical_bias="0.757" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/idviewrole3"
         android:layout_width="149dp"
         android:layout_height="38dp"
         android:layout_marginStart="8dp"
@@ -183,7 +183,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/idviewrole4"
         android:layout_width="149dp"
         android:layout_height="38dp"
         android:layout_marginStart="8dp"

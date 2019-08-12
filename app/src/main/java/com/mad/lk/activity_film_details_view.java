@@ -16,7 +16,7 @@ public class activity_film_details_view extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_film_details_view);
 
-        booking = (Button) findViewById(R.id.loginButton);
+        booking = (Button) findViewById(R.id.idbtnbooking);
 
         booking.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -27,7 +27,7 @@ public class activity_film_details_view extends AppCompatActivity {
         });
     }
 
-    public void thara1(View view)
+    public void film_details_view(View view)
     {
         startActivity(new Intent(activity_film_details_view.this, film_details_maintain.class));
     }

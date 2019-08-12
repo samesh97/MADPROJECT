@@ -75,7 +75,7 @@
         app:layout_constraintTop_toBottomOf="@+id/loginUserName" />
 
     <Button
-        android:id="@+id/loginButton"
+        android:id="@+id/idbtnbooking"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -108,7 +108,7 @@
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginButton" />
+        app:layout_constraintTop_toBottomOf="@+id/idbtnbooking" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

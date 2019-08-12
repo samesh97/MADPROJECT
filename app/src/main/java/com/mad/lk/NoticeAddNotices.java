@@ -22,7 +22,7 @@ public class NoticeAddNotices extends AppCompatActivity {
         EditText Date= findViewById(R.id.editTextDate);
 
         EditText Description=findViewById(R.id.editTextDescription);
-        Button Add=findViewById(R.id.btnAdd);
+        Button Add=findViewById(R.id.idbtnAdd);
 
 
         intentDisplay.putExtra("msg1",Date.getText().toString());

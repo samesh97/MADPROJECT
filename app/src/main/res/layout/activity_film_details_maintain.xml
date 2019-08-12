@@ -42,7 +42,7 @@
                 tools:text="@string/film_maintain" />
 
             <EditText
-                android:id="@+id/id3"
+                android:id="@+id/idtxtFilmName"
                 android:layout_width="325dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="24dp"
@@ -64,7 +64,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
             <TextView
-                android:id="@+id/photo1"
+                android:id="@+id/idtxtphoto1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -84,7 +84,7 @@
                 android:layout_gravity="center"/>
 
             <ImageView
-                android:id="@+id/imageid1"
+                android:id="@+id/idimage1"
                 android:layout_width="300dp"
                 android:layout_height="227dp"
                 android:layout_marginLeft="40dp"
@@ -94,7 +94,7 @@
 
 
             <EditText
-                android:id="@+id/id5"
+                android:id="@+id/idtxtRole1"
                 android:layout_width="337dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="24dp"
@@ -116,7 +116,7 @@
 
 
             <EditText
-                android:id="@+id/id6"
+                android:id="@+id/idtxtRole2"
                 android:layout_width="339dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="24dp"
@@ -137,7 +137,7 @@
 
 
             <EditText
-                android:id="@+id/id7"
+                android:id="@+id/idtxtRole3"
                 android:layout_width="341dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="24dp"
@@ -158,7 +158,7 @@
 
 
             <EditText
-                android:id="@+id/id8"
+                android:id="@+id/idtxtRole4"
                 android:layout_width="339dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="24dp"
@@ -180,7 +180,7 @@
 
 
             <EditText
-                android:id="@+id/id9"
+                android:id="@+id/idtxtDirector"
                 android:layout_width="343dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="24dp"
@@ -202,7 +202,7 @@
 
 
             <TextView
-                android:id="@+id/idphoto2"
+                android:id="@+id/idtxtphoto2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -222,7 +222,7 @@
                 android:layout_gravity="center"/>
 
             <ImageView
-                android:id="@id/imageid1"
+                android:id="@+id/idimage2"
                 android:layout_width="300dp"
                 android:layout_height="227dp"
                 android:layout_marginLeft="40dp"
@@ -232,7 +232,7 @@
 
 
             <TextView
-                android:id="@+id/idphoto3"
+                android:id="@+id/idtxtphoto3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -252,7 +252,7 @@
                 android:layout_gravity="center"/>
 
             <ImageView
-                android:id="@id/imageid1"
+                android:id=""
                 android:layout_width="300dp"
                 android:layout_height="227dp"
                 android:layout_marginLeft="40dp"
@@ -282,7 +282,7 @@
                 android:layout_gravity="center"/>
 
             <ImageView
-                android:id="@id/imageid1"
+                android:id="@+id/idimage3"
                 android:layout_width="300dp"
                 android:layout_height="227dp"
                 android:layout_marginLeft="40dp"
@@ -292,7 +292,7 @@
 
 
             <TextView
-                android:id="@+id/idphoto5"
+                android:id="@+id/idtxtphoto4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -312,7 +312,7 @@
                 android:layout_gravity="center"/>
 
             <ImageView
-                android:id="@id/imageid1"
+                android:id="@+id/idimage4"
                 android:layout_width="300dp"
                 android:layout_height="227dp"
                 android:layout_marginLeft="40dp"
@@ -322,7 +322,7 @@
 
 
             <Button
-                android:id="@+id/fimadd"
+                android:id="@+id/idbtnAdd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -342,7 +342,7 @@
                 />
 
             <Button
-                android:id="@+id/filmclear"
+                android:id="@+id/idbtnClear"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -362,7 +362,7 @@
                 />
 
             <Button
-                android:id="@+id/filmupdate"
+                android:id="@+id/idbtnUpdate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -379,7 +379,7 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <Button
-                android:id="@+id/filmdelete"
+                android:id="@+id/idbtnDelete"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"

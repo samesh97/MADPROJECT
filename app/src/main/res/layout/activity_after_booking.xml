@@ -7,7 +7,7 @@
     tools:context=".afterBooking">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/idviewrole2"
         android:layout_width="395dp"
         android:layout_height="139dp"
         android:layout_marginStart="8dp"
