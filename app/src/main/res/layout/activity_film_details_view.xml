@@ -11,7 +11,7 @@
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/id56"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:orientation="vertical"
@@ -37,8 +37,8 @@
 
         <Button
             android:id="@+id/idbtnbooking"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="250dp"
+            android:layout_height="80dp"
             android:layout_marginStart="24dp"
             android:layout_marginLeft="24dp"
             android:layout_marginTop="32dp"
@@ -46,7 +46,8 @@
             android:layout_marginRight="24dp"
             android:background="@drawable/border"
             android:textColor="@color/red"
-            android:textSize="18sp"
+            android:textSize="20sp"
+            android:layout_gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -69,8 +70,8 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="340dp"
-                    android:layout_height="280dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="270dp"
                     android:layout_marginRight="24dp"
                     android:background="@color/white"
                     android:orientation="horizontal">
@@ -90,8 +91,8 @@
                 </LinearLayout>
 
             <LinearLayout
-                android:layout_width="340dp"
-                android:layout_height="280dp"
+                android:layout_width="wrap_content"
+                android:layout_height="270dp"
                 android:layout_marginRight="24dp"
                 android:background="@color/white"
                 android:orientation="horizontal">
@@ -111,8 +112,8 @@
 
 
                 <LinearLayout
-                    android:layout_width="340dp"
-                    android:layout_height="280dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="270dp"
                     android:layout_marginRight="24dp"
                     android:background="@color/white"
                     android:orientation="horizontal">
@@ -132,8 +133,8 @@
 
 
                 <LinearLayout
-                    android:layout_width="340dp"
-                    android:layout_height="280dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="270dp"
                     android:layout_marginRight="24dp"
                     android:background="@color/white"
                     android:orientation="horizontal">
@@ -155,8 +156,8 @@
         </HorizontalScrollView>
 
     <LinearLayout
-        android:layout_width="360dp"
-        android:layout_height="670dp"
+        android:layout_width="wrap_content"
+        android:layout_height="800dp"
         android:layout_marginRight="30dp"
         android:background="@color/white"
         android:orientation="vertical"
@@ -165,8 +166,8 @@
         android:layout_marginBottom="30dp">
 
         <LinearLayout
-            android:layout_width="340dp"
-            android:layout_height="650dp"
+            android:layout_width="wrap_content"
+            android:layout_height="780dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/opaciy"
             android:orientation="vertical"
@@ -177,8 +178,8 @@
 
         <TextView
             android:id="@id/id1"
-            android:layout_width="216dp"
-            android:layout_height="49dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="24dp"
@@ -196,7 +197,7 @@
         <TextView
             android:id="@+id/idviewrole1"
             android:layout_width="300dp"
-            android:layout_height="70dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
@@ -219,7 +220,7 @@
         <TextView
             android:id="@+id/idviewrole3"
             android:layout_width="300dp"
-            android:layout_height="70dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
@@ -230,7 +231,7 @@
         <TextView
             android:id="@+id/idviewrole4"
             android:layout_width="300dp"
-            android:layout_height="70dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
@@ -242,7 +243,7 @@
         <TextView
             android:id="@id/id1"
             android:layout_width="216dp"
-            android:layout_height="49dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="24dp"
@@ -260,7 +261,7 @@
         <TextView
             android:id="@+id/idviewdirector"
             android:layout_width="300dp"
-            android:layout_height="70dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
