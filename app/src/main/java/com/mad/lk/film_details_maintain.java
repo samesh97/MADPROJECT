@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -76,4 +77,23 @@ public class film_details_maintain extends AppCompatActivity {
 
     }
 
+    public void ShowToastAdd(View view) {
+        Toast toastAdd = Toast.makeText(getApplicationContext(),"Add sucessfully",Toast.LENGTH_LONG);
+        toastAdd.show();
+    }
+
+    public void ShowToastClear(View view) {
+        Toast toastAdd = Toast.makeText(getApplicationContext(),"Clear sucessfully",Toast.LENGTH_LONG);
+        toastAdd.show();
+    }
+
+    public void ShowToastUpdate(View view) {
+        Toast toastAdd = Toast.makeText(getApplicationContext(),"Update sucessfully",Toast.LENGTH_LONG);
+        toastAdd.show();
+    }
+
+    public void ShowToastDelete(View view) {
+        Toast toastAdd = Toast.makeText(getApplicationContext(),"Delete sucessfully",Toast.LENGTH_LONG);
+        toastAdd.show();
+    }
 }

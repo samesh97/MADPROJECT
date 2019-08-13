@@ -307,7 +307,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-
+                android:onClick="ShowToastAdd"
                 />
 
             <Button
@@ -327,6 +327,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
+                android:onClick="ShowToastClear"
 
                 />
 
@@ -346,7 +347,8 @@
                 android:layout_gravity="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                android:onClick="ShowToastUpdate"/>
 
             <Button
                 android:id="@+id/idbtnDelete"
@@ -364,7 +366,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:onClick="ShowToastDelete"/>
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
