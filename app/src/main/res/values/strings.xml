@@ -50,5 +50,6 @@
     <string name="film_maintain">Maintain Film Details.</string>
     <string name="filmdirector">Enter Director</string>
     <string name="fimdirectedby">Directed By</string>
+    <string name="filmdetailsummary_show">Show summary</string>
 
 </resources>
