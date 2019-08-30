@@ -2,59 +2,82 @@ package com.mad.lk;
 
 public class classFilmDetail {
 
-    int filmid;
-    String filmname;
-    String role1;
-    String role2;
-    String role3;
-    String role4;
-    String directorname;
+    private int film_id;
+    private String film_name;
+    private String role_1;
+    private String role_2;
+    private String role_3;
+    private String role_4;
+    private String director_name;
 
 
-    public classFilmDetail(int filmid, String filmname, String role1, String role2, String role3, String role4, String directorname) {
-        this.filmid = filmid;
-        this.filmname = filmname;
-        this.role1 = role1;
-        this.role2 = role2;
-        this.role3 = role3;
-        this.role4 = role4;
-        this.directorname = directorname;
+    public classFilmDetail(int film_id, String film_name, String role_1, String role_2, String role_3, String role_4, String director_name) {
+        this.film_id = film_id;
+        this.film_name = film_name;
+        this.role_1 = role_1;
+        this.role_2 = role_2;
+        this.role_3 = role_3;
+        this.role_4 = role_4;
+        this.director_name = director_name;
     }
 
-    public classFilmDetail(String filmname, String role1, String role2, String role3, String role4, String directorname) {
-        this.filmname = filmname;
-        this.role1 = role1;
-        this.role2 = role2;
-        this.role3 = role3;
-        this.role4 = role4;
-        this.directorname = directorname;
+
+    public int getFilm_id() {
+        return film_id;
     }
 
-    public int getFilmid() {
-        return filmid;
+    public String getFilm_name() {
+        return film_name;
     }
 
-    public String getFilmname() {
-        return filmname;
+    public String getRole_1() {
+        return role_1;
     }
 
-    public String getRole1() {
-        return role1;
+    public String getRole_2() {
+        return role_2;
     }
 
-    public String getRole2() {
-        return role2;
+    public String getRole_3() {
+        return role_3;
     }
 
-    public String getRole3() {
-        return role3;
+    public String getRole_4() {
+        return role_4;
     }
 
-    public String getRole4() {
-        return role4;
+    public String getDirector_name() {
+        return director_name;
     }
 
-    public String getDirectorname() {
-        return directorname;
+    public void setFilm_id(int film_id) {
+        this.film_id = film_id;
     }
+
+    public void setFilm_name(String film_name) {
+        this.film_name = film_name;
+    }
+
+    public void setRole_1(String role_1) {
+        this.role_1 = role_1;
+    }
+
+    public void setRole_2(String role_2) {
+        this.role_2 = role_2;
+    }
+
+    public void setRole_3(String role_3) {
+        this.role_3 = role_3;
+    }
+
+    public void setRole_4(String role_4) {
+        this.role_4 = role_4;
+    }
+
+    public void setDirector_name(String director_name) {
+        this.director_name = director_name;
+    }
+
+
+
 }
