@@ -14,17 +14,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.w3c.dom.Text;
-
+import com.mad.lk.Film_Details_Maintain.db_film_details_maintain;
 import java.sql.SQLDataException;
 import java.sql.SQLException;
 
 public class film_details_maintain extends AppCompatActivity {
 
-    dbFilmDetails controller;
+    db_film_details_maintain dbHelper;
 
 
-
-  //  private static final int PICK_IMAGE=100;
 
     Button btnadd;
     Button btnclear;
@@ -49,12 +47,13 @@ public class film_details_maintain extends AppCompatActivity {
     ImageView viewimage4;
 
 
-    controller = new dbFilmDetails(this,"",1);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_film_details_maintain);
+
+        dbHelper = new db_film_details_maintain(this);
 
         btnadd = findViewById(R.id.idbtnAdd);
         btnclear = findViewById(R.id.idbtnClear);
@@ -80,91 +79,58 @@ public class film_details_maintain extends AppCompatActivity {
         image4 = findViewById(R.id.idtxtphoto4);
         viewimage4 = findViewById(R.id.idimage4);
 
-      //  db = new dbFilmDetails(this);
+      btnadd.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+
+              String filmname = txtfilmname.getText().toString();
+              String role1 = txtrole1.getText().toString();
+              String role2 = txtrole2.getText().toString();
+              String role3 = txtrole3.getText().toString();
+              String role4 = txtrole4.getText().toString();
+              String director = txtdirector.getText().toString();
 
 
-    }
+              if (filmname.isEmpty()) {
+                  Toast.makeText(getApplicationContext(), "filmname cannot be empty", Toast.LENGTH_SHORT).show();
+              } else {
+                  dbHelper.Add(filmname,role1,role2,role3,role4,director);
+                  Toast.makeText(getApplicationContext(), "Data added successfully!", Toast.LENGTH_SHORT).show();
+              }
+          }
+
+      });
+
+        btndelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String filmname = txtfilmname.getText().toString();
+
+                dbHelper.Delete(getApplicationContext(), filmname);
+            }
+        });
 
 
-    public void btn_click(View view) {
+        btnupdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        Toast toastAdd = Toast.makeText(getApplicationContext(),"Add sucessfully",Toast.LENGTH_LONG);
-        toastAdd.show();
+                String filmname = txtfilmname.getText().toString();
+                String role1 = txtrole1.getText().toString();
+                String role2 = txtrole2.getText().toString();
+                String role3 = txtrole3.getText().toString();
+                String role4 = txtrole4.getText().toString();
+                String director = txtdirector.getText().toString();
 
-        Toast toastClear = Toast.makeText(getApplicationContext(),"Clear sucessfully",Toast.LENGTH_LONG);
-        toastClear.show();
-
-        Toast toastUpdate = Toast.makeText(getApplicationContext(),"Update sucessfully",Toast.LENGTH_LONG);
-        toastUpdate.show();
-
-        Toast toastDelete = Toast.makeText(getApplicationContext(),"Delete sucessfully",Toast.LENGTH_LONG);
-        toastDelete.show();
-
-        switch (view.getId()){
-
-            case R.id.idbtnAdd:
-                try {
-                    controller.Add_FilmDetails(
-                            txtfilmname.getText().toString(),
-                            txtrole1.getText().toString(),
-                            txtrole2.getText().toString(),
-                            txtrole3.getText().toString(),
-                            txtrole4.getText().toString(),
-                            txtdirector.getText().toString(),
-                            image1.getText().toString(),
-                            image2.getText().toString(),
-                            image3.getText().toString(),
-                            image4.getText().toString());
-                }catch (SQLiteException e){
-                    Toast.makeText(film_details_maintain.this, "ALREADY EXISTS", Toast.LENGTH_SHORT).show();
+                if(filmname.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "film name cannot be empty", Toast.LENGTH_SHORT).show();
+                }else {
+                    dbHelper.Update(filmname,role1,role2,role3,role4,director);
+                    Toast.makeText(getApplicationContext(), "film name updated", Toast.LENGTH_SHORT).show();
                 }
-                break;
+            }
+        });
 
-            case R.id.idbtnUpdate:
-                AlertDialog.Builder dialog = new AlertDialog.Builder(film_details_maintain.this);
-                dialog.setTitle("Enter NEW DETAILS");
-
-                final EditText newfilmName = new EditText(this);
-                dialog.setView(newfilmName);
-
-                final EditText newrole1 = new EditText(this);
-                dialog.setView(newrole1);
-
-                final EditText newrole2 = new EditText(this);
-                dialog.setView(newrole2);
-
-                final EditText newrole3 = new EditText(this);
-                dialog.setView(newrole3);
-
-                final EditText newrole4 = new EditText(this);
-                dialog.setView(newrole4);
-
-                final EditText newdirectorName = new EditText(this);
-                dialog.setView(newdirectorName);
-
-                dialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int i) {
-                        controller.Update_FilmDetails(
-                                newfilmName.getText().toString(),
-                                newrole1.getText().toString(),
-                                newrole2.getText().toString(),
-                                newrole3.getText().toString(),
-                                newrole4.getText().toString(),
-                                newdirectorName.getText().toString(),
-                                newimage1.getText().toString(),
-                                newimage2.getText().toString(),
-                                newimage3.getText().toString(),
-                                newimage4.getText().toString());
-                    }
-                });
-                dialog.show();
-                break;
-            case R.id.idbtnDelete:
-                controller.Delete_FilmDetails(txtfilmname.getText().toString());
-                break;
-            case R.id.idbtnClear:
-                break;
-        }
     }
+
 }
