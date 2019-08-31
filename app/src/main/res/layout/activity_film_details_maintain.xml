@@ -51,6 +51,7 @@
                 android:alpha="0.9"
                 android:background="@drawable/opaciy"
                 android:hint="@string/filmname"
+                android:inputType="textPersonName"
                 android:padding="20dp"
                 android:text="@string/enter_film_name_text"
                 android:textColor="@color/white"
@@ -58,8 +59,7 @@
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                />
+                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                 android:id="@+id/idtxtphoto1"
@@ -103,6 +103,7 @@
                 android:alpha="0.9"
                 android:background="@drawable/opaciy"
                 android:hint="@string/filmRole1"
+                android:inputType="textPersonName"
                 android:padding="20dp"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
@@ -110,7 +111,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                />
+                android:autofillHints="" />
 
 
             <EditText
@@ -167,14 +168,14 @@
                 android:alpha="0.9"
                 android:background="@drawable/opaciy"
                 android:hint="@string/filmRole4"
+                android:inputType="textPersonName"
                 android:padding="20dp"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                />
+                app:layout_constraintStart_toStartOf="parent" />
 
 
             <EditText
@@ -189,14 +190,14 @@
                 android:alpha="0.9"
                 android:background="@drawable/opaciy"
                 android:hint="@string/filmdirector"
+                android:inputType="textPersonName"
                 android:padding="20dp"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                />
+                app:layout_constraintStart_toStartOf="parent" />
 
 
             <TextView
@@ -310,12 +311,12 @@
                 />
 
             <Button
-                android:id="@+id/idbtnClear"
+                android:id="@+id/idbtnview"
                 android:layout_width="173dp"
                 android:layout_height="74dp"
               android:layout_gravity="center"
                 android:background="@drawable/border"
-                android:text="@string/filmclear"
+                android:text="@string/filmView"
                 android:textColor="@color/red"
                 android:textSize="18sp"
                 android:layout_marginStart="24dp"

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.view.View;
@@ -25,7 +26,7 @@ public class film_details_maintain extends AppCompatActivity {
 
 
     Button btnadd;
-    Button btnclear;
+    Button btnviewall;
     Button btnupdate;
     Button btndelete;
 
@@ -56,7 +57,7 @@ public class film_details_maintain extends AppCompatActivity {
         dbHelper = new db_film_details_maintain(this);
 
         btnadd = findViewById(R.id.idbtnAdd);
-        btnclear = findViewById(R.id.idbtnClear);
+        btnviewall = findViewById(R.id.idbtnview);
         btnupdate = findViewById(R.id.idbtnUpdate);
         btndelete = findViewById(R.id.idbtnDelete);
 
@@ -79,7 +80,12 @@ public class film_details_maintain extends AppCompatActivity {
         image4 = findViewById(R.id.idtxtphoto4);
         viewimage4 = findViewById(R.id.idimage4);
 
-      btnadd.setOnClickListener(new View.OnClickListener() {
+        viewAll();
+
+//------------------------------Adding button----------------------------
+
+
+        btnadd.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
 
@@ -132,5 +138,34 @@ public class film_details_maintain extends AppCompatActivity {
         });
 
     }
+    public void viewAll(){
+    btnviewall.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Cursor res = dbHelper.getAllData();
+            if(res.getCount() == 0){
+                showMeessage("Error", "Nothing found");
+            }
+            StringBuffer buffer = new StringBuffer();
+            while(res.moveToNext()){
+                buffer.append("ID : " + res.getString(0)+"\n");
+                buffer.append("Film Name : " + res.getString(1)+"\n");
+                buffer.append("Role 1 : " + res.getString(2)+"\n");
+                buffer.append("Role 2 : " + res.getString(3)+"\n");
+                buffer.append("Role 3 : " + res.getString(4)+"\n");
+                buffer.append("Role 4 : " + res.getString(5)+"\n");
+                buffer.append("Director Name : " + res.getString(6)+"\n");
 
+            }
+            showMeessage("Data",buffer.toString());
+        }
+    });
+    }
+
+    public void showMeessage(String title, String message){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setTitle(title);
+        builder.setMessage(message);
+    }
 }

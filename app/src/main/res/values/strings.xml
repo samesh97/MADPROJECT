@@ -25,7 +25,7 @@
     <string name="filmadd">ADD</string>
     <string name="filmupdate">UPDATE</string>
     <string name="filmdelete">DELETE</string>
-    <string name="filmclear">CLEAR</string>
+    <string name="filmview">View</string>
     <string name="filmname">Film Name</string>
     <string name="filmRole1">Role1</string>
     <string name="filmRole2">Role 2</string>
@@ -51,5 +51,6 @@
     <string name="filmdirector">Enter Director</string>
     <string name="fimdirectedby">Directed By</string>
     <string name="filmdetailsummary_show">Show summary</string>
+    <string name="filmView">View All</string>
 
 </resources>
