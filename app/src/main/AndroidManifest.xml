@@ -2,9 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mad.lk">
 
+    <uses-permission android:name="android.permission.CAMERA" />
 
-    <uses-permission android:name="android.permission.CAMERA">
-            </uses-permission>
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
@@ -12,6 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".photo4"></activity>
+        <activity android:name=".photo3" />
+        <activity android:name=".photo2" />
+        <activity android:name=".photo1" />
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,10 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterScreen">
-        </activity>
+        <activity android:name=".RegisterScreen" />
         <activity android:name=".LoginScreen" />
-        <activity android:name=".SearchForTickets"></activity>
+        <activity android:name=".SearchForTickets" />
         <activity android:name=".NoticeAddNotices" />
         <activity android:name=".FirstActivity" />
         <activity android:name=".film_details_maintain" />

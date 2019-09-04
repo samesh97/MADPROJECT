@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
@@ -24,6 +25,10 @@ public class film_details_maintain extends AppCompatActivity {
     db_film_details_maintain dbHelper;
 
 
+    Button image1;
+    Button image2;
+    Button image3;
+    Button image4;
 
     Button btnadd;
     Button btnviewall;
@@ -37,15 +42,7 @@ public class film_details_maintain extends AppCompatActivity {
     EditText txtrole4;
     EditText txtdirector;
 
-    TextView image1;
-    TextView image2;
-    TextView image3;
-    TextView image4;
 
-    ImageView viewimage1;
-    ImageView viewimage2;
-    ImageView viewimage3;
-    ImageView viewimage4;
 
 
 
@@ -55,6 +52,11 @@ public class film_details_maintain extends AppCompatActivity {
         setContentView(R.layout.activity_film_details_maintain);
 
         dbHelper = new db_film_details_maintain(this);
+
+        image1 = findViewById(R.id.btnimage1);
+        image2 = findViewById(R.id.btnimage2);
+        image3 = findViewById(R.id.btnimage3);
+        image4 = findViewById(R.id.btnimage4);
 
         btnadd = findViewById(R.id.idbtnAdd);
         btnviewall = findViewById(R.id.idbtnview);
@@ -68,20 +70,40 @@ public class film_details_maintain extends AppCompatActivity {
         txtrole4 = findViewById(R.id.idtxtRole4);
         txtdirector = findViewById(R.id.idtxtDirector);
 
-        image1 = findViewById(R.id.idtxtphoto1);
-        viewimage1 = findViewById(R.id.idimage1);
 
-        image2 = findViewById(R.id.idtxtphoto2);
-        viewimage2 = findViewById(R.id.idimage2);
 
-        image3 = findViewById(R.id.idtxtphoto3);
-        viewimage3 = findViewById(R.id.idimage3);
-
-        image4 = findViewById(R.id.idtxtphoto4);
-        viewimage4 = findViewById(R.id.idimage4);
 
         viewAll();
 
+
+        image1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),photo1.class);
+            }
+        });
+
+        image2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),photo2.class);
+            }
+        });
+
+
+        image3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),photo3.class);
+            }
+        });
+
+        image4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),photo4.class);
+            }
+        });
 //------------------------------Adding button----------------------------
 
 
@@ -95,6 +117,8 @@ public class film_details_maintain extends AppCompatActivity {
               String role3 = txtrole3.getText().toString();
               String role4 = txtrole4.getText().toString();
               String director = txtdirector.getText().toString();
+
+
 
 
               if (filmname.isEmpty()) {
@@ -168,4 +192,6 @@ public class film_details_maintain extends AppCompatActivity {
         builder.setTitle(title);
         builder.setMessage(message);
     }
+
+
 }

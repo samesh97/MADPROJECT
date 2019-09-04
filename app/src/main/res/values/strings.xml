@@ -33,6 +33,8 @@
     <string name="filmRole4">Role 4</string>
     <string name="filmphoto1">Photo 1</string>
     <string name="filmphoto2">Photo 2</string>
+    <string name="filmphoto3">Photo 3</string>
+    <string name="filmphoto4">Photo 4</string>
     <string name="filmCharacters">Main Roles</string>
     <string name="filmBooking">Booking</string>
     <string name="ranking">1.5</string>
@@ -52,5 +54,7 @@
     <string name="fimdirectedby">Directed By</string>
     <string name="filmdetailsummary_show">Show summary</string>
     <string name="filmView">View All</string>
+    <string name="btnSelect">Select</string>
+    <string name="btnSave">Save</string>
 
 </resources>
