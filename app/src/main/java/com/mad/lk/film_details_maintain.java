@@ -53,15 +53,15 @@ public class film_details_maintain extends AppCompatActivity {
 
         dbHelper = new db_film_details_maintain(this);
 
-        image1 = findViewById(R.id.btnimage1);
-        image2 = findViewById(R.id.btnimage2);
-        image3 = findViewById(R.id.btnimage3);
-        image4 = findViewById(R.id.btnimage4);
+        image1 = (Button)findViewById(R.id.btnimage1);
+        image2 = (Button)findViewById(R.id.btnimage2);
+        image3 = (Button)findViewById(R.id.btnimage3);
+        image4 = (Button)findViewById(R.id.btnimage4);
 
-        btnadd = findViewById(R.id.idbtnAdd);
-        btnviewall = findViewById(R.id.idbtnview);
-        btnupdate = findViewById(R.id.idbtnUpdate);
-        btndelete = findViewById(R.id.idbtnDelete);
+        btnadd = (Button)findViewById(R.id.idbtnAdd);
+        btnviewall = (Button)findViewById(R.id.idbtnview);
+        btnupdate = (Button)findViewById(R.id.idbtnUpdate);
+        btndelete = (Button)findViewById(R.id.idbtnDelete);
 
         txtfilmname = findViewById(R.id.idtxtFilmName);
         txtrole1 = findViewById(R.id.idtxtRole1);
@@ -168,7 +168,7 @@ public class film_details_maintain extends AppCompatActivity {
         public void onClick(View v) {
             Cursor res = dbHelper.getAllData();
             if(res.getCount() == 0){
-                showMeessage("Error", "Nothing found");
+                showMessage("Error", "Nothing found");
             }
             StringBuffer buffer = new StringBuffer();
             while(res.moveToNext()){
@@ -181,12 +181,12 @@ public class film_details_maintain extends AppCompatActivity {
                 buffer.append("Director Name : " + res.getString(6)+"\n");
 
             }
-            showMeessage("Data",buffer.toString());
+            showMessage("Data",buffer.toString());
         }
     });
     }
 
-    public void showMeessage(String title, String message){
+    public void showMessage(String title, String message){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(true);
         builder.setTitle(title);
