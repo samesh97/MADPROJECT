@@ -9,9 +9,11 @@ public class classFilmDetail {
     private String role_3;
     private String role_4;
     private String director_name;
+    private byte photo1;
+    private byte photo2;
 
 
-    public classFilmDetail(int film_id, String film_name, String role_1, String role_2, String role_3, String role_4, String director_name) {
+    public classFilmDetail(int film_id, String film_name, String role_1, String role_2, String role_3, String role_4, String director_name, byte photo1, byte photo2) {
         this.film_id = film_id;
         this.film_name = film_name;
         this.role_1 = role_1;
@@ -19,8 +21,9 @@ public class classFilmDetail {
         this.role_3 = role_3;
         this.role_4 = role_4;
         this.director_name = director_name;
+        this.photo1 = photo1;
+        this.photo2 = photo2;
     }
-
 
     public int getFilm_id() {
         return film_id;
@@ -50,34 +53,11 @@ public class classFilmDetail {
         return director_name;
     }
 
-    public void setFilm_id(int film_id) {
-        this.film_id = film_id;
+    public byte getPhoto1() {
+        return photo1;
     }
 
-    public void setFilm_name(String film_name) {
-        this.film_name = film_name;
+    public byte getPhoto2() {
+        return photo2;
     }
-
-    public void setRole_1(String role_1) {
-        this.role_1 = role_1;
-    }
-
-    public void setRole_2(String role_2) {
-        this.role_2 = role_2;
-    }
-
-    public void setRole_3(String role_3) {
-        this.role_3 = role_3;
-    }
-
-    public void setRole_4(String role_4) {
-        this.role_4 = role_4;
-    }
-
-    public void setDirector_name(String director_name) {
-        this.director_name = director_name;
-    }
-
-
-
 }

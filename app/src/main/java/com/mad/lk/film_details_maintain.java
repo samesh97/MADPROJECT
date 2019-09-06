@@ -7,6 +7,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,8 +17,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.graphics.drawable.BitmapDrawable;
 
 import org.w3c.dom.Text;
+
+import com.mad.lk.Film_Details_Maintain.Utils.Utils;
 import com.mad.lk.Film_Details_Maintain.db_film_details_maintain;
 import java.sql.SQLDataException;
 import java.sql.SQLException;
@@ -24,28 +30,27 @@ public class film_details_maintain extends AppCompatActivity {
 
     db_film_details_maintain dbHelper;
 
-
-    Button image1;
-    Button image2;
-    Button image3;
-    Button image4;
+    Button btnimage1;
+    Button btnimage2;
 
     Button btnadd;
     Button btnviewall;
     Button btnupdate;
     Button btndelete;
+    Button select1;
+    Button select2;
 
-    EditText txtfilmname;
-    EditText txtrole1;
-    EditText txtrole2;
-    EditText txtrole3;
-    EditText txtrole4;
-    EditText txtdirector;
+    EditText edittxtfilmname;
+    EditText edittxtrole1;
+    EditText edittxtrole2;
+    EditText edittxtrole3;
+    EditText edittxtrole4;
+    EditText edittxtdirector;
 
+    ImageView imageview1;
+    ImageView imageview2;
 
-
-
-
+    private static  final int SELECT_PHOTO = 7777;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,55 +58,37 @@ public class film_details_maintain extends AppCompatActivity {
 
         dbHelper = new db_film_details_maintain(this);
 
-        image1 = (Button)findViewById(R.id.btnimage1);
-        image2 = (Button)findViewById(R.id.btnimage2);
-        image3 = (Button)findViewById(R.id.btnimage3);
-        image4 = (Button)findViewById(R.id.btnimage4);
-
         btnadd = (Button)findViewById(R.id.idbtnAdd);
         btnviewall = (Button)findViewById(R.id.idbtnview);
         btnupdate = (Button)findViewById(R.id.idbtnUpdate);
         btndelete = (Button)findViewById(R.id.idbtnDelete);
 
-        txtfilmname = findViewById(R.id.idtxtFilmName);
-        txtrole1 = findViewById(R.id.idtxtRole1);
-        txtrole2 = findViewById(R.id.idtxtRole2);
-        txtrole3 = findViewById(R.id.idtxtRole3);
-        txtrole4 = findViewById(R.id.idtxtRole4);
-        txtdirector = findViewById(R.id.idtxtDirector);
+        select1 = (Button)findViewById(R.id.idbtnSelect1);
+        select2 = (Button)findViewById(R.id.idbtnSelect2);
 
+        edittxtfilmname = findViewById(R.id.idtxtFilmName);
+        edittxtrole1 = findViewById(R.id.idtxtRole1);
+        edittxtrole2 = findViewById(R.id.idtxtRole2);
+        edittxtrole3 = findViewById(R.id.idtxtRole3);
+        edittxtrole4 = findViewById(R.id.idtxtRole4);
+        edittxtdirector = findViewById(R.id.idtxtDirector);
 
+        imageview1 = (ImageView)findViewById(R.id.idviewimage1);
+        imageview2 = (ImageView)findViewById(R.id.idviewimage1);
 
 
         viewAll();
 
 
-        image1.setOnClickListener(new View.OnClickListener() {
+        select1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),photo1.class);
-            }
-        });
-
-        image2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),photo2.class);
-            }
-        });
 
 
-        image3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),photo3.class);
-            }
-        });
+             Intent intent = new Intent(Intent.ACTION_PICK);
+             intent.setType("Image/*");
+             startActivityForResult(intent,SELECT_PHOTO);
 
-        image4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),photo4.class);
             }
         });
 //------------------------------Adding button----------------------------
@@ -111,20 +98,21 @@ public class film_details_maintain extends AppCompatActivity {
           @Override
           public void onClick(View v) {
 
-              String filmname = txtfilmname.getText().toString();
-              String role1 = txtrole1.getText().toString();
-              String role2 = txtrole2.getText().toString();
-              String role3 = txtrole3.getText().toString();
-              String role4 = txtrole4.getText().toString();
-              String director = txtdirector.getText().toString();
+              String Film_Name = edittxtfilmname.getText().toString();
+              String Role1 = edittxtrole1.getText().toString();
+              String Role2 = edittxtrole2.getText().toString();
+              String Role3 = edittxtrole3.getText().toString();
+              String Role4 = edittxtrole4.getText().toString();
+              String Director_Name = edittxtdirector.getText().toString();
+              Bitmap Photo1 = ((BitmapDrawable)imageview1.getDrawable()).getBitmap();
+              Bitmap Photo2 = ((BitmapDrawable)imageview2.getDrawable()).getBitmap();
 
 
 
-
-              if (filmname.isEmpty()) {
+              if (Film_Name.isEmpty()) {
                   Toast.makeText(getApplicationContext(), "filmname cannot be empty", Toast.LENGTH_SHORT).show();
               } else {
-                  dbHelper.Add(filmname,role1,role2,role3,role4,director);
+                  dbHelper.Add(Film_Name,Role1,Role2,Role3,Role4,Director_Name, Utils.getBytes(Photo1),Utils.getBytes(Photo2));
                   Toast.makeText(getApplicationContext(), "Data added successfully!", Toast.LENGTH_SHORT).show();
               }
           }
@@ -134,9 +122,9 @@ public class film_details_maintain extends AppCompatActivity {
         btndelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String filmname = txtfilmname.getText().toString();
+                String Film_Name = edittxtfilmname.getText().toString();
 
-                dbHelper.Delete(getApplicationContext(), filmname);
+                dbHelper.Delete(getApplicationContext(), Film_Name);
             }
         });
 
@@ -145,17 +133,20 @@ public class film_details_maintain extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String filmname = txtfilmname.getText().toString();
-                String role1 = txtrole1.getText().toString();
-                String role2 = txtrole2.getText().toString();
-                String role3 = txtrole3.getText().toString();
-                String role4 = txtrole4.getText().toString();
-                String director = txtdirector.getText().toString();
+                String Film_Name = edittxtfilmname.getText().toString();
+                String Role1 = edittxtrole1.getText().toString();
+                String Role2 = edittxtrole2.getText().toString();
+                String Role3 = edittxtrole3.getText().toString();
+                String Role4 = edittxtrole4.getText().toString();
+                String Director_Name = edittxtdirector.getText().toString();
+                Bitmap Photo1 = ((BitmapDrawable)imageview1.getDrawable()).getBitmap();
+                Bitmap Photo2 = ((BitmapDrawable)imageview2.getDrawable()).getBitmap();
 
-                if(filmname.isEmpty()) {
+
+                if(Film_Name.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "film name cannot be empty", Toast.LENGTH_SHORT).show();
                 }else {
-                    dbHelper.Update(filmname,role1,role2,role3,role4,director);
+                    dbHelper.Update(Film_Name,Role1,Role2,Role3,Role4,Director_Name, Utils.getBytes(Photo1),Utils.getBytes(Photo2));
                     Toast.makeText(getApplicationContext(), "film name updated", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -179,6 +170,9 @@ public class film_details_maintain extends AppCompatActivity {
                 buffer.append("Role 3 : " + res.getString(4)+"\n");
                 buffer.append("Role 4 : " + res.getString(5)+"\n");
                 buffer.append("Director Name : " + res.getString(6)+"\n");
+                buffer.append("Photo 1 : " + res.getString(7)+"\n");
+                buffer.append("Photo 2 : " + res.getString(8)+"\n");
+
 
             }
             showMessage("Data",buffer.toString());
@@ -192,6 +186,7 @@ public class film_details_maintain extends AppCompatActivity {
         builder.setTitle(title);
         builder.setMessage(message);
     }
+
 
 
 }
