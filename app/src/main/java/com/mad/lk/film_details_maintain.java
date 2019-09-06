@@ -58,13 +58,13 @@ public class film_details_maintain extends AppCompatActivity {
 
         dbHelper = new db_film_details_maintain(this);
 
-        btnadd = (Button)findViewById(R.id.idbtnAdd);
-        btnviewall = (Button)findViewById(R.id.idbtnview);
-        btnupdate = (Button)findViewById(R.id.idbtnUpdate);
-        btndelete = (Button)findViewById(R.id.idbtnDelete);
+        btnadd = findViewById(R.id.idbtnAdd);
+        btnviewall = findViewById(R.id.idbtnview);
+        btnupdate = findViewById(R.id.idbtnUpdate);
+        btndelete = findViewById(R.id.idbtnDelete);
 
-        select1 = (Button)findViewById(R.id.idbtnSelect1);
-        select2 = (Button)findViewById(R.id.idbtnSelect2);
+        select1 = findViewById(R.id.idbtnSelect1);
+        select2 = findViewById(R.id.idbtnSelect2);
 
         edittxtfilmname = findViewById(R.id.idtxtFilmName);
         edittxtrole1 = findViewById(R.id.idtxtRole1);
@@ -73,8 +73,8 @@ public class film_details_maintain extends AppCompatActivity {
         edittxtrole4 = findViewById(R.id.idtxtRole4);
         edittxtdirector = findViewById(R.id.idtxtDirector);
 
-        imageview1 = (ImageView)findViewById(R.id.idviewimage1);
-        imageview2 = (ImageView)findViewById(R.id.idviewimage1);
+        imageview1 = findViewById(R.id.idviewimage1);
+        imageview2 = findViewById(R.id.idviewimage1);
 
 
         viewAll();
@@ -104,8 +104,8 @@ public class film_details_maintain extends AppCompatActivity {
               String Role3 = edittxtrole3.getText().toString();
               String Role4 = edittxtrole4.getText().toString();
               String Director_Name = edittxtdirector.getText().toString();
-              Bitmap Photo1 = ((BitmapDrawable)imageview1.getDrawable()).getBitmap();
-              Bitmap Photo2 = ((BitmapDrawable)imageview2.getDrawable()).getBitmap();
+              final Bitmap Photo1 = ((BitmapDrawable)imageview1.getDrawable()).getBitmap();
+             final Bitmap Photo2 = ((BitmapDrawable)imageview2.getDrawable()).getBitmap();
 
 
 
