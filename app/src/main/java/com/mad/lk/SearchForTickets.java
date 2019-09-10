@@ -48,6 +48,7 @@ public class SearchForTickets extends AppCompatActivity {
 
             Intent intent = new Intent(getApplicationContext(), LoginScreen.class);
             startActivity(intent);
+            finish();
         }
         return super.onOptionsItemSelected(item);
     }
