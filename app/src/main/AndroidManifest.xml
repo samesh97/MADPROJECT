@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".AdminMainInterface"></activity>
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,7 +21,9 @@
         </activity>
         <activity android:name=".RegisterScreen" />
         <activity android:name=".LoginScreen" />
-        <activity android:name=".SearchForTickets" />
+        <activity
+            android:name=".SearchForTickets"
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name=".NoticeAddNotices" />
         <activity android:name=".FirstActivity" />
         <activity android:name=".film_details_maintain" />
@@ -29,6 +32,7 @@
         <activity android:name=".NoticeUserDisplayNotices" />
         <activity android:name=".afterBooking" />
         <activity android:name=".bookTicket" />
+        <activity android:name=".ProfileActivity" />
     </application>
 
 </manifest>

@@ -5,7 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -35,6 +38,16 @@ public class SearchForTickets extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(),NoticeUserDisplayNotices.class);
             startActivity(intent);
 
+        }
+        if(x == R.id.logout)
+        {
+            SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            SharedPreferences.Editor mEdit1 = sp.edit();
+            mEdit1.putString("username","Registered");
+            mEdit1.commit();
+
+            Intent intent = new Intent(getApplicationContext(), LoginScreen.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }

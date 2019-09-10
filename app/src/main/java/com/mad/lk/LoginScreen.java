@@ -45,10 +45,22 @@ public class LoginScreen extends AppCompatActivity {
             Toast.makeText(this, "Enter Required Details First!", Toast.LENGTH_SHORT).show();
             return;
         }
+        if(loginPasswordText.equals("Admin") || loginUserNameText.equals("Admin"))
+        {
+            SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            SharedPreferences.Editor mEdit1 = sp.edit();
+            mEdit1.putString("username","Admin");
+            mEdit1.commit();
+            Intent intent = new Intent(getApplicationContext(),AdminMainInterface.class);
+            startActivity(intent);
+            finish();
+        }
+
+
 
         Cursor data = databaseHelper.getAllData();
 
-        if(data.getCount() == 0)
+        if(data.getCount() == 0 && (!loginPasswordText.equals("Admin") || !loginUserNameText.equals("Admin")))
         {
             Toast.makeText(this, "Invalid Login Details", Toast.LENGTH_SHORT).show();
         }
@@ -65,6 +77,7 @@ public class LoginScreen extends AppCompatActivity {
                 {
                     Intent intent = new Intent(getApplicationContext(),SearchForTickets.class);
                     startActivity(intent);
+                    finish();
                     return;
                 }
 

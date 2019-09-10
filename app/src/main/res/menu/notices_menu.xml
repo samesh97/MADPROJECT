@@ -6,4 +6,10 @@
         android:orderInCategory="100"
         android:title="Notifications"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/logout"
+        android:icon="@drawable/ic_exit"
+        android:orderInCategory="100"
+        android:title="Logout"
+        app:showAsAction="always" />
 </menu>
