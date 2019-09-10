@@ -109,4 +109,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
         }
     }
+    public void just()
+    {}
+
 }
