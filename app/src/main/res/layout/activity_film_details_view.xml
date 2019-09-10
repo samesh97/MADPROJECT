@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:orientation="vertical"
-        android:paddingBottom="50dp">
+        android:paddingBottom="40dp">
 
 
         <TextView
@@ -40,9 +40,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="70dp"
-            android:layout_marginEnd="0dp"
+           android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent">
@@ -89,7 +87,6 @@
                     android:layout_marginRight="20dp"
                     android:scaleType="fitXY"
                     app:srcCompat="@drawable/t2"/>
-
 
             </LinearLayout>
             </LinearLayout>
@@ -217,7 +214,7 @@
             android:layout_gravity="center"
             android:layout_marginStart="5dp"
             android:layout_marginLeft="24dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="24dp"
             android:layout_marginRight="24dp"
             android:background="@drawable/border"

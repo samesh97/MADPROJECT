@@ -232,7 +232,6 @@ public class db_film_details_maintain extends SQLiteOpenHelper {
             String dbphoto1 = cursor.getString(cursor.getColumnIndexOrThrow(usersMaster.Users.COL_8));
             String dbphoto2 = cursor.getString(cursor.getColumnIndexOrThrow(usersMaster.Users.COL_9));
 
-
         }
 
         return false;

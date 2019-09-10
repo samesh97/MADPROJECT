@@ -25,6 +25,7 @@
     <string name="filmadd">ADD</string>
     <string name="filmupdate">UPDATE</string>
     <string name="filmdelete">DELETE</string>
+    <string name="filmsearch">SEARCH</string>
     <string name="filmview">View</string>
     <string name="filmname">Film Name</string>
     <string name="filmRole1">Role1</string>

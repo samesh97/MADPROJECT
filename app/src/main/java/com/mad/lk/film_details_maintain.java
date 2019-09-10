@@ -112,10 +112,10 @@ public class film_details_maintain extends AppCompatActivity {
 
 
               if (Film_Name.isEmpty()) {
-                  Toast.makeText(getApplicationContext(), "filmname cannot be empty", Toast.LENGTH_SHORT).show();
+                  Toast.makeText(getApplicationContext(), "Film Name cannot be empty ! ", Toast.LENGTH_SHORT).show();
               } else {
                   dbHelper.Add(Film_Name,Role1,Role2,Role3,Role4,Director_Name, Utils.getBytes(Photo1),Utils.getBytes(Photo2));
-                  Toast.makeText(getApplicationContext(), "Data added successfully!", Toast.LENGTH_SHORT).show();
+                  Toast.makeText(getApplicationContext(), "Data added successfully. ", Toast.LENGTH_SHORT).show();
               }
           }
 
@@ -146,10 +146,10 @@ public class film_details_maintain extends AppCompatActivity {
 
 
                 if(Film_Name.isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "film name cannot be empty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Film Name cannot be empty ! ", Toast.LENGTH_SHORT).show();
                 }else {
                     dbHelper.Update(Film_Name,Role1,Role2,Role3,Role4,Director_Name, Utils.getBytes(Photo1),Utils.getBytes(Photo2));
-                    Toast.makeText(getApplicationContext(), "film name updated", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Film Name updated successfully. ", Toast.LENGTH_SHORT).show();
                 }
             }
         });

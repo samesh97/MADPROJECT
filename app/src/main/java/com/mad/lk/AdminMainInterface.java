@@ -9,13 +9,25 @@ import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 public class AdminMainInterface extends AppCompatActivity {
 
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
+
+        Button btnfilmtest;
+
+        btnfilmtest = (Button) findViewById(R.id.idfilm);
+
+
+
+
         int x = item.getItemId();
         if(x == R.id.settings)
         {
@@ -49,5 +61,11 @@ public class AdminMainInterface extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_main_interface);
+    }
+
+
+
+    public void filmdetailsmaintain(View view) {
+        startActivity(new Intent(AdminMainInterface.this,film_details_maintain.class));
     }
 }
