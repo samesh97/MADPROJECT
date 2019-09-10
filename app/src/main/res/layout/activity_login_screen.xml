@@ -42,7 +42,7 @@
         android:layout_marginRight="24dp"
         android:alpha="0.9"
         android:background="@drawable/opaciy"
-        android:hint="@string/register_email_hint"
+        android:hint="@string/username"
         android:inputType="textEmailAddress"
         android:padding="15dp"
         android:textColor="@color/white"

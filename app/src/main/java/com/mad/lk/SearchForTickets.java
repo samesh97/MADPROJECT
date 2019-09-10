@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -143,14 +144,7 @@ public class SearchForTickets extends AppCompatActivity {
         ListViewAdapter adapter = new ListViewAdapter();
         filmSearchList.setAdapter(adapter);
 
-        filmSearchList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-            {
-                Intent intent = new Intent(getApplicationContext(), activity_film_details_view.class);
-                startActivity(intent);
-            }
-        });
+
     }
     public class ListViewAdapter extends BaseAdapter
     {
@@ -180,6 +174,26 @@ public class SearchForTickets extends AppCompatActivity {
             TextView availableSeats = view.findViewById(R.id.availableSeats);
             final ImageView filmPoster = view.findViewById(R.id.filmPoster);
             TextView filmShowingTime = view.findViewById(R.id.filmShowingTime);
+
+            ImageView fav = view.findViewById(R.id.fav);
+            ImageView info = view.findViewById(R.id.info);
+
+            info.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v)
+                {
+                    Intent intent = new Intent(getApplicationContext(), activity_film_details_view.class);
+                    startActivity(intent);
+                }
+            });
+
+            fav.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v)
+                {
+                    Toast.makeText(SearchForTickets.this, "" + position, Toast.LENGTH_SHORT).show();
+                }
+            });
 
 
 
