@@ -292,6 +292,45 @@
             />
 
         <Button
+            android:id="@+id/idbtnSearch"
+            android:layout_width="136dp"
+            android:layout_height="63dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp"
+            android:background="@drawable/border"
+            android:text="@string/filmsearch"
+            android:textColor="@color/red"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+
+        <EditText
+            android:id="@+id/idtxtsearch"
+            android:layout_width="334dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp"
+            android:alpha="0.9"
+            android:background="@color/white"
+            android:inputType="textPersonName"
+            android:padding="20dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
             android:id="@+id/idbtnUpdate"
             android:layout_width="160dp"
             android:layout_height="82dp"
@@ -328,42 +367,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
 
-        <Button
-            android:id="@+id/idbtnSearch"
-            android:layout_width="136dp"
-            android:layout_height="63dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="24dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginRight="24dp"
-            android:background="@drawable/border"
-            android:text="@string/filmsearch"
-            android:textColor="@color/red"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent" />
 
-            <EditText
-                android:id="@+id/idtxtsearch"
-                android:layout_width="334dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginRight="24dp"
-                android:alpha="0.9"
-                android:background="@color/white"
-                android:inputType="textPersonName"
-                android:padding="20dp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent" />
 
     </LinearLayout>
 </ScrollView>
