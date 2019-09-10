@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.ColorSpace;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -240,8 +241,13 @@ public class db_film_details_maintain extends SQLiteOpenHelper {
 
     //---------------------------------Get ll data----------------------------------------------------------------------------------------------------------------------------------------------
     public Cursor getAllData(){
+
+        ArrayList<ColorSpace.Model>alDetails=new ArrayList<>();
+
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("SELECT * FROM Film_Details_Maintain" , null);
+        Cursor res = db.rawQuery("SELECT Col1,Col2,Col3,Col4,Col5,Col6,Col7 FROM Film_Details_Maintain" , null);
+        res.moveToFirst();
+
         return  res;
     }
     }
