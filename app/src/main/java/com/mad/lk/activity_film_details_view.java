@@ -22,8 +22,6 @@ public class activity_film_details_view extends AppCompatActivity {
 
     ImageView image1;
     ImageView image2;
-    ImageView image3;
-    ImageView image4;
 
     TextView filmname;
     TextView role1;
@@ -46,8 +44,6 @@ public class activity_film_details_view extends AppCompatActivity {
 
         image1 = (ImageView)findViewById(R.id.idimage1);
         image2 = (ImageView)findViewById(R.id.idimage2);
-        image3 = (ImageView)findViewById(R.id.idimage3);
-        image4 = (ImageView)findViewById(R.id.idimage4);
 
         filmname = findViewById(R.id.idtxtFilmName);
         role1 = findViewById(R.id.idtxtRole1);
