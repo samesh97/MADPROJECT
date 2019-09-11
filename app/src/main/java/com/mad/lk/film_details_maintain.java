@@ -137,12 +137,13 @@ public class film_details_maintain extends AppCompatActivity {
 
       });
 
+        //-------------------------------Delete Button-----------------------------------
         btndelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String Film_Name = edittxtfilmname.getText().toString();
+               dbHelper.Delete(getApplicationContext(), Film_Name);
 
-                dbHelper.Delete(getApplicationContext(), Film_Name);
             }
         });
 

@@ -50,7 +50,7 @@ public class db_film_details_maintain extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
        //SQLiteDatabase.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME);
-        //onCreate(SQLiteDatabase);
+       //onCreate(SQLiteDatabase);
     }
 
 
@@ -82,7 +82,6 @@ public class db_film_details_maintain extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
 
 
-      //  this.getWritableDatabase().update("UPDATE Film_Details_Maintain SET FilmName = '" + filmName + "' WHERE FilmName ='" + filmName+"'");
 
         values.put(usersMaster.Users.COL_2, Film_Name);
         values.put(usersMaster.Users.COL_3, Role1);
@@ -90,8 +89,6 @@ public class db_film_details_maintain extends SQLiteOpenHelper {
         values.put(usersMaster.Users.COL_5, Role3);
         values.put(usersMaster.Users.COL_6, Role4);
         values.put(usersMaster.Users.COL_7, Director_Name);
-        values.put(usersMaster.Users.COL_8, Photo1);
-        values.put(usersMaster.Users.COL_9, Photo2);
 
 
         String selection = usersMaster.Users.COL_2 + " LIKE ?";
@@ -103,6 +100,8 @@ public class db_film_details_maintain extends SQLiteOpenHelper {
                 selection,
                 selectionArgs
         );
+        //this.getWritableDatabase().update("UPDATE Film_Details_Maintain SET FilmName = '" + filmName + "' WHERE FilmName ='" + filmName+"'");
+
     }
     //-------------------------------end update method------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -188,7 +187,7 @@ public class db_film_details_maintain extends SQLiteOpenHelper {
 
         return Film_Name_;
     }
-//-----------------------------------------------------------------------Read Information------------------------------------------------------------------------------------------------------
+//-------------------------------------------Read Information------------------------------------------------------------------------------------------------------------------
 
     public boolean readInfo(String Film_Name, String Role1, String Role2, String Role3, String Role4, String Director_Name,byte[] Photo1,byte[] Photo2)
     {
@@ -238,7 +237,7 @@ public class db_film_details_maintain extends SQLiteOpenHelper {
     }
 
 
-    //---------------------------------Get ll data----------------------------------------------------------------------------------------------------------------------------------------------
+    //---------------------------------Get all data----------------------------------------------------------------------------------------------------------------------------------------------
     public Cursor getAllData(){
 
         ArrayList<ColorSpace.Model>alDetails=new ArrayList<>();
