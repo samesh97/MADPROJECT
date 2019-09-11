@@ -22,5 +22,11 @@
         android:title="Orders"
         app:showAsAction="always" />
 
+    <item
+        android:id="@+id/navigationFilmDetails"
+        android:icon="@drawable/filmpic"
+        android:orderInCategory="100"
+        android:title="Film Details"
+        app:showAsAction="always" />
 
 </menu>

@@ -2,7 +2,7 @@ package com.mad.lk;
 
 public class classFilmDetail {
 
-    private int film_id;
+    private String film_id;
     private String film_name;
     private String role_1;
     private String role_2;
@@ -13,7 +13,7 @@ public class classFilmDetail {
     private byte photo2;
 
 
-    public classFilmDetail(int film_id, String film_name, String role_1, String role_2, String role_3, String role_4, String director_name, byte photo1, byte photo2) {
+    public classFilmDetail(String film_id, String film_name, String role_1, String role_2, String role_3, String role_4, String director_name, byte photo1, byte photo2) {
         this.film_id = film_id;
         this.film_name = film_name;
         this.role_1 = role_1;
@@ -25,11 +25,11 @@ public class classFilmDetail {
         this.photo2 = photo2;
     }
 
-    public int getFilm_id() {
+    public String getFilm_id() {
         return film_id;
     }
 
-    public void setFilm_id(int film_id) {
+    public void setFilm_id(String film_id) {
         this.film_id = film_id;
     }
 
