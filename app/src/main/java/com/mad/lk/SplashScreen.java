@@ -8,12 +8,25 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 
+import com.appus.splash.Splash;
+import android.os.Bundle;
+import android.webkit.WebView;
+
+import com.appus.splash.Splash;
+
 public class SplashScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
+
+        Splash.Builder splash = new Splash.Builder(this, getSupportActionBar());
+        splash.perform();
+        splash.setBackgroundColor(getResources().getColor(R.color.blue));
+        splash.setSplashImage(getResources().getDrawable(R.drawable.logo));
+        splash.setSplashImageColor(getResources().getColor(R.color.white));
+
 
         new Handler().postDelayed(new Runnable() {
             @Override

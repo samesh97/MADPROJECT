@@ -56,6 +56,7 @@
     <string name="filmView">View All</string>
     <string name="btnSelect">Select</string>
     <string name="btnSave">Save</string>
+    <string name="username">Username</string>
     <string name="update">Update</string>
 
 </resources>

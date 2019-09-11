@@ -5,14 +5,29 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
+import java.io.ByteArrayOutputStream;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    public static final String DATABSE_NAME = "Users.db";
+    public static final String DATABSE_NAME = "Data.db";
+
+
     public static final String TABLE_NAME = "User_Details";
     public static final String COL_1 = "ID";
     public static final String COL_2 = "USERNAME";
     public static final String COL_3 = "EMAIL";
     public static final String COL_4 = "PASSWORD";
+
+    public static final String FILM_TABLE_NAME = "Film_Details";
+
+    public static final String FILM_COL_1 = "NAME";
+    public static final String FILM_COL_2 = "DESCRIPTION";
+    public static final String FILM_COL_3 = "RANKINGS";
+    public static final String FILM_COL_4 = "DATE";
+    public static final String FILM_COL_5 = "TIME";
+    public static final String FILM_COL_6 = "SEATS";
 
 
     public DatabaseHelper(Context context)
@@ -25,12 +40,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db)
     {
         db.execSQL("CREATE TABLE " + TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT,USERNAME TEXT NOT NULL,EMAIL TEXT NOT NULL,PASSWORD TEXT NOT NULL) ");
+        db.execSQL("CREATE TABLE " + FILM_TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT,IMAGE BLOB NOT NULL,NAME TEXT NOT NULL,DESCRIPTION TEXT NOT NULL,RANKINGS TEXT NOT NULL,DATE TEXT NOT NULL,TIME TEXT NOT NULL,SEATS INT NOT NULL) ");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
     {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + FILM_TABLE_NAME);
         onCreate(db);
 
     }
@@ -52,7 +69,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
         }
     }
-    public Cursor getAllData()
+    public Cursor getAllUserData()
     {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME,null);
@@ -74,17 +91,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
     }
-    public boolean update(String id,String username,String password,String email)
+    public boolean update(String username,String password)
     {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
-        contentValues.put("NAME", username);
-        contentValues.put("EMAIL", email);
+        contentValues.put("USERNAME", username);
         contentValues.put("PASSWORD", password);
 
 
-        if(db.update(TABLE_NAME, contentValues, "ID=?", new String[] {id}) == 0)
+        if(db.update(TABLE_NAME, contentValues, "USERNAME=?", new String[] {username}) == 0)
         {
             return false;
         }
@@ -94,6 +110,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
 
+    }
+    public Cursor getUserData(String uname)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME +" WHERE USERNAME = '" + uname + "'",null);
+        return cursor;
+    }
+    public Cursor getAllFimsDetails()
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + FILM_TABLE_NAME,null);
+        return cursor;
     }
     public boolean delete(String id)
     {
@@ -109,7 +137,38 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
         }
     }
-    public void just()
-    {}
+    public boolean insertAFilm(String fname,String fdes,String frankings,String fdate,String ftime,int fseats,byte[] image)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("NAME", fname);
+        contentValues.put("DESCRIPTION", fdes);
+        contentValues.put("IMAGE", image);
+        contentValues.put("RANKINGS", frankings);
+        contentValues.put("DATE", fdate);
+        contentValues.put("TIME", ftime);
+        contentValues.put("SEATS",fseats);
+        Long result = db.insert(FILM_TABLE_NAME,null,contentValues);
+        if(result == -1)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+
+    }
+    public byte[] getBytes(Bitmap bitmap)
+    {
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 0, stream);
+        return stream.toByteArray();
+    }
+    public Bitmap getImage(byte[] image)
+    {
+        return BitmapFactory.decodeByteArray(image, 0, image.length);
+    }
+
 
 }

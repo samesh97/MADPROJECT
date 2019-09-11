@@ -56,11 +56,12 @@ public class LoginScreen extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(),AdminMainInterface.class);
             startActivity(intent);
             finish();
+            return;
         }
 
 
 
-        Cursor data = databaseHelper.getAllData();
+        Cursor data = databaseHelper.getAllUserData();
 
         if(data.getCount() == 0 && (!loginPasswordText.equals("Admin") || !loginUserNameText.equals("Admin")))
         {
@@ -77,6 +78,11 @@ public class LoginScreen extends AppCompatActivity {
 
                 if(userName.equals(loginUserNameText) && password.equals(loginPasswordText))
                 {
+                    SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                    SharedPreferences.Editor mEdit1 = sp.edit();
+                    mEdit1.putString("username",userName);
+                    mEdit1.commit();
+
                     Intent intent = new Intent(getApplicationContext(),SearchForTickets.class);
                     startActivity(intent);
                     finish();

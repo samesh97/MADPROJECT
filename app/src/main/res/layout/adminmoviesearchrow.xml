@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.chauthai.swipereveallayout.SwipeRevealLayout xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:mode="same_level"
+    app:dragEdge="right"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <FrameLayout
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="4dp">
+
+        <ImageView
+            android:id="@+id/info"
+            android:layout_width="27dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/edit"
+            android:layout_gravity="center"/>
+
+        <ImageView
+            android:id="@+id/fav"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:src="@drawable/delete"
+            android:layout_marginBottom="30dp" />
+
+    </FrameLayout>
+    <!-- Your main layout here -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:background="@color/red"
+        android:layout_height="match_parent" >
+
+        <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/red"
+            xmlns:android="http://schemas.android.com/apk/res/android" >
+
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/rowLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/gradient2"
+                android:paddingTop="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <ImageView
+                    android:id="@+id/filmPoster"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:src="@drawable/minorityreport"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/filmName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="2dp"
+                    android:text="@string/filmName"
+                    app:layout_constraintBottom_toTopOf="@+id/filmRatings"
+                    app:layout_constraintStart_toEndOf="@+id/filmPoster"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/filmRatings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:text="@string/ranking"
+                    app:layout_constraintBottom_toTopOf="@+id/filmShowingDate"
+                    app:layout_constraintStart_toEndOf="@+id/filmPoster"
+                    app:layout_constraintTop_toBottomOf="@+id/filmName" />
+
+                <TextView
+                    android:id="@+id/filmShowingDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:text="@string/sampleDate"
+                    app:layout_constraintBottom_toTopOf="@+id/filmShowingTime"
+                    app:layout_constraintStart_toEndOf="@+id/filmPoster"
+                    app:layout_constraintTop_toBottomOf="@+id/filmRatings" />
+
+
+                <TextView
+                    android:id="@+id/filmShowingTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:text="@string/showTime"
+                    app:layout_constraintBottom_toTopOf="@+id/availableSeats"
+                    app:layout_constraintStart_toEndOf="@+id/filmPoster"
+                    app:layout_constraintTop_toBottomOf="@+id/filmShowingDate" />
+
+                <TextView
+                    android:id="@+id/availableSeats"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="8dp"
+                    android:paddingBottom="10dp"
+                    android:text="@string/seats"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/filmPoster"
+                    app:layout_constraintTop_toBottomOf="@+id/filmShowingTime" />
+
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginBottom="32dp"
+                    android:src="@drawable/arrow"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+
+</com.chauthai.swipereveallayout.SwipeRevealLayout>
+
