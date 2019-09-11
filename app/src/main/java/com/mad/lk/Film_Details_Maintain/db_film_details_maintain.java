@@ -232,7 +232,6 @@ public class db_film_details_maintain extends SQLiteOpenHelper {
             String dbphoto1 = cursor.getString(cursor.getColumnIndexOrThrow(usersMaster.Users.COL_8));
             String dbphoto2 = cursor.getString(cursor.getColumnIndexOrThrow(usersMaster.Users.COL_9));
 
-
         }
 
         return false;
@@ -245,9 +244,17 @@ public class db_film_details_maintain extends SQLiteOpenHelper {
         ArrayList<ColorSpace.Model>alDetails=new ArrayList<>();
 
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("SELECT Col1,Col2,Col3,Col4,Col5,Col6,Col7 FROM Film_Details_Maintain" , null);
+        Cursor res = db.rawQuery("SELECT COL_1,COL_2,COL_3,COL_4,COL_5,COL_6,COL_7 FROM Film_Details_Maintain" , null);
         res.moveToFirst();
 
         return  res;
+    }
+
+    public Cursor getFilmname(String Col,SQLiteDatabase sqLiteDatabase){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("SELECT COL_2 FROM Film_Details_Maintain" , null);
+
+        return res;
+
     }
     }
