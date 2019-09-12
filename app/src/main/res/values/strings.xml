@@ -59,5 +59,6 @@
     <string name="btnSave">Save</string>
     <string name="username">Username</string>
     <string name="update">Update</string>
+    <string name="enter_your_note">Enter your note.................</string>
 
 </resources>
