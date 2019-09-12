@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,7 +18,7 @@ public class FavoritePage extends AppCompatActivity {
     TextView notes;
     TextView name, rankings, date, time, seats, description;
     ImageView picture;
-
+    Button add;
 
     private static final int PICK_IMAGE_REQUEST = 234;
     Bitmap bitmap;
@@ -32,6 +33,15 @@ public class FavoritePage extends AppCompatActivity {
         setContentView(R.layout.activity_favorite_page);
 
         notes = (TextView) findViewById(R.id.favoritnote);
+
+
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentGoBack =new Intent(FavoritePage.this,FavoritePage.class);
+            }
+        });
     }
 
 
@@ -58,4 +68,6 @@ public class FavoritePage extends AppCompatActivity {
         }
 
     }
+
+
 }
