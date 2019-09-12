@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Movie;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -94,9 +95,18 @@ public class FavoriteDatabaseHelper extends SQLiteOpenHelper {
 
     //}
 
-    public Bitmap getImage(byte[] image) {
+    public byte[] getBytes(Bitmap bitmap)
+    {
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 0, stream);
+        return stream.toByteArray();
+    }
+    public Bitmap getImage(byte[] image)
+    {
         return BitmapFactory.decodeByteArray(image, 0, image.length);
     }
+
+
 
     public List<classFavorites> getAllFavorite() {
         String[] column1 = {FAVORITE_COL_1, FAVORITE_COL_2, FAVORITE_COL_3, FAVORITE_COL_4, FAVORITE_COL_5, FAVORITE_COL_6, FAVORITE_COL_7, FAVORITE_COL_8};
