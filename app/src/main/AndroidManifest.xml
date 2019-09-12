@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".InsertingFavorite"></activity>
+        <activity android:name=".FavoriteInserting"></activity>
         <activity android:name=".FavoritePage" />
         <activity android:name=".AddNewFilms" />
         <activity android:name=".AdminMainInterface" />
