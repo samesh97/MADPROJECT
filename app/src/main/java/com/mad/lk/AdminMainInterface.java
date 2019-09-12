@@ -8,7 +8,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.media.Image;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -25,6 +27,8 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class AdminMainInterface extends AppCompatActivity {
 
@@ -38,6 +42,12 @@ public class AdminMainInterface extends AppCompatActivity {
     ArrayList<Integer> seats = new ArrayList<>();
     ArrayList<Integer> ids = new ArrayList<>();
     ArrayList<Bitmap> images = new ArrayList<>();
+
+    private Handler handler = new Handler();
+    private static final long Interval = 30;
+
+    int count = 255;
+    boolean iszero = false;
 
     com.google.android.material.bottomnavigation.BottomNavigationView bottomNavigation;
 
@@ -125,6 +135,9 @@ public class AdminMainInterface extends AppCompatActivity {
         films = (ListView) findViewById(R.id.films);
         adapter = new Adapter();
         films.setAdapter(adapter);
+
+
+
     }
     public class Adapter extends BaseAdapter
     {
@@ -145,7 +158,7 @@ public class AdminMainInterface extends AppCompatActivity {
         }
 
         @Override
-        public View getView(int position, View convertView, ViewGroup parent)
+        public View getView(final int position, View convertView, ViewGroup parent)
         {
             View view = getLayoutInflater().inflate(R.layout.adminmoviesearchrow,null);
             TextView filmName = view.findViewById(R.id.filmName);
@@ -154,14 +167,86 @@ public class AdminMainInterface extends AppCompatActivity {
             TextView filmShowingTime = view.findViewById(R.id.filmShowingTime);
             TextView availableSeats = view.findViewById(R.id.availableSeats);
             ImageView filmPoster = view.findViewById(R.id.filmPoster);
+            final ImageView arrow = view.findViewById(R.id.arrow);
+
+            ImageView edit = view.findViewById(R.id.edit);
+            ImageView delete = view.findViewById(R.id.delete);
+            edit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v)
+                {
+                    Toast.makeText(AdminMainInterface.this, "Edit Clicked", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            delete.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v)
+                {
+                    if(helper.deleteAFilm(ids.get(position).toString()))
+                    {
+                        ids.remove(position);
+                        rankings.remove(position);
+                        images.remove(position);
+                        dates.remove(position);
+                        times.remove(position);
+                        seats.remove(position);
+                        films.invalidateViews();
+                        Toast.makeText(AdminMainInterface.this, "Deleted", Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                    {
+                        Toast.makeText(AdminMainInterface.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+            });
+
+            Timer timer = new Timer();
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run()
+                        {
+                            if(count <= 0)
+                            {
+                                iszero = true;
+                            }
+                            if(count >= 255)
+                            {
+                                iszero = false;
+                            }
+
+                            if(!iszero)
+                            {
+                                count--;
+                                arrow.setX(arrow.getX() - 0.2f);
+                            }
+                            if(iszero)
+                            {
+                                count++;
+                                arrow.setX(arrow.getX() + 0.2f);
+                            }
+                            arrow.setAlpha(count);
+
+
+
+                        }
+                    });
+                }
+            },0,Interval);
 
             try
             {
-                filmName.setText(names.get(position));
-                filmRatings.setText(rankings.get(position));
-                filmShowingDate.setText(dates.get(position));
-                filmShowingTime.setText(times.get(position));
-                availableSeats.setText("" + seats.get(position));
+                filmName.setText("Film Name : " +names.get(position));
+                filmRatings.setText("Rankings : " +rankings.get(position));
+                filmShowingDate.setText("Showing Date : "+dates.get(position));
+                filmShowingTime.setText("Showing Time : "+times.get(position));
+                availableSeats.setText("Available Seats : " + seats.get(position));
                 filmPoster.setImageBitmap(images.get(position));
             }
             catch (Exception e)

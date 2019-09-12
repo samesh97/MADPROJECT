@@ -39,7 +39,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db)
     {
-        db.execSQL("CREATE TABLE " + TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT,USERNAME TEXT NOT NULL,EMAIL TEXT NOT NULL,PASSWORD TEXT NOT NULL) ");
+        db.execSQL("CREATE TABLE " + TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT,USERNAME TEXT NOT NULL,IMAGE BLOB NOT NULL,EMAIL TEXT NOT NULL,PASSWORD TEXT NOT NULL) ");
         db.execSQL("CREATE TABLE " + FILM_TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT,IMAGE BLOB NOT NULL,NAME TEXT NOT NULL,DESCRIPTION TEXT NOT NULL,RANKINGS TEXT NOT NULL,DATE TEXT NOT NULL,TIME TEXT NOT NULL,SEATS INT NOT NULL) ");
     }
 
@@ -51,7 +51,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
 
     }
-    public boolean insertData(String username,String email,String password)
+    public boolean insertData(String username,String email,String password,byte[] image)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -59,6 +59,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL_2,username);
         contentValues.put(COL_3,email);
         contentValues.put(COL_4,password);
+        contentValues.put("IMAGE",image);
         Long result = db.insert(TABLE_NAME,null,contentValues);
         if(result == -1)
         {
@@ -123,10 +124,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("SELECT * FROM " + FILM_TABLE_NAME,null);
         return cursor;
     }
-    public boolean delete(String id)
+    public boolean deleteAFilm(String id)
     {
         SQLiteDatabase db = this.getWritableDatabase();
-        int val = db.delete(TABLE_NAME, "ID =?", new String[]{id});
+        int val = db.delete(FILM_TABLE_NAME, "ID =?", new String[]{id});
 
         if(val > 0)
         {

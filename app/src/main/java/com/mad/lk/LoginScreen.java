@@ -74,7 +74,7 @@ public class LoginScreen extends AppCompatActivity {
             while (data.moveToNext())
             {
                 String userName = data.getString(1);
-                String password = data.getString(3);
+                String password = data.getString(4);
 
                 if(userName.equals(loginUserNameText) && password.equals(loginPasswordText))
                 {
@@ -96,5 +96,11 @@ public class LoginScreen extends AppCompatActivity {
         }
 
 
+    }
+
+    public void RegisterLink(View view)
+    {
+        startActivity(new Intent(getApplicationContext(),RegisterScreen.class));
+        finish();
     }
 }

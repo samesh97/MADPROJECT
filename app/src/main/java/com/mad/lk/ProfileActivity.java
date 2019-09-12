@@ -96,8 +96,8 @@ public class ProfileActivity extends AppCompatActivity {
             while(cursor.moveToNext())
             {
                 updateUserName.setText(cursor.getString(1));
-                updatePassword.setText(cursor.getString(2));
-                updateConfirmPassword.setText(cursor.getString(2));
+                updatePassword.setText(cursor.getString(4));
+                updateConfirmPassword.setText(cursor.getString(4));
             }
 
         }

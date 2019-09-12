@@ -2,11 +2,16 @@ package com.mad.lk;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
@@ -25,8 +30,28 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class SearchForTickets extends AppCompatActivity {
+
+
+    ArrayList<String> names = new ArrayList<>();
+    ArrayList<String> rankings = new ArrayList<>();
+    ArrayList<String> dates = new ArrayList<>();
+    ArrayList<String> times = new ArrayList<>();
+    ArrayList<Integer> seats = new ArrayList<>();
+    ArrayList<Integer> ids = new ArrayList<>();
+    ArrayList<Bitmap> images = new ArrayList<>();
+    ArrayList<String> descriptions = new ArrayList<>();
+    DatabaseHelper helper;
+    static Bitmap background;
+
+    private Handler handler = new Handler();
+    private static final long Interval = 30;
+
+    int count = 255;
+    boolean iszero = false;
 
 
 
@@ -36,8 +61,8 @@ public class SearchForTickets extends AppCompatActivity {
         int x = item.getItemId();
         if(x == R.id.settings)
         {
-            Intent intent = new Intent(getApplicationContext(),NoticeUserDisplayNotices.class);
-            startActivity(intent);
+            //Intent intent = new Intent(getApplicationContext(),NoticeUserDisplayNotices.class);
+            //startActivity(intent);
 
         }
         if(x == R.id.logout)
@@ -57,6 +82,9 @@ public class SearchForTickets extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
+
+
+
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.notices_menu, menu);
         return true;
@@ -66,14 +94,55 @@ public class SearchForTickets extends AppCompatActivity {
     SearchView filmSearchView;
     String keyWord = null;
     ListView filmSearchList;
-    ArrayList<Integer> filmPosters;
-    ArrayList<String> filmname,date,ranking,time,availableSets;
     com.google.android.material.bottomnavigation.BottomNavigationView bottomNavigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_for_tickets);
+
+        helper = new DatabaseHelper(getApplicationContext());
+
+        SharedPreferences mSharedPreference1 =   PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String uName = mSharedPreference1.getString(  "username", null);
+        Cursor data2 = helper.getUserData(uName);
+
+
+
+
+
+
+
+
+
+
+        Cursor data = helper.getAllFimsDetails();
+        while (data.moveToNext())
+        {
+            int IDS  = data.getInt(0);
+            byte[] image  = data.getBlob(1);
+            String NAME = data.getString(2);
+            String RANKINGS  = data.getString(4);
+            String DATE  = data.getString(5);
+            String TIME  = data.getString(6);
+            String des  = data.getString(3);
+            int SEATS  = data.getInt(7);
+
+            names.add(NAME);
+            rankings.add(RANKINGS);
+            dates.add(DATE);
+            times.add(TIME);
+            seats.add(SEATS);
+            ids.add(IDS);
+            images.add(helper.getImage(image));
+            descriptions.add(des);
+
+
+
+
+        }
+
+
 
         filmSearchView = (SearchView)findViewById(R.id.filmSearchView);
         filmSearchList = (ListView) findViewById(R.id.filmSearchList);
@@ -86,7 +155,11 @@ public class SearchForTickets extends AppCompatActivity {
             {
                 if(menuItem.getItemId() == R.id.navigationProfile)
                 {
+
                     bottomNavigation.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gradient2));
+                    startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
+
+
                 }
                 if(menuItem.getItemId() == R.id.navigationFavorite)
                 {
@@ -95,34 +168,16 @@ public class SearchForTickets extends AppCompatActivity {
                 if(menuItem.getItemId() == R.id.navigationOrders)
                 {
                     bottomNavigation.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.navigation_gradient));
+                    filmSearchList.invalidateViews();
                 }
                 return false;
             }
         });
 
-        filmPosters = new ArrayList<>();
-        filmname = new ArrayList<>();
-        date = new ArrayList<>();
-        ranking = new ArrayList<>();
-        time = new ArrayList<>();
-        availableSets = new ArrayList<>();
 
 
-        filmPosters.add(R.drawable.missionimpossible);
-        filmPosters.add(R.drawable.purge);
-        filmPosters.add(R.drawable.blackpanther);
-        filmPosters.add(R.drawable.bladerunner);
-        filmPosters.add(R.drawable.fantasticfour);
-        filmPosters.add(R.drawable.ghoststories);
-        filmPosters.add(R.drawable.hitman);
-        filmPosters.add(R.drawable.ironman);
-        filmPosters.add(R.drawable.minorityreport);
-        filmPosters.add(R.drawable.moonlight);
-        filmPosters.add(R.drawable.robinhood);
-        filmPosters.add(R.drawable.strangerthings);
-        filmPosters.add(R.drawable.theneondemon);
-        filmPosters.add(R.drawable.thor);
-        filmPosters.add(R.drawable.venom);
+
+
 
 
 
@@ -141,17 +196,18 @@ public class SearchForTickets extends AppCompatActivity {
             }
         });
 
-        ListViewAdapter adapter = new ListViewAdapter();
+        Adapter adapter = new Adapter();
         filmSearchList.setAdapter(adapter);
 
 
     }
-    public class ListViewAdapter extends BaseAdapter
+    public class Adapter extends BaseAdapter
     {
 
         @Override
-        public int getCount() {
-            return filmPosters.size();
+        public int getCount()
+        {
+            return seats.size();
         }
 
         @Override
@@ -165,24 +221,33 @@ public class SearchForTickets extends AppCompatActivity {
         }
 
         @Override
-        public View getView(final int position, View convertView, ViewGroup parent) {
-
+        public View getView(final int position, View convertView, ViewGroup parent)
+        {
             View view = getLayoutInflater().inflate(R.layout.moviesearchrow,null);
             TextView filmName = view.findViewById(R.id.filmName);
             TextView filmRatings = view.findViewById(R.id.filmRatings);
             TextView filmShowingDate = view.findViewById(R.id.filmShowingDate);
-            TextView availableSeats = view.findViewById(R.id.availableSeats);
-            final ImageView filmPoster = view.findViewById(R.id.filmPoster);
             TextView filmShowingTime = view.findViewById(R.id.filmShowingTime);
+            TextView availableSeats = view.findViewById(R.id.availableSeats);
+            ImageView filmPoster = view.findViewById(R.id.filmPoster);
+            final ImageView arrow = view.findViewById(R.id.arrow2);
 
+            final ImageView info = view.findViewById(R.id.info);
             ImageView fav = view.findViewById(R.id.fav);
-            ImageView info = view.findViewById(R.id.info);
 
             info.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v)
                 {
-                    Intent intent = new Intent(getApplicationContext(), activity_film_details_view.class);
+                   Intent intent = new Intent(getApplicationContext(),activity_film_details_view.class);
+                   intent.putExtra("ID",ids.get(position));
+                    intent.putExtra("SEATS",seats.get(position));
+                    intent.putExtra("NAME",names.get(position));
+                    intent.putExtra("RANKINGS",rankings.get(position));
+                    intent.putExtra("DATE",dates.get(position));
+                    intent.putExtra("TIME",times.get(position));
+                    background = images.get(position);
+                    intent.putExtra("DESCRIPTION",descriptions.get(position));
                     startActivity(intent);
                 }
             });
@@ -191,19 +256,61 @@ public class SearchForTickets extends AppCompatActivity {
                 @Override
                 public void onClick(View v)
                 {
-                    Toast.makeText(SearchForTickets.this, "" + position, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SearchForTickets.this, "Clicked", Toast.LENGTH_SHORT).show();
                 }
             });
 
+            Timer timer = new Timer();
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run()
+                        {
+                            if(count <= 0)
+                            {
+                                iszero = true;
+                            }
+                            if(count >= 255)
+                            {
+                                iszero = false;
+                            }
+
+                            if(!iszero)
+                            {
+                                count--;
+                                arrow.setX(arrow.getX() - 0.2f);
+                            }
+                            if(iszero)
+                            {
+                                count++;
+                                arrow.setX(arrow.getX() + 0.2f);
+                            }
+                            arrow.setAlpha(count);
 
 
-            filmPoster.setImageResource(filmPosters.get(position));
 
-            filmName.setText("Film Name : " + "Minority Reports");
-            filmRatings.setText("Rankings : " + "1.9");
-            filmShowingDate.setText("Showing Date : "+"2019/08/20");
-            availableSeats.setText("Available Seats : " + "250");
-            filmShowingTime.setText("Showing Time : " + "10.30am");
+                        }
+                    });
+                }
+            },0,Interval);
+
+            try
+            {
+                filmName.setText("Film Name : " +names.get(position));
+                filmRatings.setText("Rankings : " +rankings.get(position));
+                filmShowingDate.setText("Showing Date : "+dates.get(position));
+                filmShowingTime.setText("Showing Time : "+times.get(position));
+                availableSeats.setText("Available Seats : " + seats.get(position));
+                filmPoster.setImageBitmap(images.get(position));
+            }
+            catch (Exception e)
+            {
+
+            }
+
             return view;
         }
     }

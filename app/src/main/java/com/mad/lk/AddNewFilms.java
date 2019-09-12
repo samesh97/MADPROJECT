@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.view.View;
 import android.webkit.MimeTypeMap;
@@ -18,6 +19,8 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class AddNewFilms extends AppCompatActivity {
 
@@ -27,6 +30,7 @@ public class AddNewFilms extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 234;
     Bitmap bitmap;
     Uri filePath;
+
 
 
     @Override
@@ -65,6 +69,9 @@ public class AddNewFilms extends AppCompatActivity {
 
 
 
+
+
+
         picture.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -95,6 +102,8 @@ public class AddNewFilms extends AppCompatActivity {
         if(helper.insertAFilm(nameText,descriptionText,rankText,dateText,timeText,Integer.parseInt(seatsText),helper.getBytes(bitmap)))
         {
             Toast.makeText(this, "Added successfully!", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(getApplicationContext(),AdminMainInterface.class));
+            finish();
         }
         else
         {
@@ -113,10 +122,5 @@ public class AddNewFilms extends AppCompatActivity {
             intent.setAction(Intent.ACTION_GET_CONTENT);
             startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
         }
-        public String getFileExtension(Uri uri)
-        {
-            ContentResolver cR = getContentResolver();
-            MimeTypeMap mime = MimeTypeMap.getSingleton();
-            return mime.getExtensionFromMimeType(cR.getType(uri));
-        }
+
 }

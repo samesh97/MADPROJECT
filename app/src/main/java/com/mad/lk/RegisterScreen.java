@@ -1,18 +1,51 @@
 package com.mad.lk;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
+
+import java.io.IOException;
 
 public class RegisterScreen extends AppCompatActivity {
 
     EditText username,email,password,confirmPassword;
     String userNameText,emailText,passwordText,confirmPasswordText;
     DatabaseHelper databaseClass;
+    ImageView profilePic;
+
+    private static final int PICK_IMAGE_REQUEST = 234;
+    Bitmap bitmap;
+    Uri filePath;
+
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            filePath = data.getData();
+            try
+            {
+
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+                profilePic.setImageBitmap(bitmap);
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
 
     @Override
@@ -27,6 +60,15 @@ public class RegisterScreen extends AppCompatActivity {
         password = (EditText)findViewById(R.id.password);
         confirmPassword = (EditText) findViewById(R.id.confirmPassword);
 
+        profilePic = (ImageView) findViewById(R.id.profilePic);
+        profilePic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                showFileChooser();
+            }
+        });
+
 
 
 
@@ -39,6 +81,11 @@ public class RegisterScreen extends AppCompatActivity {
     }
     public void RegisterUser(View view)
     {
+        if(bitmap == null)
+        {
+            Toast.makeText(this, "No Image Selected", Toast.LENGTH_SHORT).show();
+            return;
+        }
         userNameText = username.getText().toString();
         emailText = email.getText().toString();
         passwordText = password.getText().toString();
@@ -52,7 +99,8 @@ public class RegisterScreen extends AppCompatActivity {
         }
         else if(!passwordText.equals(confirmPasswordText))
         {
-            Toast.makeText(this, "Password Does not Match!", Toast.LENGTH_SHORT).show();
+            password.setError("Password Does not Match!");
+            confirmPassword.setError("Password Does not Match!");
 
         }
         else if(passwordText.length() <= 5 || confirmPasswordText.length() <= 5 )
@@ -67,7 +115,7 @@ public class RegisterScreen extends AppCompatActivity {
         }
         else
         {
-           if(databaseClass.insertData(userNameText,emailText,passwordText))
+           if(databaseClass.insertData(userNameText,emailText,passwordText,databaseClass.getBytes(bitmap)))
            {
                Toast.makeText(this, "Succefully Registered!", Toast.LENGTH_SHORT).show();
                Intent intent = new Intent(getApplicationContext(),LoginScreen.class);
@@ -79,5 +127,16 @@ public class RegisterScreen extends AppCompatActivity {
                Toast.makeText(this, "Registration Unsuccessful", Toast.LENGTH_SHORT).show();
            }
         }
+    }
+    private void showFileChooser()
+    {
+        ActivityCompat.requestPermissions(RegisterScreen.this,
+                new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                PICK_IMAGE_REQUEST);
+
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
     }
 }

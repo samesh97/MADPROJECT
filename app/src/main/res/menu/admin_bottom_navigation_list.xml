@@ -1,19 +1,7 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <item
-        android:id="@+id/addNewFilms"
-        android:icon="@drawable/ic_profile"
-        android:orderInCategory="100"
-        android:title="Films"
-        app:showAsAction="always" />
 
-    <item
-        android:id="@+id/addNewNotices"
-        android:icon="@drawable/ic_favorite"
-        android:orderInCategory="100"
-        android:title="Notices"
-        app:showAsAction="always" />
 
     <item
         android:id="@+id/navigationOrders"
@@ -21,6 +9,24 @@
         android:orderInCategory="100"
         android:title="Orders"
         app:showAsAction="always" />
+
+    <item
+        android:id="@+id/addNewFilms"
+        android:icon="@drawable/ic_add_box"
+        android:orderInCategory="100"
+        android:title="Add Films"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/addNewNotices"
+        android:icon="@drawable/ic_favorite"
+        android:orderInCategory="100"
+        android:title="Notices"
+        app:showAsAction="always" />
+
+
+
+
+
 
 
 </menu>
