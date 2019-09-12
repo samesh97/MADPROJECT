@@ -103,6 +103,9 @@ public class AdminMainInterface extends AppCompatActivity {
                 {
                     startActivity(new Intent(getApplicationContext(),AddNewFilms.class));
                 }
+                if(menuItem.getItemId()==R.id.navigationFilmDetails)
+                    startActivity(new Intent(getApplicationContext(),film_details_maintain.class));
+
                 return false;
             }
         });
