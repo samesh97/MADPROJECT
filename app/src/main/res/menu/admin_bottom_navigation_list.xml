@@ -24,7 +24,7 @@
 
     <item
         android:id="@+id/navigationFilmDetails"
-        android:icon="@drawable/filmpic"
+        android:icon="@drawable/tharashapic"
         android:orderInCategory="100"
         android:title="Film Details"
         app:showAsAction="always" />
