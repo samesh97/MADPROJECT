@@ -87,12 +87,12 @@ public class FavoriteDatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public void deleteFavorites(String id) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_NAME, "ID =?", new String[]{id});
+   // public void deleteFavorites(String id) {
+     //   SQLiteDatabase db = this.getWritableDatabase();
+       // db.delete(TABLE_NAME, "ID =?", new String[]{id});
 
 
-    }
+    //}
 
     public Bitmap getImage(byte[] image) {
         return BitmapFactory.decodeByteArray(image, 0, image.length);
@@ -128,5 +128,18 @@ public class FavoriteDatabaseHelper extends SQLiteOpenHelper {
         return  favoritelist;
 }
 
+    public boolean deleteFavoriteFilm(String id)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int val = db.delete(TABLE_NAME, "ID =?", new String[]{id});
 
+        if(val > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

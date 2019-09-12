@@ -10,7 +10,7 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/rowLayout"
+        android:id="@+id/favoriterowLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/gradient2"
@@ -119,6 +119,7 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <Button
+            android:id="@+id/btndeletefavorite"
             android:layout_width="20dp"
             android:layout_height="22dp"
             android:layout_marginTop="16dp"
