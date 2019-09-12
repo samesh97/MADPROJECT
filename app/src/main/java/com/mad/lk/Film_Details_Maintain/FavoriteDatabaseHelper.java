@@ -5,14 +5,18 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 import static com.mad.lk.DatabaseHelper.DATABSE_NAME;
 
 public class FavoriteDatabaseHelper extends SQLiteOpenHelper {
 
 
+    public static final String DATABASE_NAME = "Favorite.db";
 
-    public static final String TABLE_NAME = "FavoriteDetails";
+    public static final String TABLE_NAME = "Favorite_Details";
+
     public static final String FILM_COL_1 = "NAME";
     public static final String FILM_COL_2 = "DESCRIPTION";
     public static final String FILM_COL_3 = "RANKINGS";
@@ -24,7 +28,6 @@ public class FavoriteDatabaseHelper extends SQLiteOpenHelper {
     public FavoriteDatabaseHelper(Context context)
     {
         super(context, DATABSE_NAME, null, 1);
-
     }
 
     @Override
@@ -37,24 +40,21 @@ public class FavoriteDatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
     }
-    public Cursor getAllUserData()
+
+
+    public Cursor getAllFavorites()
     {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME,null);
         return cursor;
     }
 
-    public Cursor getAllFavoriteFimsDetails()
+    public boolean insertfavorites(String fname,String fdes,String frankings,String fdate,String ftime,int fseats,byte[] image,String fnotes)
     {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME,null);
-        return cursor;
-    }
 
-    public boolean insertAFilm(String fname,String fdes,String frankings,String fdate,String ftime,int fseats,byte[] image,String fnotes)
-    {
-        SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
+
         contentValues.put("NAME", fname);
         contentValues.put("DESCRIPTION", fdes);
         contentValues.put("IMAGE", image);
@@ -75,7 +75,7 @@ public class FavoriteDatabaseHelper extends SQLiteOpenHelper {
         }
 
     }
-    public boolean deleteFilm(String id)
+    public boolean deleteFavorites(String id)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         int val = db.delete(TABLE_NAME, "ID =?", new String[]{id});
@@ -89,4 +89,10 @@ public class FavoriteDatabaseHelper extends SQLiteOpenHelper {
             return false;
         }
     }
+
+    public Bitmap getImage(byte[] image)
+    {
+        return BitmapFactory.decodeByteArray(image, 0, image.length);
+    }
+
 }
