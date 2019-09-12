@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -41,6 +42,7 @@ public class film_details_maintain extends AppCompatActivity {
     Button btndelete;
     Button select1;
     Button select2;
+    Button btnsearch;
 
     EditText edittxtfilmname;
     EditText edittxtrole1;
@@ -48,9 +50,14 @@ public class film_details_maintain extends AppCompatActivity {
     EditText edittxtrole3;
     EditText edittxtrole4;
     EditText edittxtdirector;
+    EditText edittxtsearch;
 
     ImageView imageview1;
     ImageView imageview2;
+
+    String serch_filmnames;
+
+    SQLiteDatabase sqLiteDatabase;
 
     private static  final int PICK_IMAGE = 100;
     @Override
@@ -64,6 +71,7 @@ public class film_details_maintain extends AppCompatActivity {
         btnviewall = findViewById(R.id.idbtnview);
         btnupdate = findViewById(R.id.idbtnUpdate);
         btndelete = findViewById(R.id.idbtnDelete);
+        btnsearch = findViewById(R.id.idbtnSearch);
 
         select1 = findViewById(R.id.idbtnSelect1);
         select2 = findViewById(R.id.idbtnSelect2);
@@ -74,6 +82,7 @@ public class film_details_maintain extends AppCompatActivity {
         edittxtrole3 = findViewById(R.id.idtxtRole3);
         edittxtrole4 = findViewById(R.id.idtxtRole4);
         edittxtdirector = findViewById(R.id.idtxtDirector);
+        edittxtsearch = findViewById(R.id.idtxtsearch);
 
         imageview1 = findViewById(R.id.idviewimage1);
         imageview2 = findViewById(R.id.idviewimage1);
@@ -91,6 +100,13 @@ public class film_details_maintain extends AppCompatActivity {
              //intent.setType("Image/*");
              //startActivityForResult(intent,SELECT_PHOTO);
 
+            }
+        });
+
+        btnsearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchFilmName();
             }
         });
 //------------------------------Adding button----------------------------
@@ -112,21 +128,22 @@ public class film_details_maintain extends AppCompatActivity {
 
 
               if (Film_Name.isEmpty()) {
-                  Toast.makeText(getApplicationContext(), "filmname cannot be empty", Toast.LENGTH_SHORT).show();
+                  Toast.makeText(getApplicationContext(), "Film Name cannot be empty ! ", Toast.LENGTH_SHORT).show();
               } else {
                   dbHelper.Add(Film_Name,Role1,Role2,Role3,Role4,Director_Name, Utils.getBytes(Photo1),Utils.getBytes(Photo2));
-                  Toast.makeText(getApplicationContext(), "Data added successfully!", Toast.LENGTH_SHORT).show();
+                  Toast.makeText(getApplicationContext(), "Data added successfully. ", Toast.LENGTH_SHORT).show();
               }
           }
 
       });
 
+        //-------------------------------Delete Button-----------------------------------
         btndelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String Film_Name = edittxtfilmname.getText().toString();
+               dbHelper.Delete(getApplicationContext(), Film_Name);
 
-                dbHelper.Delete(getApplicationContext(), Film_Name);
             }
         });
 
@@ -146,40 +163,41 @@ public class film_details_maintain extends AppCompatActivity {
 
 
                 if(Film_Name.isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "film name cannot be empty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Film Name cannot be empty ! ", Toast.LENGTH_SHORT).show();
                 }else {
                     dbHelper.Update(Film_Name,Role1,Role2,Role3,Role4,Director_Name, Utils.getBytes(Photo1),Utils.getBytes(Photo2));
-                    Toast.makeText(getApplicationContext(), "film name updated", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Film Name updated successfully. ", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
     }
-    public void viewAll(){
-    btnviewall.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Cursor res = dbHelper.getAllData();
-            if(res.getCount() == 0){
-                showMessage("Error", "Nothing found");
-            }
-            StringBuffer buffer = new StringBuffer();
-            while(res.moveToNext()){
-                buffer.append("ID : " + res.getString(0)+"\n");
-                buffer.append("Film Name : " + res.getString(1)+"\n");
-                buffer.append("Role 1 : " + res.getString(2)+"\n");
-                buffer.append("Role 2 : " + res.getString(3)+"\n");
-                buffer.append("Role 3 : " + res.getString(4)+"\n");
-                buffer.append("Role 4 : " + res.getString(5)+"\n");
-                buffer.append("Director Name : " + res.getString(6)+"\n");
-                buffer.append("Photo 1 : " + res.getString(7)+"\n");
-                buffer.append("Photo 2 : " + res.getString(8)+"\n");
+    public void viewAll() {
+        btnviewall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Cursor res = dbHelper.getAllData();
+                if (res.getCount() == 0) {
+                    showMessage("Error", "Nothing found");
+                }
+                StringBuffer buffer = new StringBuffer();
+                while (res.moveToNext()) {
+                    buffer.append("ID : " + res.getString(0) + "\n");
+                    buffer.append("Film Name : " + res.getString(1) + "\n");
+                    buffer.append("Role 1 : " + res.getString(2) + "\n");
+                    buffer.append("Role 2 : " + res.getString(3) + "\n");
+                    buffer.append("Role 3 : " + res.getString(4) + "\n");
+                    buffer.append("Role 4 : " + res.getString(5) + "\n");
+                    buffer.append("Director Name : " + res.getString(6) + "\n");
+                    buffer.append("Photo 1 : " + res.getString(7) + "\n");
+                    buffer.append("Photo 2 : " + res.getString(8) + "\n");
 
 
+                }
+                showMessage("Data", buffer.toString());
             }
-            showMessage("Data",buffer.toString());
-        }
-    });
+        });
+
     }
 
     public void showMessage(String title, String message){
@@ -203,4 +221,22 @@ public class film_details_maintain extends AppCompatActivity {
         }
     }
 
+    public void searchFilmName(){
+        serch_filmnames = edittxtsearch.getText().toString();
+        dbHelper = new db_film_details_maintain(getApplicationContext());
+       sqLiteDatabase = dbHelper.getReadableDatabase();
+       Cursor cursor = dbHelper.getFilmname(serch_filmnames,sqLiteDatabase);
+
+
+        if(cursor.moveToFirst()) {
+            Toast.makeText(getBaseContext(), "Film Available", Toast.LENGTH_LONG).show();
+            String search=cursor.getString(2);
+        }
+        else{
+            Toast.makeText(getBaseContext(),"No Film",Toast.LENGTH_LONG).show();
+        }
+
+
+
+    }
     }
