@@ -16,7 +16,7 @@ import com.mad.lk.Film_Details_Maintain.db_film_details_maintain;
 public class activity_film_details_view extends AppCompatActivity {
 
 
-    db_film_details_maintain dbHelper;
+   db_film_details_maintain dbHelper;
 
     Button booking;
 
@@ -59,7 +59,7 @@ public class activity_film_details_view extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(getApplicationContext(),bookTicket.class);
+                startActivity(new Intent(activity_film_details_view.this,bookTicket.class));
                 
             }
         });
