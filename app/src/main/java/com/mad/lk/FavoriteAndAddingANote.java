@@ -17,16 +17,14 @@ public class FavoriteAndAddingANote extends AppCompatActivity {
     TextView notes;
     TextView filmname, rankings, date, time, seats, description;
     ImageView picture;
-    Button add;
-
-
 
     private static final int PICK_IMAGE_REQUEST = 234;
     Bitmap bitmap;
     Uri filePath;
 
 
-    FavoriteDatabaseHelper helper;
+    DatabaseHelper helper;
+    FavoriteDatabaseHelper fhelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,15 +41,16 @@ public class FavoriteAndAddingANote extends AppCompatActivity {
         picture = (ImageView) findViewById(R.id.poster);
 
 
-
         Intent intent = getIntent();
 
-        filmname.setText(intent.getStringExtra("NAME"));
+       // picture.setImageURI(intent.);
+        filmname.setText("Film Name : " +intent.getStringExtra("NAME"));
+        description.setText("Description : "+intent.getStringExtra("DESCRIPTION"));
         rankings.setText("Rankings : "+intent.getStringExtra("RANKINGS"));
         date.setText("Date : " + intent.getStringExtra("DATE"));
         time.setText("Time : "+intent.getStringExtra("TIME"));
         seats.setText("Seats : " + intent.getIntExtra("SEATS",0));
-        description.setText(intent.getStringExtra("DESCRIPTION"));
+
 
 
 
@@ -69,7 +68,7 @@ public class FavoriteAndAddingANote extends AppCompatActivity {
         String note = notes.getText().toString();
 
 
-        if(helper.addfavorites(nameText,descriptionText,rankText,dateText,timeText,Integer.parseInt(seatsText),helper.getBytes(bitmap),note))
+        if(fhelper.addfavorites(nameText,descriptionText,rankText,dateText,timeText,Integer.parseInt(seatsText),helper.getBytes(bitmap),note))
         {
             Toast.makeText(this, "Favorite data successfully!", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(getApplicationContext(),favorite_list_view.class));

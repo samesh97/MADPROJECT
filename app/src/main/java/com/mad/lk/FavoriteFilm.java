@@ -37,7 +37,7 @@ public class FavoriteFilm extends AppCompatActivity {
         favdescription = (TextView) findViewById(R.id.favoritdesc);
         favnotes = (TextView) findViewById(R.id.favoritnote);
 
-        ImageView image = (ImageView)findViewById(R.id.favoriteimage);
+        favimage = (ImageView)findViewById(R.id.favoriteimage);
 
 
         layout = (ConstraintLayout) findViewById(R.id.layout);

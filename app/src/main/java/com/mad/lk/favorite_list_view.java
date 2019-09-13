@@ -1,28 +1,20 @@
 package com.mad.lk;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -43,7 +35,7 @@ public class favorite_list_view extends AppCompatActivity {
     ArrayList<String> dates = new ArrayList<>();
     ArrayList<String> times = new ArrayList<>();
     ArrayList<Integer> seats = new ArrayList<>();
-    ArrayList<Integer> descrption = new ArrayList<>();
+    ArrayList<String> description = new ArrayList<String>();
     ArrayList<Integer> ids = new ArrayList<>();
     ArrayList<Bitmap> images = new ArrayList<>();
     ArrayList<String> notes = new ArrayList<>();
@@ -85,6 +77,7 @@ public class favorite_list_view extends AppCompatActivity {
             int IDS  = data.getInt(0);
             byte[] image  = data.getBlob(1);
             String NAME = data.getString(2);
+            String DESCRIPTION  = data.getString(3);
             String RANKINGS  = data.getString(4);
             String DATE  = data.getString(5);
             String TIME  = data.getString(6);
@@ -93,6 +86,7 @@ public class favorite_list_view extends AppCompatActivity {
 
             names.add(NAME);
             rankings.add(RANKINGS);
+            description.add(DESCRIPTION);
             dates.add(DATE);
             times.add(TIME);
             seats.add(SEATS);
@@ -208,7 +202,7 @@ public class favorite_list_view extends AppCompatActivity {
                 filmShowingDate.setText("Showing Date : "+dates.get(position));
                 filmShowingTime.setText("Showing Time : "+times.get(position));
                 availableSeats.setText("Available Seats : " + seats.get(position));
-                filmDescription.setText("Description : " +descrption.get(position));
+                filmDescription.setText("Description : " +description.get(position));
                 filmnote.setText("Notes : "+notes.get(position));
 
                 filmPoster.setImageBitmap(images.get(position));
