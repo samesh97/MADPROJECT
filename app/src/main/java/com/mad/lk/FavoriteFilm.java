@@ -27,7 +27,7 @@ public class FavoriteFilm extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_film_details_view);
+        setContentView(R.layout.activity_favorite_film);
 
         favfilmname = (TextView) findViewById(R.id.favoritefilmname);
         favranking = (TextView) findViewById(R.id.favoriterank);
