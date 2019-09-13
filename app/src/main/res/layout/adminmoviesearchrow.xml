@@ -29,11 +29,11 @@
 
         <ImageView
             android:id="@+id/delete"
-            android:layout_width="40dp"
+            android:layout_width="32dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
-            android:src="@drawable/delete"
-            android:layout_marginBottom="30dp" />
+            android:layout_marginBottom="30dp"
+            android:src="@drawable/delete" />
 
     </FrameLayout>
     <!-- Your main layout here -->

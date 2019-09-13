@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FavoritePage">
+    tools:context=".FavoriteAndAddingANote">
 
 
     <LinearLayout
@@ -90,6 +90,7 @@
                 android:layout_marginRight="24dp"
                 android:background="@drawable/border"
                 android:text="@string/filmadd"
+                android:onClick="AddFavoritesToDatabase"
                 android:textColor="@color/red"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"

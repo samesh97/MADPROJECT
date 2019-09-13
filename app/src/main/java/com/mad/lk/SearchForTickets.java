@@ -2,24 +2,20 @@ package com.mad.lk;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -33,10 +29,11 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-
 public class SearchForTickets extends AppCompatActivity {
 
+    //---------------favorite button---------------
+    ImageView favorite;
+    //-----------------------------end---------------------
 
     ArrayList<String> names = new ArrayList<>();
     ArrayList<String> rankings = new ArrayList<>();
@@ -48,8 +45,6 @@ public class SearchForTickets extends AppCompatActivity {
     ArrayList<String> descriptions = new ArrayList<>();
     DatabaseHelper helper;
     static Bitmap background;
-    CircleImageView pic;
-
 
     private Handler handler = new Handler();
     private static final long Interval = 30;
@@ -59,38 +54,21 @@ public class SearchForTickets extends AppCompatActivity {
 
 
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-        int x = item.getItemId();
-        if(x == R.id.settings)
-        {
-            //Intent intent = new Intent(getApplicationContext(),NoticeUserDisplayNotices.class);
-            //startActivity(intent);
-
-        }
-        if(x == R.id.logout)
-        {
-            SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-            SharedPreferences.Editor mEdit1 = sp.edit();
-            mEdit1.putString("username","Registered");
-            mEdit1.commit();
-
-            Intent intent = new Intent(getApplicationContext(), LoginScreen.class);
-            startActivity(intent);
-            finish();
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
+//-------------------favorite button press-----------------------
+        favorite = (ImageView)findViewById(R.id.fav);
 
+        favorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(SearchForTickets.this, FavoriteFilm.class);
+            }
+        });
+//------------------------------------end fav-------------------
 
-
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.notices_menu, menu);
         return true;
 
     }
@@ -105,29 +83,46 @@ public class SearchForTickets extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_for_tickets);
 
-        pic = (CircleImageView) findViewById(R.id.pic);
-
         helper = new DatabaseHelper(getApplicationContext());
 
         SharedPreferences mSharedPreference1 =   PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String uName = mSharedPreference1.getString(  "username", null);
         Cursor data2 = helper.getUserData(uName);
-        while (data2.moveToNext())
+
+
+
+
+
+
+
+
+
+
+        Cursor data = helper.getAllFimsDetails();
+        while (data.moveToNext())
         {
-            byte[] image2 = data2.getBlob(2);
-            pic.setImageBitmap(helper.getImage(image2));
+            int IDS  = data.getInt(0);
+            byte[] image  = data.getBlob(1);
+            String NAME = data.getString(2);
+            String RANKINGS  = data.getString(4);
+            String DATE  = data.getString(5);
+            String TIME  = data.getString(6);
+            String des  = data.getString(3);
+            int SEATS  = data.getInt(7);
+
+            names.add(NAME);
+            rankings.add(RANKINGS);
+            dates.add(DATE);
+            times.add(TIME);
+            seats.add(SEATS);
+            ids.add(IDS);
+            images.add(helper.getImage(image));
+            descriptions.add(des);
+
+
+
+
         }
-
-        pic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
-            }
-        });
-
-
-
-
 
 
 
@@ -144,14 +139,14 @@ public class SearchForTickets extends AppCompatActivity {
                 {
 
                     bottomNavigation.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gradient2));
-
+                    startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
 
 
                 }
                 if(menuItem.getItemId() == R.id.navigationFavorite)
                 {
                     bottomNavigation.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_favorite));
-                    startActivity(new Intent(getApplicationContext(),FavoriteInserting.class));
+                    startActivity(new Intent(getApplicationContext(), FavoriteFilm.class));
                 }
                 if(menuItem.getItemId() == R.id.navigationOrders)
                 {
@@ -174,52 +169,15 @@ public class SearchForTickets extends AppCompatActivity {
             public boolean onQueryTextSubmit(String query)
             {
                 keyWord = query;
-                if(!keyWord.equals(""))
-                {
-                    setSearch();
-                }
                 return true;
             }
 
             @Override
             public boolean onQueryTextChange(String newText)
             {
-                keyWord = newText;
-                if(!keyWord.equals(""))
-                {
-                    setSearch();
-                }
-                return true;
+                return false;
             }
         });
-
-        Cursor data = helper.getAllFimsDetails();
-        while (data.moveToNext())
-        {
-            int IDS  = data.getInt(0);
-            byte[] image  = data.getBlob(1);
-            String NAME = data.getString(2);
-            String RANKINGS  = data.getString(4);
-            String DATE  = data.getString(5);
-            String TIME  = data.getString(6);
-            String des  = data.getString(3);
-            int SEATS  = data.getInt(7);
-
-
-                names.add(NAME);
-                rankings.add(RANKINGS);
-                dates.add(DATE);
-                times.add(TIME);
-                seats.add(SEATS);
-                ids.add(IDS);
-                images.add(helper.getImage(image));
-                descriptions.add(des);
-
-
-
-
-
-        }
 
         Adapter adapter = new Adapter();
         filmSearchList.setAdapter(adapter);
@@ -264,15 +222,14 @@ public class SearchForTickets extends AppCompatActivity {
                 @Override
                 public void onClick(View v)
                 {
-                   Intent intent = new Intent(getApplicationContext(),activity_film_details_view.class);
-                   intent.putExtra("ID",ids.get(position));
+                    Intent intent = new Intent(getApplicationContext(),activity_film_details_view.class);
+                    intent.putExtra("ID",ids.get(position));
                     intent.putExtra("SEATS",seats.get(position));
                     intent.putExtra("NAME",names.get(position));
                     intent.putExtra("RANKINGS",rankings.get(position));
                     intent.putExtra("DATE",dates.get(position));
                     intent.putExtra("TIME",times.get(position));
                     background = images.get(position);
-
                     intent.putExtra("DESCRIPTION",descriptions.get(position));
                     startActivity(intent);
                 }
@@ -340,76 +297,4 @@ public class SearchForTickets extends AppCompatActivity {
             return view;
         }
     }
-    public boolean checkUpperCaseAndLowerCase(String KeyWord,String filmName)
-    {
-            int count2 = 0;
-            if (KeyWord.length() <= filmName.length())
-            {
-                for (int i = 0; i < KeyWord.length(); i++)
-                {
-
-                    Character sample1 = filmName.charAt(i);
-                    Character lowerCase = Character.toLowerCase(sample1);
-                    Character upperCase = Character.toUpperCase(sample1);
-
-
-                    Character sample2 = KeyWord.charAt(i);
-                    Character lCase = Character.toLowerCase(sample2);
-                    Character uCase = Character.toUpperCase(sample2);
-
-                    if (lowerCase.equals(uCase) || upperCase.equals(lCase) || lowerCase.equals(lCase) || upperCase.equals(uCase)) {
-                        count2++;
-                        if (count2 == KeyWord.length())
-                        {
-                            return true;
-                        }
-
-                    }
-
-
-                }
-            }
-        return false;
-
-        }
-        public void setSearch()
-        {
-            names.clear();
-            rankings.clear();
-            dates.clear();
-            seats.clear();
-            times.clear();
-            images.clear();
-            descriptions.clear();
-            times.clear();
-
-            Cursor data = helper.getAllFimsDetails();
-            while (data.moveToNext())
-            {
-                int IDS  = data.getInt(0);
-                byte[] image  = data.getBlob(1);
-                String NAME = data.getString(2);
-                String RANKINGS  = data.getString(4);
-                String DATE  = data.getString(5);
-                String TIME  = data.getString(6);
-                String des  = data.getString(3);
-                int SEATS  = data.getInt(7);
-
-
-                if(checkUpperCaseAndLowerCase(keyWord,NAME))
-                {
-                    names.add(NAME);
-                    rankings.add(RANKINGS);
-                    dates.add(DATE);
-                    times.add(TIME);
-                    seats.add(SEATS);
-                    ids.add(IDS);
-                    images.add(helper.getImage(image));
-                    descriptions.add(des);
-                }
-
-            }
-            filmSearchList.invalidateViews();
-        }
-
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".FavoriteInserting"
+    tools:context=".FavoriteFilm"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:adjustViewBounds="true">
 
@@ -35,8 +35,8 @@
 
         <ImageView
             android:id="@+id/favoriteimage"
-            android:layout_width="123dp"
-            android:layout_height="171dp"
+            android:layout_width="105dp"
+            android:layout_height="166dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -92,7 +92,7 @@
             app:layout_constraintTop_toBottomOf="@+id/favoritdate" />
 
         <TextView
-            android:id="@+id/favoritenote"
+            android:id="@+id/favoriteseat"
             android:layout_width="56dp"
             android:layout_height="16dp"
             android:layout_marginStart="8dp"
@@ -105,18 +105,33 @@
 
         <TextView
             android:id="@+id/favoritnote"
-            android:layout_width="66dp"
-            android:layout_height="83dp"
+            android:layout_width="343dp"
+            android:layout_height="23dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.768"
-            app:layout_constraintStart_toEndOf="@+id/favoriteimage"
-            app:layout_constraintTop_toBottomOf="@+id/favoritefilmname"
+            app:layout_constraintHorizontal_bias="0.461"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/favoritdesc"
             app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/favoritdesc"
+            android:layout_width="342dp"
+            android:layout_height="21dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.49"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/favoritnote2"
+            app:layout_constraintVertical_bias="0.449" />
 
         <Button
             android:id="@+id/btndeletefavorite"

@@ -119,14 +119,17 @@ public class FavoriteDatabaseHelper extends SQLiteOpenHelper {
         if(cursor.moveToFirst()){
             do{
                 classFavorites classf = new classFavorites();
-                classf.setNAME(cursor.getString(cursor.getColumnIndex(FAVORITE_COL_1)));
-                classf.setDATE(cursor.getString(cursor.getColumnIndex(FAVORITE_COL_5)));
+
+
+                classf.setIMAGE(cursor.getString(cursor.getColumnIndex(FAVORITE_COL_1)));
+                classf.setNAME(cursor.getString(cursor.getColumnIndex(FAVORITE_COL_2)));
                 classf.setDESCRIPTION(cursor.getString(cursor.getColumnIndex(FAVORITE_COL_3)));
-                classf.setTIME(cursor.getString(cursor.getColumnIndex(FAVORITE_COL_6)));
-                classf.setIMAGE(cursor.getString(cursor.getColumnIndex(FAVORITE_COL_2)));
                 classf.setRANKINGS(cursor.getString(cursor.getColumnIndex(FAVORITE_COL_4)));
-                classf.setNOTES(cursor.getString(cursor.getColumnIndex(FAVORITE_COL_8)));
+                classf.setDATE(cursor.getString(cursor.getColumnIndex(FAVORITE_COL_5)));
+                classf.setTIME(cursor.getString(cursor.getColumnIndex(FAVORITE_COL_6)));
                 classf.setSEATS(cursor.getString(cursor.getColumnIndex(FAVORITE_COL_7)));
+                classf.setNOTES(cursor.getString(cursor.getColumnIndex(FAVORITE_COL_8)));
+
 
             favoritelist.add(classf);
             }

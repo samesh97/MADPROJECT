@@ -2,23 +2,21 @@ package com.mad.lk;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -30,49 +28,34 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class AdminMainInterface extends AppCompatActivity {
+public class favorite_list_view extends AppCompatActivity {
+
+
 
     ListView films;
+
     Adapter adapter;
-    DatabaseHelper helper;
+
+    FavoriteDatabaseHelper helper;
+
     ArrayList<String> names = new ArrayList<>();
     ArrayList<String> rankings = new ArrayList<>();
     ArrayList<String> dates = new ArrayList<>();
     ArrayList<String> times = new ArrayList<>();
     ArrayList<Integer> seats = new ArrayList<>();
+    ArrayList<Integer> descrption = new ArrayList<>();
     ArrayList<Integer> ids = new ArrayList<>();
     ArrayList<Bitmap> images = new ArrayList<>();
+    ArrayList<String> notes = new ArrayList<>();
 
     private Handler handler = new Handler();
+
     private static final long Interval = 30;
 
     int count = 255;
     boolean iszero = false;
 
-    com.google.android.material.bottomnavigation.BottomNavigationView bottomNavigation;
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-        int x = item.getItemId();
-        if(x == R.id.settings)
-        {
-            Toast.makeText(this, "Clicked!", Toast.LENGTH_SHORT).show();
-
-        }
-        if(x == R.id.logout)
-        {
-            SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-            SharedPreferences.Editor mEdit1 = sp.edit();
-            mEdit1.putString("username","Registered");
-            mEdit1.commit();
-
-            Intent intent = new Intent(getApplicationContext(), LoginScreen.class);
-            startActivity(intent);
-            finish();
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
@@ -86,31 +69,17 @@ public class AdminMainInterface extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_main_interface);
+        setContentView(R.layout.activity_favorite_list_view);
 
-        helper = new DatabaseHelper(getApplicationContext());
+        helper = new FavoriteDatabaseHelper(getApplicationContext());
 
-        helper.getAllFimsDetails();
-
-        bottomNavigation = (com.google.android.material.bottomnavigation.BottomNavigationView) findViewById(R.id.bottomNavigation);
+        helper.getAllFavorite();
 
 
-        bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem)
-            {
-                if(menuItem.getItemId() == R.id.addNewFilms)
-                {
-                    startActivity(new Intent(getApplicationContext(),AddNewFilms.class));
-                }
-                if(menuItem.getItemId()==R.id.navigationFilmDetails)
-                    startActivity(new Intent(getApplicationContext(),film_details_maintain.class));
 
-                return false;
-            }
-        });
 
-        Cursor data = helper.getAllFimsDetails();
+        Cursor data = helper.getAllFavorites()
+                ;
         while (data.moveToNext())
         {
             int IDS  = data.getInt(0);
@@ -120,6 +89,7 @@ public class AdminMainInterface extends AppCompatActivity {
             String DATE  = data.getString(5);
             String TIME  = data.getString(6);
             int SEATS  = data.getInt(7);
+            String NOTES  = data.getString(8);
 
             names.add(NAME);
             rankings.add(RANKINGS);
@@ -127,16 +97,16 @@ public class AdminMainInterface extends AppCompatActivity {
             times.add(TIME);
             seats.add(SEATS);
             ids.add(IDS);
+            notes.add(NOTES);
             images.add(helper.getImage(image));
-
-
-
 
         }
 
 
-        films = (ListView) findViewById(R.id.films);
+        films = (ListView) findViewById(R.id.favfilmlist);
+
         adapter = new Adapter();
+
         films.setAdapter(adapter);
 
 
@@ -163,31 +133,27 @@ public class AdminMainInterface extends AppCompatActivity {
         @Override
         public View getView(final int position, View convertView, ViewGroup parent)
         {
-            View view = getLayoutInflater().inflate(R.layout.adminmoviesearchrow,null);
-            TextView filmName = view.findViewById(R.id.filmName);
-            TextView filmRatings = view.findViewById(R.id.filmRatings);
-            TextView filmShowingDate = view.findViewById(R.id.filmShowingDate);
-            TextView filmShowingTime = view.findViewById(R.id.filmShowingTime);
-            TextView availableSeats = view.findViewById(R.id.availableSeats);
-            ImageView filmPoster = view.findViewById(R.id.filmPoster);
-            final ImageView arrow = view.findViewById(R.id.arrow);
+            View view = getLayoutInflater().inflate(R.layout.activity_favorite_list_view,null);
 
-            ImageView edit = view.findViewById(R.id.edit);
-            ImageView delete = view.findViewById(R.id.delete);
-            edit.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v)
-                {
-                    Toast.makeText(AdminMainInterface.this, "Edit Clicked", Toast.LENGTH_SHORT).show();
-                }
-            });
+            TextView filmName = view.findViewById(R.id.favoritefilmname);
+            TextView filmRatings = view.findViewById(R.id.favoriterank);
+            TextView filmShowingDate = view.findViewById(R.id.favoritdate);
+            TextView filmShowingTime = view.findViewById(R.id.favorittime);
+            TextView availableSeats = view.findViewById(R.id.favoriteseat);
+            ImageView filmPoster = view.findViewById(R.id.favoriteimage);
+            TextView filmDescription = view.findViewById(R.id.favoritdesc);
+            TextView filmnote = view.findViewById(R.id.favoritnote);
+
+
+            ImageView delete = view.findViewById(R.id.btndeletefavorite);
+
 
             delete.setOnClickListener(new View.OnClickListener()
             {
                 @Override
                 public void onClick(View v)
                 {
-                    if(helper.deleteAFilm(ids.get(position).toString()))
+                    if(helper.deleteFavoriteFilm(ids.get(position).toString()))
                     {
                         ids.remove(position);
                         rankings.remove(position);
@@ -196,11 +162,13 @@ public class AdminMainInterface extends AppCompatActivity {
                         times.remove(position);
                         seats.remove(position);
                         films.invalidateViews();
-                        Toast.makeText(AdminMainInterface.this, "Deleted", Toast.LENGTH_SHORT).show();
+                        seats.remove(position);
+
+                        Toast.makeText(favorite_list_view.this, "Deleted", Toast.LENGTH_SHORT).show();
                     }
                     else
                     {
-                        Toast.makeText(AdminMainInterface.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(favorite_list_view.this, "wrong", Toast.LENGTH_SHORT).show();
                     }
 
                 }
@@ -224,17 +192,7 @@ public class AdminMainInterface extends AppCompatActivity {
                                 iszero = false;
                             }
 
-                            if(!iszero)
-                            {
-                                count--;
-                                arrow.setX(arrow.getX() - 0.2f);
-                            }
-                            if(iszero)
-                            {
-                                count++;
-                                arrow.setX(arrow.getX() + 0.2f);
-                            }
-                            arrow.setAlpha(count);
+
 
 
 
@@ -250,6 +208,9 @@ public class AdminMainInterface extends AppCompatActivity {
                 filmShowingDate.setText("Showing Date : "+dates.get(position));
                 filmShowingTime.setText("Showing Time : "+times.get(position));
                 availableSeats.setText("Available Seats : " + seats.get(position));
+                filmDescription.setText("Description : " +descrption.get(position));
+                filmnote.setText("Notes : "+notes.get(position));
+
                 filmPoster.setImageBitmap(images.get(position));
 
             }
@@ -261,5 +222,6 @@ public class AdminMainInterface extends AppCompatActivity {
             return view;
         }
     }
+
 
 }

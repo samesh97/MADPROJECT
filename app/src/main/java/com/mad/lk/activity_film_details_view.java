@@ -1,21 +1,12 @@
 package com.mad.lk;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.jgabrielfreitas.core.BlurImageView;
-import com.mad.lk.Film_Details_Maintain.Utils.Utils;
+import androidx.appcompat.app.AppCompatActivity;
 
 
 public class activity_film_details_view extends AppCompatActivity {
@@ -42,6 +33,7 @@ public class activity_film_details_view extends AppCompatActivity {
         poster.setImageBitmap(SearchForTickets.background);
 
         Intent intent = getIntent();
+
         filmName.setText(intent.getStringExtra("NAME"));
         Ratings.setText("Rankings : "+intent.getStringExtra("RANKINGS"));
         Date.setText("Date : " + intent.getStringExtra("DATE"));
@@ -49,16 +41,6 @@ public class activity_film_details_view extends AppCompatActivity {
         Seats.setText("Seats : " + intent.getIntExtra("SEATS",0));
         Description.setText(intent.getStringExtra("DESCRIPTION"));
 
-
-
-
-
     }
 
-
-    public void BookTicket(View view)
-    {
-        Intent intent = new Intent(getApplicationContext(),bookTicket.class);
-        startActivity(intent);
-    }
 }
