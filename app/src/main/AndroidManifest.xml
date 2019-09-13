@@ -21,6 +21,11 @@
         <activity
             android:name=".SplashScreen"
             android:theme="@style/AppTheme2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
         <activity android:name=".RegisterScreen" />
@@ -29,11 +34,7 @@
             android:name=".SearchForTickets"
             android:windowSoftInputMode="stateHidden" />
         <activity android:name=".NoticeAddNotices">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
         </activity>
         <activity android:name=".FirstActivity" />
         <activity android:name=".film_details_maintain" />
