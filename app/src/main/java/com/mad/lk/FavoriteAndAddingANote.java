@@ -2,7 +2,9 @@ package com.mad.lk;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,6 +13,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import static com.mad.lk.FavoriteDatabaseHelper.TABLE_NAME;
 
 public class FavoriteAndAddingANote extends AppCompatActivity {
 
@@ -51,9 +55,6 @@ public class FavoriteAndAddingANote extends AppCompatActivity {
         time.setText("Time : "+intent.getStringExtra("TIME"));
         seats.setText("Seats : " + intent.getIntExtra("SEATS",0));
 
-
-
-
     }
 
 
@@ -82,4 +83,18 @@ public class FavoriteAndAddingANote extends AppCompatActivity {
     }
 
 
-}
+    public void UpdateFavoritesToDatabase(View view) {
+
+
+        String notess = notes.getText().toString();
+
+        if(notess.isEmpty()) {
+            Toast.makeText(getApplicationContext(), "Film Name cannot be empty ! ", Toast.LENGTH_SHORT).show();
+        }else {
+           fhelper.updateFavorite(notess);
+            Toast.makeText(getApplicationContext(), "Film Name updated successfully. ", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    }
+

@@ -79,7 +79,7 @@
 
 
             <Button
-                android:id="@+id/idbtnAdd"
+                android:id="@+id/btnfavAdd"
                 android:layout_width="150dp"
                 android:layout_height="71dp"
                 android:layout_gravity="center"
@@ -91,6 +91,25 @@
                 android:background="@drawable/border"
                 android:text="@string/filmadd"
                 android:onClick="AddFavoritesToDatabase"
+                android:textColor="@color/red"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/btnfavupdate"
+                android:layout_width="150dp"
+                android:layout_height="71dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginRight="24dp"
+                android:background="@drawable/border"
+                android:text="@string/filmadd"
+                android:onClick="UpdateFavoritesToDatabase"
                 android:textColor="@color/red"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"

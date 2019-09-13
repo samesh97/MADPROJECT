@@ -155,4 +155,23 @@ public class FavoriteDatabaseHelper extends SQLiteOpenHelper {
             return false;
         }
     }
+
+    public boolean updateFavorite(String notes){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("NOTES", notes);
+
+
+
+        if(db.update(TABLE_NAME, contentValues, "ID=?", new String[] {notes}) == 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
 }
