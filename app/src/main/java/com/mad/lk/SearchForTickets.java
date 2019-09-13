@@ -138,17 +138,11 @@ public class SearchForTickets extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem)
             {
-                if(menuItem.getItemId() == R.id.navigationProfile)
-                {
 
-                    bottomNavigation.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gradient2));
-
-
-
-                }
                 if(menuItem.getItemId() == R.id.navigationFavorite)
                 {
-                    bottomNavigation.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_favorite));
+                    //bottomNavigation.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_favorite));
+                    bottomNavigation.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gradient2));
                     //startActivity(new Intent(getApplicationContext(),FavoriteInserting.class));
                 }
                 if(menuItem.getItemId() == R.id.navigationOrders)
