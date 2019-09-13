@@ -59,13 +59,6 @@
     <string name="btnSave">Save</string>
     <string name="username">Username</string>
     <string name="update">Update</string>
-    <string name="seatsbook">Seates</string>
-    <string name="seattype">Seat Type</string>
-    <string-array name="seattype">
-        <item>Balcony</item>
-        <item>ODI</item>
-        <item>Box</item>
-    </string-array>
-    <string name="confirm">Confirm</string>
+    <string name="enter_your_note">Enter your note.................</string>
 
 </resources>

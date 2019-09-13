@@ -22,13 +22,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String FILM_TABLE_NAME = "Film_Details";
 
-    public static final String FILM_COL_1 = "NAME";
-    public static final String FILM_COL_2 = "DESCRIPTION";
-    public static final String FILM_COL_3 = "RANKINGS";
-    public static final String FILM_COL_4 = "DATE";
-    public static final String FILM_COL_5 = "TIME";
-    public static final String FILM_COL_6 = "SEATS";
-
 
     public DatabaseHelper(Context context)
     {
@@ -170,6 +163,5 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     {
         return BitmapFactory.decodeByteArray(image, 0, image.length);
     }
-
 
 }
