@@ -3,6 +3,7 @@ package com.mad.lk;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -19,32 +20,45 @@ Spinner spinner;
 EditText seatqua;
 Button idbtnbooking;
 Button idbtnview;
+Intent intent;
+int numberOfSeats;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        intent = getIntent();
+        numberOfSeats = intent.getIntExtra("SEATS",0);
+
         setContentView(R.layout.activity_book_ticket);
         dbl = new DBHelper_Lali(this);
 
         seatqua = (EditText)findViewById(R.id.seatqua);
         spinner = (Spinner)findViewById(R.id.spinner);
         idbtnbooking = (Button)findViewById((R.id.idbtnbooking));
-        idbtnview = (Button)findViewById(R.id.idbtnview) ;
+        idbtnview = (Button)findViewById(R.id.idbtnview);
 
         insertbooking();
         viewbooking();
     }
 
-    public void insertbooking(){
+    public void insertbooking()
+    {
         idbtnbooking.setOnClickListener(
-                new View.OnClickListener() {
+                new View.OnClickListener()
+                {
                     @Override
-                    public void onClick(View view) {
-                  boolean IsInserted = dbl.insertbooking(Integer.parseInt(seatqua.getText().toString()),spinner.getSelectedItem().toString());
-                    if(IsInserted = true){
-                        Toast.makeText(bookTicket.this,"Booking Confirmed",Toast.LENGTH_LONG).show();
-                    }
-                    else
-                        Toast.makeText(bookTicket.this,"Booking not Confirmed",Toast.LENGTH_LONG).show();
+                    public void onClick(View view)
+                    {
+                        boolean IsInserted = dbl.insertbooking(numberOfSeats,spinner.getSelectedItem().toString());
+                        if(IsInserted)
+                        {
+                            Toast.makeText(bookTicket.this,"Booking Confirmed",Toast.LENGTH_LONG).show();
+                        }
+                         else
+                        {
+                            Toast.makeText(bookTicket.this,"Booking not Confirmed",Toast.LENGTH_LONG).show();
+                        }
+
                     }
                 }
         );

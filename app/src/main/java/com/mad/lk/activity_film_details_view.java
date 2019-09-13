@@ -15,6 +15,7 @@ public class activity_film_details_view extends AppCompatActivity {
 
     TextView filmName,Ratings,Date,Time,Seats,Description;
     ImageView poster;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,7 @@ public class activity_film_details_view extends AppCompatActivity {
 
         poster.setImageBitmap(SearchForTickets.background);
 
-        Intent intent = getIntent();
+        intent = getIntent();
 
         filmName.setText(intent.getStringExtra("NAME"));
         Ratings.setText("Rankings : "+intent.getStringExtra("RANKINGS"));
@@ -43,4 +44,14 @@ public class activity_film_details_view extends AppCompatActivity {
 
     }
 
+    public void BookTicket(View view)
+    {
+        Intent intent2 = new Intent(getApplicationContext(),bookTicket.class);
+        intent.putExtra("NAME",intent.getStringExtra("NAME"));
+        intent.putExtra("DATE",intent.getStringExtra("DATE"));
+        intent.putExtra("TIME",intent.getStringExtra("TIME"));
+        intent.putExtra("SEATS",intent.getIntExtra("SEATS",0));
+        intent.putExtra("DESCRIPTION",intent.getStringExtra("DESCRIPTION"));
+        startActivity(intent2);
+    }
 }

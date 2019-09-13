@@ -49,8 +49,6 @@ public class SearchForTickets extends AppCompatActivity {
     DatabaseHelper helper;
     static Bitmap background;
     CircleImageView pic;
-
-
     private Handler handler = new Handler();
     private static final long Interval = 30;
 
@@ -272,7 +270,6 @@ public class SearchForTickets extends AppCompatActivity {
                     intent.putExtra("DATE",dates.get(position));
                     intent.putExtra("TIME",times.get(position));
                     background = images.get(position);
-
                     intent.putExtra("DESCRIPTION",descriptions.get(position));
                     startActivity(intent);
                 }
