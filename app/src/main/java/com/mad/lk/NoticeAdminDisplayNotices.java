@@ -35,7 +35,18 @@ public class NoticeAdminDisplayNotices extends AppCompatActivity {
         Intent intentGoBack =new Intent(this,NoticeAddNotices.class);
 
         Button Edit= findViewById(R.id.btnEdit);
+        TextView Date=findViewById(R.id.textViewDisplayDate);
+        TextView Description=findViewById(R.id.textViewDisplayDescription);
+
+        intentGoBack.putExtra("msg11",Date.getText().toString());
+        intentGoBack.putExtra("msg22",Description.getText().toString());
             startActivity(intentGoBack);
 
     }
+
+    public void GoToCreateNotice(View view){
+        Intent createNotice=new Intent(this,NoticeAddNotices.class);
+        startActivity(createNotice);
+    }
+
 }
