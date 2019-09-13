@@ -1,3 +1,5 @@
+package com.mad.lk;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -28,7 +30,7 @@ public class DBHelper_Lali extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertdata(int seatqua,String spinner){
+    public boolean insertbooking(int seatqua,String spinner){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_2,seatqua);
