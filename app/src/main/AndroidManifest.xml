@@ -13,7 +13,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".bookTicket"></activity>
+        <activity android:name=".bookTicket">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".FavoriteAndAddingANote" />
         <activity android:name=".FavoriteFilm" />
         <activity android:name=".favorite_list_view" />
@@ -22,11 +28,7 @@
         <activity
             android:name=".SplashScreen"
             android:theme="@style/AppTheme2">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
         <activity android:name=".RegisterScreen" />
