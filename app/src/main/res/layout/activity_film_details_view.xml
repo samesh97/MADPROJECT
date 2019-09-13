@@ -8,6 +8,8 @@
     android:background="@drawable/gradient2">
 
 
+
+
     <TextView
         android:id="@+id/filmName"
         android:layout_width="wrap_content"
@@ -16,6 +18,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="181dp"
         android:text="TextView"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -44,9 +47,9 @@
         android:id="@+id/Description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="100dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="60dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,5 +74,32 @@
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/filmName" />
+
+    <ImageView
+        android:id="@+id/poster"
+        android:layout_width="110dp"
+        android:layout_height="115dp"
+        android:src="@drawable/moonlight"
+        app:layout_constraintBottom_toBottomOf="@+id/Seats"
+        app:layout_constraintEnd_toEndOf="@+id/book"
+        app:layout_constraintTop_toTopOf="@+id/Ratings" />
+
+
+    <Button
+        android:id="@+id/book"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/border"
+        android:text="Book"
+        android:onClick="BookTicket"
+        android:textColor="@color/red"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Description" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
