@@ -60,5 +60,13 @@
     <string name="username">Username</string>
     <string name="update">Update</string>
     <string name="enter_your_note">Enter your note.................</string>
+    <string name="seatequantity">Seats</string>
+    <string name="seattype">Seate Type</string>
+    <string name="confirmbooking">Confirm Booking</string>
+    <string-array name="seattype">
+        <item>Balcony</item>
+        <item>ODI</item>
+        <item>Box</item>
+    </string-array>
 
 </resources>

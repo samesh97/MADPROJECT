@@ -87,7 +87,7 @@
         app:layout_constraintTop_toBottomOf="@+id/description" />
 
     <EditText
-        android:id="@+id/date"
+        android:id="@+id/seatqua"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -124,10 +124,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/date" />
+        app:layout_constraintTop_toBottomOf="@+id/seatqua" />
 
     <EditText
-        android:id="@+id/seats"
+        android:id="@+id/seatqua"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -161,7 +161,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seats" />
+        app:layout_constraintTop_toBottomOf="@+id/seatqua" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

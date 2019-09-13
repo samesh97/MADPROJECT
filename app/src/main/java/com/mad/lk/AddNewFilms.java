@@ -4,23 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
-import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.provider.MediaStore;
 import android.view.View;
-import android.webkit.MimeTypeMap;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class AddNewFilms extends AppCompatActivity {
 
@@ -61,9 +55,9 @@ public class AddNewFilms extends AppCompatActivity {
 
         name = (TextView) findViewById(R.id.name);
         rankings = (TextView) findViewById(R.id.rankings);
-        date = (TextView) findViewById(R.id.date);
+        date = (TextView) findViewById(R.id.seatqua);
         time = (TextView) findViewById(R.id.time);
-        seats = (TextView) findViewById(R.id.seats);
+        seats = (TextView) findViewById(R.id.seatqua);
         description = (TextView) findViewById(R.id.description);
         picture = (ImageView) findViewById(R.id.picture);
 
