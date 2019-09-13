@@ -2,10 +2,13 @@ package com.mad.lk;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
+
+import java.lang.annotation.Target;
 
 public class DBHelper_Lali extends SQLiteOpenHelper {
 
@@ -41,5 +44,11 @@ public class DBHelper_Lali extends SQLiteOpenHelper {
             return false;
         else
             return true;
+    }
+
+    public Cursor getAllbooking(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select * from "+TABLE_NAME,null);
+        return res;
     }
 }
