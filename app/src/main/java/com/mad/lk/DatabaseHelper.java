@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 
 import java.io.ByteArrayOutputStream;
 
@@ -23,6 +24,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String FILM_TABLE_NAME = "Film_Details";
 
 
+
     public DatabaseHelper(Context context)
     {
         super(context, DATABSE_NAME, null, 1);
@@ -32,6 +34,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db)
     {
+        db.execSQL("CREATE TABLE " + TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT,USERNAME TEXT NOT NULL,IMAGE BLOB NOT NULL,EMAIL TEXT NOT NULL,PASSWORD TEXT NOT NULL)");
         db.execSQL("CREATE TABLE " + FILM_TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT,IMAGE BLOB NOT NULL,NAME TEXT NOT NULL,DESCRIPTION TEXT NOT NULL,RANKINGS TEXT NOT NULL,DATE TEXT NOT NULL,TIME TEXT NOT NULL,SEATS INT NOT NULL) ");
     }
 

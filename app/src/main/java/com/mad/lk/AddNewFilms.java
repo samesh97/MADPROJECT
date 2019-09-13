@@ -55,9 +55,9 @@ public class AddNewFilms extends AppCompatActivity {
 
         name = (TextView) findViewById(R.id.name);
         rankings = (TextView) findViewById(R.id.rankings);
-        date = (TextView) findViewById(R.id.seatqua);
+        date = (TextView) findViewById(R.id.date);
         time = (TextView) findViewById(R.id.time);
-        seats = (TextView) findViewById(R.id.seatqua);
+        seats = (TextView) findViewById(R.id.seat);
         description = (TextView) findViewById(R.id.description);
         picture = (ImageView) findViewById(R.id.picture);
 

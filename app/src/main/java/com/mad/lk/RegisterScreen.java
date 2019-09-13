@@ -110,7 +110,7 @@ public class RegisterScreen extends AppCompatActivity {
         }
         else if(databaseClass.isUserNameExist(userNameText))
         {
-            Toast.makeText(this, "Username Already Taken", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Username Already Taken", Toast.LENGTH_SHORT).show();
 
         }
         else
