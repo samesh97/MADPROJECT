@@ -103,6 +103,8 @@ public class SearchForTickets extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_for_tickets);
 
+
+
         pic = (CircleImageView) findViewById(R.id.pic);
 
         helper = new DatabaseHelper(getApplicationContext());
@@ -143,7 +145,10 @@ public class SearchForTickets extends AppCompatActivity {
                 {
                     //bottomNavigation.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_favorite));
                     bottomNavigation.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gradient2));
-                    //startActivity(new Intent(getApplicationContext(),FavoriteInserting.class));
+                    //-----------favorite page-----------
+                     startActivity(new Intent(getApplicationContext(),FavoriteFilm.class));
+
+
                 }
                 if(menuItem.getItemId() == R.id.navigationOrders)
                 {
@@ -240,6 +245,7 @@ public class SearchForTickets extends AppCompatActivity {
         @Override
         public View getView(final int position, View convertView, ViewGroup parent)
         {
+
             View view = getLayoutInflater().inflate(R.layout.moviesearchrow,null);
             TextView filmName = view.findViewById(R.id.filmName);
             TextView filmRatings = view.findViewById(R.id.filmRatings);
@@ -250,7 +256,7 @@ public class SearchForTickets extends AppCompatActivity {
             final ImageView arrow = view.findViewById(R.id.arrow2);
 
             final ImageView info = view.findViewById(R.id.info);
-            ImageView fav = view.findViewById(R.id.fav);
+            final ImageView fav = view.findViewById(R.id.fav);
 
             info.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -269,15 +275,18 @@ public class SearchForTickets extends AppCompatActivity {
                 }
             });
 
+
             fav.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v)
-                {
-                    Toast.makeText(SearchForTickets.this, "Clicked", Toast.LENGTH_SHORT).show();
-                }
+               @Override
+              public void onClick(View v)
+              {
+                //Toast.makeText(SearchForTickets.this, "Clicked", Toast.LENGTH_SHORT).show();
+                 Intent intent = new Intent(getApplicationContext(),FavoriteWithNote.class);
+                startActivity(intent);
+            }
             });
 
-            Timer timer = new Timer();
+           Timer timer = new Timer();
             timer.schedule(new TimerTask() {
                 @Override
                 public void run() {

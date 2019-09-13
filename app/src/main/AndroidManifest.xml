@@ -13,69 +13,35 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".bookTicket">
-
-        </activity>
-
-
-        <activity android:name=".favorite_list_view" >
-        </activity>
-        <activity android:name=".FavoriteAndAddingANote" >
-        </activity>
-        <activity android:name=".FavoriteFilm">
-        </activity>
-
-
-
-
-
-
-
-
-
-
-        <activity android:name=".AddNewFilms" >
-        </activity>
-
-        <activity android:name=".AdminMainInterface" >
-         </activity>
-
+        <activity android:name=".FavoriteWithNote"></activity>
+        <activity android:name=".addingANote" />
+        <activity android:name=".bookTicket" />
+        <activity android:name=".favorite_list_view" />
+        <activity android:name=".FavoriteFilm" />
+        <activity android:name=".AddNewFilms" />
+        <activity android:name=".AdminMainInterface" />
         <activity
             android:name=".SplashScreen"
-            android:theme="@style/AppTheme2">
-        </activity>
-
-        <activity android:name=".RegisterScreen" >
-          </activity>
-
+            android:theme="@style/AppTheme2" />
+        <activity android:name=".RegisterScreen" />
         <activity android:name=".LoginScreen" />
-
         <activity
             android:name=".SearchForTickets"
-            android:windowSoftInputMode="stateHidden" >
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".NoticeAddNotices">
-        </activity>
-
+        <activity android:name=".NoticeAddNotices" />
         <activity android:name=".FirstActivity" />
-
         <activity android:name=".film_details_maintain" />
-
         <activity android:name=".activity_film_details_view" />
-
         <activity android:name=".NoticeAdminDisplayNotices" />
-
         <activity android:name=".NoticeUserDisplayNotices" />
-
         <activity android:name=".afterBooking" />
-
         <activity android:name=".ProfileActivity" />
-
     </application>
 
 </manifest>

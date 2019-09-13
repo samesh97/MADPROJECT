@@ -2,38 +2,36 @@ package com.mad.lk;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import static com.mad.lk.FavoriteDatabaseHelper.TABLE_NAME;
+public class addingANote extends AppCompatActivity {
 
-public class FavoriteAndAddingANote extends AppCompatActivity {
+
 
     TextView notes;
     TextView filmname, rankings, date, time, seats, description;
     ImageView picture;
 
-    private static final int PICK_IMAGE_REQUEST = 234;
+   // private static final int PICK_IMAGE_REQUEST = 234;
     Bitmap bitmap;
-    Uri filePath;
+   // Uri filePath;
 
 
-    DatabaseHelper helper;
+    //DatabaseHelper helper;
+
     FavoriteDatabaseHelper fhelper;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_favorite_and_adding_a_note);
+        setContentView(R.layout.activity_adding_anote);
+
 
         notes = (TextView) findViewById(R.id.favoritnote);
         filmname = (TextView) findViewById(R.id.filmName);
@@ -47,16 +45,13 @@ public class FavoriteAndAddingANote extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-       // picture.setImageURI(intent.);
         filmname.setText("Film Name : " +intent.getStringExtra("NAME"));
         description.setText("Description : "+intent.getStringExtra("DESCRIPTION"));
         rankings.setText("Rankings : "+intent.getStringExtra("RANKINGS"));
         date.setText("Date : " + intent.getStringExtra("DATE"));
         time.setText("Time : "+intent.getStringExtra("TIME"));
         seats.setText("Seats : " + intent.getIntExtra("SEATS",0));
-
     }
-
 
     public void AddFavoritesToDatabase(View view)
     {
@@ -69,9 +64,9 @@ public class FavoriteAndAddingANote extends AppCompatActivity {
         String note = notes.getText().toString();
 
 
-        if(fhelper.addfavorites(nameText,descriptionText,rankText,dateText,timeText,Integer.parseInt(seatsText),helper.getBytes(bitmap),note))
+        if(fhelper.addfavorites(nameText,descriptionText,rankText,dateText,timeText,Integer.parseInt(seatsText),fhelper.getBytes(bitmap),note))
         {
-            Toast.makeText(this, "Favorite data successfully!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Favorite data add successfully!", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(getApplicationContext(),favorite_list_view.class));
             finish();
         }
@@ -82,19 +77,16 @@ public class FavoriteAndAddingANote extends AppCompatActivity {
 
     }
 
-
     public void UpdateFavoritesToDatabase(View view) {
 
 
         String notess = notes.getText().toString();
 
         if(notess.isEmpty()) {
-            Toast.makeText(getApplicationContext(), "Film Name cannot be empty ! ", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "note cannot be empty ! ", Toast.LENGTH_SHORT).show();
         }else {
-           fhelper.updateFavorite(notess);
-            Toast.makeText(getApplicationContext(), "Film Name updated successfully. ", Toast.LENGTH_SHORT).show();
+            fhelper.updateFavorite(notess);
+            Toast.makeText(getApplicationContext(), "note updated successfully. ", Toast.LENGTH_SHORT).show();
         }
     }
-
-    }
-
+}

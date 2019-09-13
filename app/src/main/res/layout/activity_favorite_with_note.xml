@@ -1,39 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FavoriteAndAddingANote">
-
+    tools:context=".FavoriteWithNote">
 
     <LinearLayout
         android:id="@+id/id111"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:background="@drawable/opaciy"
+        android:layout_marginEnd="8dp"
+        android:background="@color/white"
         android:orientation="vertical"
         android:paddingBottom="50dp"
-        tools:layout_editor_absoluteX="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
         tools:layout_editor_absoluteY="6dp">
-
 
         <LinearLayout
             android:id="@+id/id1"
-            android:layout_width="392dp"
-            android:layout_height="665dp"
+            android:layout_width="366dp"
+            android:layout_height="371dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="10dp"
-            android:background="@color/white"
+            android:background="@drawable/opaciy"
             android:orientation="vertical"
             android:paddingBottom="20dp">
 
+
             <LinearLayout
-                android:layout_width="308dp"
-                android:layout_height="329dp"
+                android:layout_width="321dp"
+                android:layout_height="159dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="60dp"
                 android:layout_marginRight="30dp"
@@ -42,8 +40,8 @@
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="289dp"
-                    android:layout_height="310dp"
+                    android:layout_width="298dp"
+                    android:layout_height="138dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
@@ -77,20 +75,25 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent" />
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="371dp"
+            android:layout_height="131dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="0dp"
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btnfavAdd"
-                android:layout_width="150dp"
-                android:layout_height="71dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="20dp"
+                android:layout_width="157dp"
+                android:layout_height="82dp"
+                android:layout_marginLeft="50dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginRight="24dp"
+                android:layout_marginEnd="20dp"
                 android:background="@drawable/border"
-                android:text="@string/filmadd"
                 android:onClick="AddFavoritesToDatabase"
+                android:text="@string/filmadd"
                 android:textColor="@color/red"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -99,23 +102,22 @@
 
             <Button
                 android:id="@+id/btnfavupdate"
-                android:layout_width="150dp"
-                android:layout_height="71dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="24dp"
+                android:layout_width="182dp"
+                android:layout_height="78dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginRight="24dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="50dp"
                 android:background="@drawable/border"
-                android:text="@string/filmadd"
                 android:onClick="UpdateFavoritesToDatabase"
+                android:text="@string/update"
                 android:textColor="@color/red"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent" />
 
-        </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+
+
+        </LinearLayout>\</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
