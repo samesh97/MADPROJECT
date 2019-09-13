@@ -151,7 +151,7 @@ public class SearchForTickets extends AppCompatActivity {
                 if(menuItem.getItemId() == R.id.navigationFavorite)
                 {
                     bottomNavigation.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_favorite));
-                    startActivity(new Intent(getApplicationContext(),FavoritePage.class));
+                    startActivity(new Intent(getApplicationContext(),FavoriteInserting.class));
                 }
                 if(menuItem.getItemId() == R.id.navigationOrders)
                 {
