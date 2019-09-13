@@ -7,6 +7,25 @@
     android:background="@drawable/gradient2"
     tools:context=".bookTicket">
 
+    <Button
+        android:id="@+id/idbtnbooking"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/border"
+        android:text="@string/confirmbooking"
+        android:textColor="@color/red"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.727" />
+
     <TextView
         android:id="@+id/seatequantity"
         android:layout_width="98dp"
@@ -45,8 +64,8 @@
 
     <EditText
         android:id="@+id/seatqua"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -63,8 +82,8 @@
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="205dp"
-        android:layout_height="34dp"
+        android:layout_width="159dp"
+        android:layout_height="54dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -79,21 +98,23 @@
 
 
     <Button
-        android:id="@+id/idbtnbooking"
+        android:id="@+id/idbtnview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="260dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/border"
-        android:text="@string/confirmbooking"
+        android:text="@string/viewbooking"
         android:textColor="@color/red"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.836" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

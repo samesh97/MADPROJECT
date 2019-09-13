@@ -27,7 +27,7 @@ public class FavoriteFilm extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_film_details_view);
+        setContentView(R.layout.activity_favorite_film);
 
         favfilmname = (TextView) findViewById(R.id.favoritefilmname);
         favranking = (TextView) findViewById(R.id.favoriterank);
@@ -37,7 +37,7 @@ public class FavoriteFilm extends AppCompatActivity {
         favdescription = (TextView) findViewById(R.id.favoritdesc);
         favnotes = (TextView) findViewById(R.id.favoritnote);
 
-        ImageView image = (ImageView)findViewById(R.id.favoriteimage);
+        favimage = (ImageView)findViewById(R.id.favoriteimage);
 
 
         layout = (ConstraintLayout) findViewById(R.id.layout);
