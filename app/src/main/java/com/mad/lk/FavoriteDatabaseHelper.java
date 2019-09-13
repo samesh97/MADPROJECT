@@ -13,7 +13,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import Favorites.FavoriteContract;
+//import Favorites.FavoriteContract;
 
 import static com.mad.lk.DatabaseHelper.DATABSE_NAME;
 
