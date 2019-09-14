@@ -34,8 +34,8 @@
 
         <TextView
             android:id="@+id/favoritefilmname"
-            android:layout_width="199dp"
-            android:layout_height="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
@@ -47,8 +47,8 @@
 
         <TextView
             android:id="@+id/favoriterank"
-            android:layout_width="56dp"
-            android:layout_height="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
@@ -60,8 +60,8 @@
 
         <TextView
             android:id="@+id/favoritdate"
-            android:layout_width="56dp"
-            android:layout_height="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="8dp"
@@ -73,8 +73,8 @@
 
         <TextView
             android:id="@+id/favorittime"
-            android:layout_width="56dp"
-            android:layout_height="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="12dp"
             android:text="Time"
@@ -86,8 +86,8 @@
 
         <TextView
             android:id="@+id/favoriteseat"
-            android:layout_width="56dp"
-            android:layout_height="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
