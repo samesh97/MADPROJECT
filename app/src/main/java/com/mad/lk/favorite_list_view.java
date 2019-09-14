@@ -11,6 +11,7 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -35,28 +36,12 @@ public class favorite_list_view extends AppCompatActivity {
     ArrayList<String> dates = new ArrayList<>();
     ArrayList<String> times = new ArrayList<>();
     ArrayList<Integer> seats = new ArrayList<>();
-    ArrayList<String> description = new ArrayList<String>();
+    ArrayList<String> description = new ArrayList<>();
     ArrayList<Integer> ids = new ArrayList<>();
     ArrayList<Bitmap> images = new ArrayList<>();
     ArrayList<String> notes = new ArrayList<>();
 
-    private Handler handler = new Handler();
 
-    private static final long Interval = 30;
-
-    int count = 255;
-    boolean iszero = false;
-
-
-
-   // @Override
-    //public boolean onCreateOptionsMenu(Menu menu)
-    //{
-      //  MenuInflater inflater = getMenuInflater();
-        //inflater.inflate(R.menu.notices_menu, menu);
-        //return true;
-
-    //}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +49,7 @@ public class favorite_list_view extends AppCompatActivity {
         setContentView(R.layout.activity_favorite_list_view);
 
         helper = new FavoriteDatabaseHelper(getApplicationContext());
-
-       helper.getAllFavorites();
+        films = (ListView) findViewById(R.id.favfilmlist);
 
         Cursor data = helper.getAllFavorites();
         while (data.moveToNext())
@@ -89,18 +73,15 @@ public class favorite_list_view extends AppCompatActivity {
             ids.add(IDS);
             notes.add(NOTES);
             images.add(helper.getImage(image));
+            films.invalidateViews();
+
 
 
         }
 
-
-        films = (ListView) findViewById(R.id.favfilmlist);
-
         adapter = new Adapter();
 
         films.setAdapter(adapter);
-
-
 
     }
     public class Adapter extends BaseAdapter
@@ -124,7 +105,7 @@ public class favorite_list_view extends AppCompatActivity {
         @Override
         public View getView(final int position, View convertView, ViewGroup parent)
         {
-            View view = getLayoutInflater().inflate(R.layout.activity_favorite_list_view,null);
+            View view = getLayoutInflater().inflate(R.layout.activity_favorite_film,null);
 
             TextView filmName = view.findViewById(R.id.favoritefilmname);
             TextView filmRatings = view.findViewById(R.id.favoriterank);
@@ -136,24 +117,44 @@ public class favorite_list_view extends AppCompatActivity {
             TextView filmnote = view.findViewById(R.id.favoritnote);
 
 
-            ImageView delete = view.findViewById(R.id.btndeletefavorite);
+
+            Button delete = view.findViewById(R.id.btndeletefavorite);
+
+            filmName.setText("Film Name : " +names.get(position));
+            filmRatings.setText("Rankings : " +rankings.get(position));
+            filmShowingDate.setText("Showing Date : "+dates.get(position));
+            filmShowingTime.setText("Showing Time : "+times.get(position));
+            availableSeats.setText("Available Seats : " + seats.get(position));
+            filmDescription.setText("Description : " +description.get(position));
+            filmnote.setText("Notes : "+notes.get(position));
+
+            filmPoster.setImageBitmap(images.get(position));
 
             delete.setOnClickListener(new View.OnClickListener()
             {
                 @Override
                 public void onClick(View v)
                 {
+                    Toast.makeText(getApplicationContext(), "" + names.size(), Toast.LENGTH_SHORT).show();
                     if(helper.deleteFavoriteFilm(ids.get(position).toString()))
                     {
-                        ids.remove(position);
-                        rankings.remove(position);
-                        images.remove(position);
-                        dates.remove(position);
-                        times.remove(position);
-                        seats.remove(position);
-                        films.invalidateViews();
-                        seats.remove(position);
-                        notes.remove(position);
+                        try
+                        {
+                            ids.remove(position);
+                            rankings.remove(position);
+                            images.remove(position);
+                            dates.remove(position);
+                            times.remove(position);
+                            seats.remove(position);
+                            films.invalidateViews();
+                            seats.remove(position);
+                            notes.remove(position);
+                        }
+                        catch (Exception e)
+
+                        {
+
+                        }
 
                         Toast.makeText(favorite_list_view.this, "Deleted", Toast.LENGTH_SHORT).show();
                     }
@@ -166,50 +167,6 @@ public class favorite_list_view extends AppCompatActivity {
             });
 
 
-            Timer timer = new Timer();
-            timer.schedule(new TimerTask() {
-                @Override
-                public void run() {
-
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run()
-                        {
-                            if(count <= 0)
-                            {
-                                iszero = true;
-                            }
-                            if(count >= 255)
-                            {
-                                iszero = false;
-                            }
-
-
-
-
-
-                        }
-                    });
-                }
-            },0,Interval);
-
-            try
-            {
-                filmName.setText("Film Name : " +names.get(position));
-                filmRatings.setText("Rankings : " +rankings.get(position));
-                filmShowingDate.setText("Showing Date : "+dates.get(position));
-                filmShowingTime.setText("Showing Time : "+times.get(position));
-                availableSeats.setText("Available Seats : " + seats.get(position));
-                filmDescription.setText("Description : " +description.get(position));
-                filmnote.setText("Notes : "+notes.get(position));
-
-                filmPoster.setImageBitmap(images.get(position));
-
-            }
-            catch (Exception e)
-            {
-
-            }
 
             return view;
         }

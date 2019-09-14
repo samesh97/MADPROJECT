@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".FavoriteFilm"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:adjustViewBounds="true">
 
@@ -21,24 +20,13 @@
         app:layout_constraintTop_toTopOf="parent">
 
 
-        <TextView
-            android:id="@+id/favoritnote2"
-            android:layout_width="56dp"
-            android:layout_height="16dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="8dp"
-            card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintHorizontal_bias="0.07"
-            card_view:layout_constraintStart_toEndOf="@+id/favoriteimage"
-            card_view:layout_constraintTop_toBottomOf="@+id/favorittime" />
-
         <ImageView
             android:id="@+id/favoriteimage"
             android:layout_width="105dp"
             android:layout_height="166dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
+            android:src="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.028"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,12 +34,14 @@
 
         <TextView
             android:id="@+id/favoritefilmname"
-            android:layout_width="168dp"
-            android:layout_height="28dp"
+            android:layout_width="199dp"
+            android:layout_height="30dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
+            android:text="Film Name"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.2"
             app:layout_constraintStart_toEndOf="@+id/favoriteimage"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -62,6 +52,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
+            android:text="Rank"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.07"
             app:layout_constraintStart_toEndOf="@+id/favoriteimage"
@@ -74,6 +65,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="8dp"
+            android:text="Date"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.07"
             app:layout_constraintStart_toEndOf="@+id/favoriteimage"
@@ -85,6 +77,7 @@
             android:layout_height="16dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="12dp"
+            android:text="Time"
             android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.07"
@@ -96,12 +89,13 @@
             android:layout_width="56dp"
             android:layout_height="16dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
+            android:text="Seats"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.07"
+            app:layout_constraintHorizontal_bias="0.068"
             app:layout_constraintStart_toEndOf="@+id/favoriteimage"
-            app:layout_constraintTop_toBottomOf="@+id/favoritnote2" />
+            app:layout_constraintTop_toBottomOf="@+id/favorittime" />
 
         <TextView
             android:id="@+id/favoritnote"
@@ -111,6 +105,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
+            android:text="Note"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.461"
@@ -125,21 +120,21 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
+            android:text="Description"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.49"
+            app:layout_constraintHorizontal_bias="0.245"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/favoritnote2"
-            app:layout_constraintVertical_bias="0.449" />
+            app:layout_constraintTop_toBottomOf="@+id/favoriteseat"
+            app:layout_constraintVertical_bias="0.17" />
 
         <Button
             android:id="@+id/btndeletefavorite"
-            android:layout_width="20dp"
-            android:layout_height="22dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/delete"
+            android:layout_width="32dp"
+            android:layout_height="33dp"
+            android:layout_marginTop="28dp"
             android:layout_marginEnd="16dp"
+            android:background="@drawable/delete"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

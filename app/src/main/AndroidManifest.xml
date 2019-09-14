@@ -42,6 +42,7 @@
         <activity android:name=".NoticeAdminDisplayNotices" />
         <activity android:name=".NoticeUserDisplayNotices" />
         <activity android:name=".ProfileActivity" />
+        <activity android:name=".FavoriteWithNote"></activity>
     </application>
 
 </manifest>

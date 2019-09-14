@@ -51,7 +51,7 @@
         android:layout_height="167dp"
 
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="56dp"
         android:layout_marginEnd="8dp"
         android:alpha="0.9"
         android:background="@drawable/opaciy"
@@ -62,27 +62,9 @@
         android:textColorHint="@color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/favView" />
-
-
-    <Button
-        android:id="@+id/favView"
-        android:layout_width="288dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="88dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/border"
-        android:gravity="center"
-        android:text="@string/filmView"
-        android:textColor="@color/red"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/id1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.271"
+        app:layout_constraintHorizontal_bias="0.33"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

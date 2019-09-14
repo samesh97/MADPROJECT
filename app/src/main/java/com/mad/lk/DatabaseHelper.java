@@ -133,6 +133,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME +" WHERE USERNAME = '" + uname + "'",null);
         return cursor;
     }
+    public Cursor getFilmData(String id)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + FILM_TABLE_NAME +" WHERE ID = '" + id + "'",null);
+        return cursor;
+    }
     public Cursor getAllFimsDetails()
     {
         SQLiteDatabase db = this.getWritableDatabase();

@@ -35,13 +35,13 @@ public class FavoriteDatabaseHelper extends SQLiteOpenHelper {
 
     public FavoriteDatabaseHelper(Context context)
     {
-        super(context, DATABSE_NAME, null, 1);
+        super(context, DATABASE_NAME, null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + TABLE_NAME + "(" +
-                "ID INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "ID INTEGER PRIMARY KEY ," +
                 "IMAGE BLOB," +
                 "NAME TEXT NOT NULL," +
                 "DESCRIPTION TEXT NOT NULL," +
@@ -66,14 +66,16 @@ public class FavoriteDatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public boolean addfavorites(String fname, String fdes, String frankings, String fdate, String ftime, int fseats, byte[] image, String fnotes) {
+    public boolean addfavorites(int id,String fname, String fdes, String frankings, String fdate, String ftime, int fseats, byte[] fimage, String fnotes) {
+
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
 
+        contentValues.put("ID", id);
         contentValues.put("NAME", fname);
         contentValues.put("DESCRIPTION", fdes);
-        contentValues.put("IMAGE", image);
+        contentValues.put("IMAGE", fimage);
         contentValues.put("RANKINGS", frankings);
         contentValues.put("DATE", fdate);
         contentValues.put("TIME", ftime);
@@ -91,15 +93,15 @@ public class FavoriteDatabaseHelper extends SQLiteOpenHelper {
 
 
 
-    public byte[] getBytes(Bitmap bitmap)
+    public byte[] getBytes(Bitmap fimage)
     {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 0, stream);
+        fimage.compress(Bitmap.CompressFormat.PNG, 0, stream);
         return stream.toByteArray();
     }
-    public Bitmap getImage(byte[] image)
+    public Bitmap getImage(byte[] fimage)
     {
-        return BitmapFactory.decodeByteArray(image, 0, image.length);
+        return BitmapFactory.decodeByteArray(fimage, 0, fimage.length);
     }
 
 

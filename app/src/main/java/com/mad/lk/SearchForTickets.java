@@ -146,7 +146,7 @@ public class SearchForTickets extends AppCompatActivity {
                     //bottomNavigation.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_favorite));
                     bottomNavigation.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gradient2));
                     //-----------favorite page-----------
-                     startActivity(new Intent(getApplicationContext(),FavoriteFilm.class));
+                     startActivity(new Intent(getApplicationContext(),favorite_list_view.class));
 
 
                 }
@@ -280,7 +280,7 @@ public class SearchForTickets extends AppCompatActivity {
                @Override
               public void onClick(View v)
               {
-                 Intent intent = new Intent(getApplicationContext(),FavoriteWithNote.class);
+                  Intent intent = new Intent(getApplicationContext(),FavoriteWithNote.class);
                   intent.putExtra("ID",ids.get(position));
                   intent.putExtra("SEATS",seats.get(position));
                   intent.putExtra("NAME",names.get(position));
@@ -289,7 +289,8 @@ public class SearchForTickets extends AppCompatActivity {
                   intent.putExtra("TIME",times.get(position));
                   background = images.get(position);
                   intent.putExtra("DESCRIPTION",descriptions.get(position));
-                  startActivity(intent);
+                 startActivity(intent);
+
             }
             });
 
