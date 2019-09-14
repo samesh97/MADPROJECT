@@ -70,7 +70,7 @@ public class SearchForTickets extends AppCompatActivity {
         int x = item.getItemId();
         if(x == R.id.settings)
         {
-
+            startActivity(new Intent(getApplicationContext(),UserDisplayNotice.class));
 
         }
         if(x == R.id.logout)
