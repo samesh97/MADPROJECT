@@ -11,19 +11,17 @@ import android.widget.Toast;
 
 public class FavUpdateNote extends AppCompatActivity {
 
+    EditText text;
+    Button edit;
 
-    Button editbtn;
-    EditText edittext;
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fav_update_note);
 
-         editbtn =(Button)findViewById(R.id.btnedit2);
-        edittext =(EditText) findViewById(R.id.btnedittext2);
+         edit =(Button)findViewById(R.id.button);
+        text =(EditText)findViewById(R.id.text);
 
-        editbtn.setOnClickListener(new View.OnClickListener() {
+        edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(FavUpdateNote.this,"TTT",Toast.LENGTH_LONG).show();
