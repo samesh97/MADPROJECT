@@ -70,6 +70,8 @@
     </string-array>
     <string name="viewbooking">View Booking</string>
     <string name="notice">Notice</string>
+    <string name="gotofavorite">Go to Favorites</string>
+
     <string name="updatebooking">Update Booking</string>
     <string name="updateid">ID</string>
     <string name="deletebooking">Delete Booking</string>

@@ -32,6 +32,8 @@ EditText idNote;
 DatabaseHelper helper;
     byte[] image2;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +42,7 @@ DatabaseHelper helper;
         helper = new DatabaseHelper(getApplicationContext());
         fhelper = new FavoriteDatabaseHelper(getApplicationContext());
 
+
         intent = getIntent();
 
 
@@ -47,7 +50,7 @@ DatabaseHelper helper;
         notes = (TextView) findViewById(R.id.favoritnote);
        add =(Button)findViewById(R.id.btnfavAdd);
 
-       // update =(Button)findViewById(R.id.btnfavupdate);
+
         idNote = (EditText) findViewById(R.id.idNote);
 
 
