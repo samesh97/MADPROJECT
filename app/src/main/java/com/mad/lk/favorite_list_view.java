@@ -2,6 +2,7 @@ package com.mad.lk;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -26,6 +27,8 @@ public class favorite_list_view extends AppCompatActivity {
 
 
     ListView films;
+
+    Button update;
 
     Adapter adapter;
 
@@ -83,6 +86,8 @@ public class favorite_list_view extends AppCompatActivity {
 
         films.setAdapter(adapter);
 
+
+
     }
     public class Adapter extends BaseAdapter
     {
@@ -117,7 +122,7 @@ public class favorite_list_view extends AppCompatActivity {
             TextView filmnote = view.findViewById(R.id.favoritnote);
 
 
-
+            Button update =view.findViewById(R.id.btnupdatefavorite);
             Button delete = view.findViewById(R.id.btndeletefavorite);
 
             filmName.setText("Film Name : " +names.get(position));
@@ -163,6 +168,25 @@ public class favorite_list_view extends AppCompatActivity {
                         Toast.makeText(favorite_list_view.this, "wrong", Toast.LENGTH_SHORT).show();
                     }
 
+                }
+            });
+
+
+            update.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(favorite_list_view.this,"Update your note here",Toast.LENGTH_LONG).show();
+                    Intent intent=new Intent(favorite_list_view.this,FavUpdateNote.class);
+                            startActivity(intent);
+              /* String noteText = notes.getText().toString();
+
+                   if(!notef.equals(""))
+                       Toast.makeText(favorite_list_view.this, "Please fill out the field", Toast.LENGTH_SHORT).show();
+                   else
+                   if(fhelper.updateFavorite(notef))
+
+                       Toast.makeText(favorite_list_view.this, "Updated!", Toast.LENGTH_SHORT).show();
+*/
                 }
             });
 
