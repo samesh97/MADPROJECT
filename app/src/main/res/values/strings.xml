@@ -69,6 +69,7 @@
         <item>Box</item>
     </string-array>
     <string name="viewbooking">View Booking</string>
+    <string name="notice">Notice</string>
 
 
 </resources>
