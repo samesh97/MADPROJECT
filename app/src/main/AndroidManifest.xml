@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FavUpdateNote"></activity>
+        <activity android:name=".UserDisplayNotice"></activity>
         <activity android:name=".PopupScreen" />
         <activity android:name=".AdminNoticeScreen" />
         <activity android:name=".AddNewNotice" />
