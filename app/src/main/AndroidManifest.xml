@@ -13,14 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UserDisplayNotice"></activity>
-        <activity android:name=".PopupScreen" />
         <activity android:name=".AdminNoticeScreen" />
         <activity android:name=".AddNewNotice" />
         <activity android:name=".bookTicket" />
         <activity android:name=".favorite_list_view" />
-        <activity android:name=".FavoriteAndAddingANote" />
-        <activity android:name=".FavoriteFilm" />
         <activity android:name=".AddNewFilms" />
         <activity android:name=".AdminMainInterface" />
         <activity
@@ -37,11 +33,8 @@
         <activity
             android:name=".SearchForTickets"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".NoticeAddNotices" />
         <activity android:name=".film_details_maintain" />
         <activity android:name=".activity_film_details_view" />
-        <activity android:name=".NoticeAdminDisplayNotices" />
-        <activity android:name=".NoticeUserDisplayNotices" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".FavoriteWithNote" />
     </application>
