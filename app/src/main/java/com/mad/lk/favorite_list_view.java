@@ -49,14 +49,14 @@ public class favorite_list_view extends AppCompatActivity {
 
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.notices_menu, menu);
-        return true;
+   // @Override
+    //public boolean onCreateOptionsMenu(Menu menu)
+    //{
+      //  MenuInflater inflater = getMenuInflater();
+        //inflater.inflate(R.menu.notices_menu, menu);
+        //return true;
 
-    }
+    //}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,13 +65,9 @@ public class favorite_list_view extends AppCompatActivity {
 
         helper = new FavoriteDatabaseHelper(getApplicationContext());
 
-        helper.getAllFavorite();
+       helper.getAllFavorites();
 
-
-
-
-        Cursor data = helper.getAllFavorites()
-                ;
+        Cursor data = helper.getAllFavorites();
         while (data.moveToNext())
         {
             int IDS  = data.getInt(0);
@@ -93,6 +89,7 @@ public class favorite_list_view extends AppCompatActivity {
             ids.add(IDS);
             notes.add(NOTES);
             images.add(helper.getImage(image));
+
 
         }
 
@@ -141,7 +138,6 @@ public class favorite_list_view extends AppCompatActivity {
 
             ImageView delete = view.findViewById(R.id.btndeletefavorite);
 
-
             delete.setOnClickListener(new View.OnClickListener()
             {
                 @Override
@@ -157,6 +153,7 @@ public class favorite_list_view extends AppCompatActivity {
                         seats.remove(position);
                         films.invalidateViews();
                         seats.remove(position);
+                        notes.remove(position);
 
                         Toast.makeText(favorite_list_view.this, "Deleted", Toast.LENGTH_SHORT).show();
                     }
@@ -167,6 +164,7 @@ public class favorite_list_view extends AppCompatActivity {
 
                 }
             });
+
 
             Timer timer = new Timer();
             timer.schedule(new TimerTask() {

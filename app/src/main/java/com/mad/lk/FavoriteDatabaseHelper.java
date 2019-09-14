@@ -33,7 +33,8 @@ public class FavoriteDatabaseHelper extends SQLiteOpenHelper {
     public static final String FAVORITE_COL_7 = "SEATS";
     public static final String FAVORITE_COL_8 = "NOTES";
 
-    public FavoriteDatabaseHelper(Context context) {
+    public FavoriteDatabaseHelper(Context context)
+    {
         super(context, DATABSE_NAME, null, 1);
     }
 
@@ -41,7 +42,7 @@ public class FavoriteDatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + TABLE_NAME + "(" +
                 "ID INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "IMAGE BLOB NOT NULL," +
+                "IMAGE BLOB," +
                 "NAME TEXT NOT NULL," +
                 "DESCRIPTION TEXT NOT NULL," +
                 "RANKINGS TEXT NOT NULL," +
@@ -88,12 +89,7 @@ public class FavoriteDatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-   // public void deleteFavorites(String id) {
-     //   SQLiteDatabase db = this.getWritableDatabase();
-       // db.delete(TABLE_NAME, "ID =?", new String[]{id});
 
-
-    //}
 
     public byte[] getBytes(Bitmap bitmap)
     {
@@ -107,39 +103,6 @@ public class FavoriteDatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-
-    public List<classFavorites> getAllFavorite() {
-        String[] column1 = {FAVORITE_COL_1, FAVORITE_COL_2, FAVORITE_COL_3, FAVORITE_COL_4, FAVORITE_COL_5, FAVORITE_COL_6, FAVORITE_COL_7, FAVORITE_COL_8};
-
-        String sortOrder = FAVORITE_COL_1 + "ASC";
-        List<classFavorites> favoritelist = new ArrayList<>();
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_NAME,column1,null,null,null,null,sortOrder);
-
-        if(cursor.moveToFirst()){
-            do{
-                classFavorites classf = new classFavorites();
-
-
-                classf.setIMAGE(cursor.getString(cursor.getColumnIndex(FAVORITE_COL_1)));
-                classf.setNAME(cursor.getString(cursor.getColumnIndex(FAVORITE_COL_2)));
-                classf.setDESCRIPTION(cursor.getString(cursor.getColumnIndex(FAVORITE_COL_3)));
-                classf.setRANKINGS(cursor.getString(cursor.getColumnIndex(FAVORITE_COL_4)));
-                classf.setDATE(cursor.getString(cursor.getColumnIndex(FAVORITE_COL_5)));
-                classf.setTIME(cursor.getString(cursor.getColumnIndex(FAVORITE_COL_6)));
-                classf.setSEATS(cursor.getString(cursor.getColumnIndex(FAVORITE_COL_7)));
-                classf.setNOTES(cursor.getString(cursor.getColumnIndex(FAVORITE_COL_8)));
-
-
-            favoritelist.add(classf);
-            }
-            while (cursor.moveToNext());
-    }
-        cursor.close();
-        db.close();
-
-        return  favoritelist;
-}
 
     public boolean deleteFavoriteFilm(String id)
     {
@@ -159,11 +122,8 @@ public class FavoriteDatabaseHelper extends SQLiteOpenHelper {
     public boolean updateFavorite(String notes){
 
         SQLiteDatabase db = this.getWritableDatabase();
-
         ContentValues contentValues = new ContentValues();
         contentValues.put("NOTES", notes);
-
-
 
         if(db.update(TABLE_NAME, contentValues, "ID=?", new String[] {notes}) == 0)
         {
@@ -174,4 +134,6 @@ public class FavoriteDatabaseHelper extends SQLiteOpenHelper {
             return true;
         }
     }
+
+
 }
