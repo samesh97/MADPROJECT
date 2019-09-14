@@ -21,7 +21,7 @@ public class FavoriteWithNote extends AppCompatActivity {
 TextView notes;
 
 FavoriteDatabaseHelper fhelper;
-Button add,update;
+Button add;
 //DatabaseHelper db;
 String filmnamef = "aaa",descriptionf="bbb",notef="ccc",rankf="ddd",datef="eee",timef="ff";
 int idf;
@@ -47,7 +47,7 @@ DatabaseHelper helper;
         notes = (TextView) findViewById(R.id.favoritnote);
        add =(Button)findViewById(R.id.btnfavAdd);
 
-        update =(Button)findViewById(R.id.btnfavupdate);
+       // update =(Button)findViewById(R.id.btnfavupdate);
         idNote = (EditText) findViewById(R.id.idNote);
 
 
@@ -80,7 +80,7 @@ DatabaseHelper helper;
                 if(fhelper.addfavorites(idf,filmnamef,descriptionf,rankf,datef,timef,seatsf,image2,notef))
                 {
                     Toast.makeText(FavoriteWithNote.this,"Success",Toast.LENGTH_LONG).show();
-                   // startActivity(new Intent(getApplicationContext(),AdminMainInterface.class));
+                    startActivity(new Intent(getApplicationContext(),favorite_list_view.class));
                     //finish();
                 }
                 else
@@ -92,20 +92,7 @@ DatabaseHelper helper;
             }
         });
 
-        update.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String noteText = notes.getText().toString();
 
-                   if(!notef.equals(""))
-                       Toast.makeText(FavoriteWithNote.this, "Please fill out the field", Toast.LENGTH_SHORT).show();
-                   else
-                   if(fhelper.updateFavorite(notef))
-
-                       Toast.makeText(FavoriteWithNote.this, "Updated!", Toast.LENGTH_SHORT).show();
-
-            }
-        });
 
     }
 
