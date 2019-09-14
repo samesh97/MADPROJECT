@@ -16,12 +16,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     public static final String TABLE_NAME = "User_Details";
-    public static final String COL_1 = "ID";
-    public static final String COL_2 = "USERNAME";
-    public static final String COL_3 = "EMAIL";
-    public static final String COL_4 = "PASSWORD";
-
     public static final String FILM_TABLE_NAME = "Film_Details";
+    public static final String NOTICE_TABLE_NAME = "Notices";
 
 
 
@@ -34,6 +30,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db)
     {
+        db.execSQL("CREATE TABLE " + NOTICE_TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT,MESSAGE TEXT NOT NULL)");
         db.execSQL("CREATE TABLE " + TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT,USERNAME TEXT NOT NULL,IMAGE BLOB NOT NULL,EMAIL TEXT NOT NULL,PASSWORD TEXT NOT NULL)");
         db.execSQL("CREATE TABLE " + FILM_TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT,IMAGE BLOB NOT NULL,NAME TEXT NOT NULL,DESCRIPTION TEXT NOT NULL,RANKINGS TEXT NOT NULL,DATE TEXT NOT NULL,TIME TEXT NOT NULL,SEATS INT NOT NULL) ");
     }
@@ -51,9 +48,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
-        contentValues.put(COL_2,username);
-        contentValues.put(COL_3,email);
-        contentValues.put(COL_4,password);
+        contentValues.put("USERNAME",username);
+        contentValues.put("EMAIL",email);
+        contentValues.put("PASSWORD",password);
         contentValues.put("IMAGE",image);
         Long result = db.insert(TABLE_NAME,null,contentValues);
         if(result == -1)
@@ -64,6 +61,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         {
             return true;
         }
+    }
+    public boolean insertNotice(String message)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("MESSAGE",message);
+
+        Long ret = db.insert(NOTICE_TABLE_NAME,null,contentValues);
+
+        if(ret == -1)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+    public Cursor getAllNotices()
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + NOTICE_TABLE_NAME,null);
+        return cursor;
     }
     public Cursor getAllUserData()
     {
@@ -133,6 +153,37 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
         }
     }
+    public boolean deleteANotice(String id)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int res = db.delete(NOTICE_TABLE_NAME, "ID =?", new String[]{id});
+
+        if(res > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public boolean updateNotice(String message,String id)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("MESSAGE", message);
+        long res = db.update(NOTICE_TABLE_NAME,contentValues,"ID = ?",new String[]{id});
+        if(res == -1)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+
     public boolean insertAFilm(String fname,String fdes,String frankings,String fdate,String ftime,int fseats,byte[] image)
     {
         SQLiteDatabase db = this.getWritableDatabase();

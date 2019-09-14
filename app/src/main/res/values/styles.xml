@@ -10,6 +10,11 @@
         <item name="android:windowDisablePreview">true</item>
     </style>
 
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/dialoganimation</item>
+        <item name="android:windowExitAnimation">@anim/dialoganimations</item>
+    </style>
+
     <style name="AppTheme2" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>

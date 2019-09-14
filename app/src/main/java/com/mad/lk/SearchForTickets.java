@@ -280,9 +280,16 @@ public class SearchForTickets extends AppCompatActivity {
                @Override
               public void onClick(View v)
               {
-                //Toast.makeText(SearchForTickets.this, "Clicked", Toast.LENGTH_SHORT).show();
                  Intent intent = new Intent(getApplicationContext(),FavoriteWithNote.class);
-                startActivity(intent);
+                  intent.putExtra("ID",ids.get(position));
+                  intent.putExtra("SEATS",seats.get(position));
+                  intent.putExtra("NAME",names.get(position));
+                  intent.putExtra("RANKINGS",rankings.get(position));
+                  intent.putExtra("DATE",dates.get(position));
+                  intent.putExtra("TIME",times.get(position));
+                  background = images.get(position);
+                  intent.putExtra("DESCRIPTION",descriptions.get(position));
+                  startActivity(intent);
             }
             });
 

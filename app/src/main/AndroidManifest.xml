@@ -13,33 +13,34 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FavoriteWithNote"></activity>
+        <activity android:name=".PopupScreen"></activity>
+        <activity android:name=".AdminNoticeScreen" />
+        <activity android:name=".AddNewNotice" />
         <activity android:name=".bookTicket" />
         <activity android:name=".favorite_list_view" />
+        <activity android:name=".FavoriteAndAddingANote" />
         <activity android:name=".FavoriteFilm" />
         <activity android:name=".AddNewFilms" />
         <activity android:name=".AdminMainInterface" />
         <activity
             android:name=".SplashScreen"
-            android:theme="@style/AppTheme2" />
-        <activity android:name=".RegisterScreen" />
-        <activity android:name=".LoginScreen" />
-        <activity
-            android:name=".SearchForTickets"
-            android:windowSoftInputMode="stateHidden">
+            android:theme="@style/AppTheme2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".RegisterScreen" />
+        <activity android:name=".LoginScreen" />
+        <activity
+            android:name=".SearchForTickets"
+            android:windowSoftInputMode="stateHidden"></activity>
         <activity android:name=".NoticeAddNotices" />
-        <activity android:name=".FirstActivity" />
         <activity android:name=".film_details_maintain" />
         <activity android:name=".activity_film_details_view" />
         <activity android:name=".NoticeAdminDisplayNotices" />
         <activity android:name=".NoticeUserDisplayNotices" />
-        <activity android:name=".afterBooking" />
         <activity android:name=".ProfileActivity" />
     </application>
 

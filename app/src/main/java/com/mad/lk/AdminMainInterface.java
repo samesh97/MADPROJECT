@@ -57,7 +57,7 @@ public class AdminMainInterface extends AppCompatActivity {
         int x = item.getItemId();
         if(x == R.id.settings)
         {
-            Toast.makeText(this, "Clicked!", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(getApplicationContext(),AdminNoticeScreen.class));
 
         }
         if(x == R.id.logout)

@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,49 +23,50 @@ TextView notes;
 FavoriteDatabaseHelper fhelper;
 Button view,add,update;
 //DatabaseHelper db;
-String filmnamef = "aaa",descriptionf="bbb",notef="ccc",rankf="ddd",datef="eee",timef="ff",seatf="17";
+String filmnamef = "aaa",descriptionf="bbb",notef="ccc",rankf="ddd",datef="eee",timef="ff";
+int idf;
+int seatsf;
 Bitmap imagef;
+Intent intent;
+EditText idNote;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorite_with_note);
 
+        intent = getIntent();
+        filmnamef = intent.getStringExtra("NAME");
+        descriptionf = intent.getStringExtra("DESCRIPTION");
+        rankf = intent.getStringExtra("RANKINGS");
+        datef = intent.getStringExtra("DATE");
+        timef = intent.getStringExtra("TIME");
+        seatsf = intent.getIntExtra("SEATS",0);
+        idf = intent.getIntExtra("ID",0);
+        imagef = SearchForTickets.background;
+
+
         notes = (TextView) findViewById(R.id.favoritnote);
        add =(Button)findViewById(R.id.btnfavAdd);
         view =(Button)findViewById(R.id.favView);
         update =(Button)findViewById(R.id.btnfavupdate);
+        idNote = (EditText) findViewById(R.id.idNote);
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(FavoriteWithNote.this, "Clicked", Toast.LENGTH_SHORT).show();
 
-                //  Cursor res = db.getAllFimsDetails();
-                 //if(res.getCount()==0){
-                  // showMassage("Error!","Nothing Found!");
-                  //return;
-                  //}
-                //StringBuffer buffer = new StringBuffer();
-                //while (res.moveToNext()){
-                  // buffer.append("Film ID :"+res.getString(0)+"\n");
-                 // buffer.append("Film Name :"+res.getString(1)+"\n");
-                 //buffer.append("Description :"+res.getString(2)+"\n");
-                //buffer.append("Image :"+res.getString(3)+"\n");
-               // buffer.append(" Rank:"+res.getString(4)+"\n");
-                //buffer.append("Date :"+res.getInt(5)+"\n");
-              //   buffer.append("Time :"+res.getString(6)+"\n\n");
-               //buffer.append("Seat :"+res.getString(7)+"\n\n");
-                //}
-                //showMassage("Your Favourite Films",buffer.toString());
             }
         });
 
 
-        add.setOnClickListener(new View.OnClickListener() {
+        add.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
+                notef = idNote.getText().toString();
                // boolean IsInserted = fhelper.addfavorites(filmnamef,descriptionf,rankf,datef,timef,Integer.parseInt(seatf),fhelper.getBytes(imagef),notef);
 
                 //if(IsInserted)
@@ -75,18 +77,18 @@ Bitmap imagef;
                 //{
                   //  Toast.makeText(FavoriteWithNote.this,"error",Toast.LENGTH_LONG).show();
                 //}
-                String nameText = filmnamef.toString();
+                /*String nameText = filmnamef.toString();
                 String rankText = rankf.toString();
                 String dateText = datef.toString();
                 String timeText = timef.toString();
                 String seatsText = seatf.toString();
                 String descriptionText = descriptionf.toString();
-                String noteText = notef.toString();
+                String noteText = notef.toString();*/
 
 
-                if(fhelper.addfavorites(nameText,descriptionText,rankText,dateText,timeText,Integer.parseInt(seatsText),fhelper.getBytes(imagef),seatsText))
+                if(fhelper.addfavorites(filmnamef,descriptionf,rankf,datef,timef,seatsf,fhelper.getBytes(imagef),notef))
                 {
-                    Toast.makeText(FavoriteWithNote.this,"error",Toast.LENGTH_LONG).show();
+                    Toast.makeText(FavoriteWithNote.this,"Success",Toast.LENGTH_LONG).show();
                    // startActivity(new Intent(getApplicationContext(),AdminMainInterface.class));
                     //finish();
                 }
