@@ -5,15 +5,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -21,6 +26,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -63,8 +70,7 @@ public class SearchForTickets extends AppCompatActivity {
         int x = item.getItemId();
         if(x == R.id.settings)
         {
-            //Intent intent = new Intent(getApplicationContext(),NoticeUserDisplayNotices.class);
-            //startActivity(intent);
+
 
         }
         if(x == R.id.logout)
@@ -171,10 +177,9 @@ public class SearchForTickets extends AppCompatActivity {
             public boolean onQueryTextSubmit(String query)
             {
                 keyWord = query;
-                if(!keyWord.equals(""))
-                {
-                    setSearch();
-                }
+
+                setSearch();
+
                 return true;
             }
 
@@ -182,10 +187,7 @@ public class SearchForTickets extends AppCompatActivity {
             public boolean onQueryTextChange(String newText)
             {
                 keyWord = newText;
-                if(!keyWord.equals(""))
-                {
-                    setSearch();
-                }
+                setSearch();
                 return true;
             }
         });
@@ -382,6 +384,7 @@ public class SearchForTickets extends AppCompatActivity {
     }
     public void setSearch()
     {
+
         names.clear();
         rankings.clear();
         dates.clear();
@@ -391,32 +394,66 @@ public class SearchForTickets extends AppCompatActivity {
         descriptions.clear();
         times.clear();
 
-        Cursor data = helper.getAllFimsDetails();
-        while (data.moveToNext())
+        if(!keyWord.equals(""))
         {
-            int IDS  = data.getInt(0);
-            byte[] image  = data.getBlob(1);
-            String NAME = data.getString(2);
-            String RANKINGS  = data.getString(4);
-            String DATE  = data.getString(5);
-            String TIME  = data.getString(6);
-            String des  = data.getString(3);
-            int SEATS  = data.getInt(7);
-
-
-            if(checkUpperCaseAndLowerCase(keyWord,NAME))
+            Cursor data = helper.getAllFimsDetails();
+            while (data.moveToNext())
             {
-                names.add(NAME);
-                rankings.add(RANKINGS);
-                dates.add(DATE);
-                times.add(TIME);
-                seats.add(SEATS);
-                ids.add(IDS);
-                images.add(helper.getImage(image));
-                descriptions.add(des);
-            }
+                int IDS  = data.getInt(0);
+                byte[] image  = data.getBlob(1);
+                String NAME = data.getString(2);
+                String RANKINGS  = data.getString(4);
+                String DATE  = data.getString(5);
+                String TIME  = data.getString(6);
+                String des  = data.getString(3);
+                int SEATS  = data.getInt(7);
 
+
+
+                if(checkUpperCaseAndLowerCase(keyWord,NAME))
+                {
+                    names.add(NAME);
+                    rankings.add(RANKINGS);
+                    dates.add(DATE);
+                    times.add(TIME);
+                    seats.add(SEATS);
+                    ids.add(IDS);
+                    images.add(helper.getImage(image));
+                    descriptions.add(des);
+                }
+
+
+
+
+            }
         }
+        else
+        {
+            Cursor data = helper.getAllFimsDetails();
+            while (data.moveToNext())
+            {
+                int IDS  = data.getInt(0);
+                byte[] image  = data.getBlob(1);
+                String NAME = data.getString(2);
+                String RANKINGS  = data.getString(4);
+                String DATE  = data.getString(5);
+                String TIME  = data.getString(6);
+                String des  = data.getString(3);
+                int SEATS  = data.getInt(7);
+
+
+                    names.add(NAME);
+                    rankings.add(RANKINGS);
+                    dates.add(DATE);
+                    times.add(TIME);
+                    seats.add(SEATS);
+                    ids.add(IDS);
+                    images.add(helper.getImage(image));
+                    descriptions.add(des);
+
+            }
+        }
+
         filmSearchList.invalidateViews();
     }
 
