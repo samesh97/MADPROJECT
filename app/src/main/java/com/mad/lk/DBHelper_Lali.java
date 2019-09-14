@@ -15,7 +15,7 @@ public class DBHelper_Lali extends SQLiteOpenHelper {
     public static final String DATABSE_NAME = "booking.db";
     public static final String TABLE_NAME = "booking";
     public static final String COL_1 = "booking_ID";
-    public static final String COL_2 = "seats";
+    public static final String COL_2 = "seatqua";
     public static final String COL_3 = "spinner";
 
     public DBHelper_Lali(Context context) {
@@ -24,7 +24,7 @@ public class DBHelper_Lali extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE " + TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT,seats int NOT NULL,spinner TEXT NOT NULL) " );
+        db.execSQL("CREATE TABLE " + TABLE_NAME + "(ID String PRIMARY KEY AUTOINCREMENT,seatqua int NOT NULL,spinner TEXT NOT NULL) " );
     }
 
     @Override
@@ -51,5 +51,20 @@ public class DBHelper_Lali extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("select * from "+TABLE_NAME,null);
         return res;
+    }
+
+    public boolean updatebooking(String booking_ID,int seatqua,String spinner){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_1,booking_ID);
+        contentValues.put(COL_2,seatqua);
+        contentValues.put(COL_3,spinner);
+        db.update(TABLE_NAME,contentValues, "booking_ID = ?",new String[]{booking_ID});
+        return true;
+    }
+
+    public Integer deletebooking(String booking_ID){
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(TABLE_NAME,"booking_ID = ?",new String[] {booking_ID});
     }
 }
