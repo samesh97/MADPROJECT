@@ -175,9 +175,9 @@ public class favorite_list_view extends AppCompatActivity {
             update.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(favorite_list_view.this,"Update your note here",Toast.LENGTH_LONG).show();
+                   Toast.makeText(favorite_list_view.this,"Update your note here",Toast.LENGTH_LONG).show();
                     Intent intent=new Intent(favorite_list_view.this,FavUpdateNote.class);
-                            startActivity(intent);
+                   startActivity(intent);
               /* String noteText = notes.getText().toString();
 
                    if(!notef.equals(""))

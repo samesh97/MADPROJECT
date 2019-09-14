@@ -37,6 +37,7 @@
         <activity android:name=".activity_film_details_view" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".FavoriteWithNote" />
+        <activity android:name=".FavUpdateNote"/>
     </application>
 
 </manifest>
