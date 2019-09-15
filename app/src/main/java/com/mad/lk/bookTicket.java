@@ -17,9 +17,11 @@ public class bookTicket extends AppCompatActivity {
     DBHelper_Lali dbl;
 
 Spinner spinner;
-EditText seatqua;
+EditText seatqua,booking_ID;
 Button idbtnbooking;
 Button idbtnview;
+Button btnupdate;
+Button btnDelete;
 Intent intent;
 int numberOfSeats;
     @Override
@@ -33,12 +35,56 @@ int numberOfSeats;
         dbl = new DBHelper_Lali(this);
 
         seatqua = (EditText)findViewById(R.id.seatqua);
+        booking_ID = (EditText)findViewById(R.id.booking_ID);
         spinner = (Spinner)findViewById(R.id.spinner);
         idbtnbooking = (Button)findViewById((R.id.idbtnbooking));
         idbtnview = (Button)findViewById(R.id.idbtnview);
+        btnupdate = (Button)findViewById(R.id.btnupdate);
+        btnDelete = (Button)findViewById(R.id.btndelete);
 
         insertbooking();
         viewbooking();
+        updatebooking();
+        deletebooking();
+    }
+
+    public void deletebooking(){
+        btnDelete.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Integer deletedRaws = dbl.deletebooking(booking_ID.getText().toString());
+                        if (deletedRaws > 0) {
+                            Toast.makeText(bookTicket.this,"Booking Deleted",Toast.LENGTH_LONG).show();
+                        }
+                        else
+                        {
+                            Toast.makeText(bookTicket.this,"Booking not Deleted",Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }
+        );
+    }
+
+    public void updatebooking(){
+        btnupdate.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        boolean IsUpdate = dbl.updatebooking(booking_ID.getText().toString(),
+                                Integer.parseInt(seatqua.getText().toString()),
+                                spinner.getSelectedItem().toString());
+                        if(IsUpdate == true )
+                        {
+                            Toast.makeText(bookTicket.this,"Booking Updated",Toast.LENGTH_LONG).show();
+                        }
+                        else
+                        {
+                            Toast.makeText(bookTicket.this,"Booking not Updated",Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }
+        );
     }
 
     public void insertbooking()
@@ -49,7 +95,7 @@ int numberOfSeats;
                     @Override
                     public void onClick(View view)
                     {
-                        boolean IsInserted = dbl.insertbooking(numberOfSeats,spinner.getSelectedItem().toString());
+                        boolean IsInserted = dbl.insertbooking(Integer.parseInt(seatqua.getText().toString()),spinner.getSelectedItem().toString());
                         if(IsInserted)
                         {
                             Toast.makeText(bookTicket.this,"Booking Confirmed",Toast.LENGTH_LONG).show();
@@ -76,9 +122,9 @@ int numberOfSeats;
                     }
                         StringBuffer buffer = new StringBuffer();
                         while (res.moveToNext()){
-                            buffer.append("booking_ID :"+res.getString(0)+"\n");
-                            buffer.append("seatqua :"+res.getInt(1)+"\n");
-                            buffer.append("spinner :"+res.getString(2)+"\n\n");
+                            buffer.append("Booking_ID :"+res.getString(0)+"\n");
+                            buffer.append("Seat Quantity :"+res.getInt(1)+"\n");
+                            buffer.append("Seat Type :"+res.getString(2)+"\n\n");
 
                         }
 

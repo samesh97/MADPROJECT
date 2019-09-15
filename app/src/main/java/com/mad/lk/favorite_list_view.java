@@ -122,6 +122,7 @@ public class favorite_list_view extends AppCompatActivity {
             TextView filmnote = view.findViewById(R.id.favoritnote);
 
 
+
             Button update =view.findViewById(R.id.btnupdatefavorite);
             Button delete = view.findViewById(R.id.btndeletefavorite);
 
