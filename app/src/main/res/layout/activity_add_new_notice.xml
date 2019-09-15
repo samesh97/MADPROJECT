@@ -35,7 +35,7 @@
         android:layout_marginEnd="32dp"
         android:background="@drawable/border"
         android:onClick="sendNotification"
-        android:text="Notify"
+        android:text="@string/add"
         android:textColor="@color/red"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
