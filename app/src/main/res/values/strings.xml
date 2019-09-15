@@ -71,6 +71,7 @@
     <string name="viewbooking">View Booking</string>
     <string name="notice">Notice</string>
     <string name="add">ADD</string>
+    <string name="enter_the_message">Enter the Message</string>
 
 
 </resources>
