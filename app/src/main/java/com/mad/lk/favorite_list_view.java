@@ -141,7 +141,8 @@ public class favorite_list_view extends AppCompatActivity {
                 @Override
                 public void onClick(View v)
                 {
-                    Toast.makeText(getApplicationContext(), "" + names.size(), Toast.LENGTH_SHORT).show();
+
+                   //  Toast.makeText(getApplicationContext(), "" + names.size(), Toast.LENGTH_LONG).show();
                     if(helper.deleteFavoriteFilm(ids.get(position).toString()))
                     {
                         try

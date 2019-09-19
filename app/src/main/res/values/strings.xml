@@ -72,6 +72,11 @@
     <string name="notice">Notice</string>
     <string name="add">ADD</string>
     <string name="enter_the_message">Enter the Message</string>
+<string name="updateid">ID</string>
+    <string name="updatebooking">Update Booking</string>
+    <string name="deletebooking">Delete Booking</string>
+
+    <string name="gotofavorite"> Go to your Favorites.....</string>
 
 
 </resources>
