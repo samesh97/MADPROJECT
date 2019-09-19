@@ -42,6 +42,7 @@ public class AdminMainInterface extends AppCompatActivity {
     ArrayList<Integer> seats = new ArrayList<>();
     ArrayList<Integer> ids = new ArrayList<>();
     ArrayList<Bitmap> images = new ArrayList<>();
+    TextView noFilmFoundText;
 
     private Handler handler = new Handler();
     private static final long Interval = 30;
@@ -88,6 +89,8 @@ public class AdminMainInterface extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_main_interface);
 
+        noFilmFoundText = (TextView) findViewById(R.id.noFilmFoundText);
+
         helper = new DatabaseHelper(getApplicationContext());
 
         helper.getAllFimsDetails();
@@ -103,8 +106,6 @@ public class AdminMainInterface extends AppCompatActivity {
                 {
                     startActivity(new Intent(getApplicationContext(),AddNewFilms.class));
                 }
-                if(menuItem.getItemId()==R.id.navigationFilmDetails)
-                    startActivity(new Intent(getApplicationContext(),film_details_maintain.class));
 
                 return false;
             }
@@ -138,6 +139,10 @@ public class AdminMainInterface extends AppCompatActivity {
         films = (ListView) findViewById(R.id.films);
         adapter = new Adapter();
         films.setAdapter(adapter);
+        if(names.size() > 0)
+        {
+            noFilmFoundText.setVisibility(View.GONE);
+        }
 
 
 

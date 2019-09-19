@@ -37,6 +37,13 @@ public class AdminNoticeScreen extends AppCompatActivity {
 
 
     @Override
+    public void onBackPressed()
+    {
+        startActivity(new Intent(getApplicationContext(),AdminMainInterface.class));
+        finish();
+        super.onBackPressed();
+    }
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_notice_screen);
