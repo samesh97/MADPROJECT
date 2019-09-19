@@ -34,6 +34,7 @@ public class AdminNoticeScreen extends AppCompatActivity {
     //public Dialog popup;
     static String updatingMessage = null;
     static String updatingId = null;
+    TextView isEmptyText;
 
 
     @Override
@@ -47,6 +48,8 @@ public class AdminNoticeScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_notice_screen);
+
+        isEmptyText = (TextView) findViewById(R.id.isEmptyText);
 
 
        // popup = new Dialog(this);
@@ -66,6 +69,11 @@ public class AdminNoticeScreen extends AppCompatActivity {
 
         noticeView = (ListView) findViewById(R.id.noticeView);
         noticeView.setAdapter(adapter);
+
+        if(messages.size() > 0)
+        {
+            isEmptyText.setVisibility(View.GONE);
+        }
     }
 
     public void AddNewNotice(View view)
@@ -98,7 +106,7 @@ public class AdminNoticeScreen extends AppCompatActivity {
         public View getView(final int position, View convertView, ViewGroup parent)
         {
             View view = getLayoutInflater().inflate(R.layout.noticerow,null);
-            TextView message = view.findViewById(R.id.message);
+            final TextView message = view.findViewById(R.id.message);
             final TextView id = view.findViewById(R.id.id);
             ImageView edit = view.findViewById(R.id.edit);
             ImageView delete = view.findViewById(R.id.delete);
@@ -124,6 +132,10 @@ public class AdminNoticeScreen extends AppCompatActivity {
                         messages.remove(position);
                         noticeView.invalidateViews();
                         Toast.makeText(AdminNoticeScreen.this, "Deleted", Toast.LENGTH_SHORT).show();
+                        if(messages.size() <= 0)
+                        {
+                            isEmptyText.setVisibility(View.VISIBLE);
+                        }
                     }
                     else
                     {

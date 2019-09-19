@@ -202,6 +202,11 @@ public class AdminMainInterface extends AppCompatActivity {
                         seats.remove(position);
                         films.invalidateViews();
                         Toast.makeText(AdminMainInterface.this, "Deleted", Toast.LENGTH_SHORT).show();
+
+                        if(names.size() <= 0)
+                        {
+                            noFilmFoundText.setVisibility(View.VISIBLE);
+                        }
                     }
                     else
                     {

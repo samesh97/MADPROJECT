@@ -123,9 +123,18 @@ public class SearchForTickets extends AppCompatActivity {
         Cursor data2 = helper.getUserData(uName);
         while (data2.moveToNext())
         {
-            byte[] image2 = data2.getBlob(2);
-            pic.setImageBitmap(helper.getImage(image2));
+            try
+            {
+                byte[] image2 = data2.getBlob(2);
+                pic.setImageBitmap(helper.getImage(image2));
+            }
+            catch (Exception w)
+            {
+
+            }
+
         }
+        data2.close();
 
         pic.setOnClickListener(new View.OnClickListener() {
             @Override
