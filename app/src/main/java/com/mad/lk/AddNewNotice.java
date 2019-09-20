@@ -14,6 +14,8 @@ public class AddNewNotice extends AppCompatActivity {
     String messageText;
     DatabaseHelper helper;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

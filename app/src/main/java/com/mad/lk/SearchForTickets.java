@@ -58,6 +58,7 @@ public class SearchForTickets extends AppCompatActivity {
     CircleImageView pic;
     private Handler handler = new Handler();
     private static final long Interval = 30;
+    TextView noFilmFoundText;
 
     int count = 255;
     boolean iszero = false;
@@ -109,6 +110,8 @@ public class SearchForTickets extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_for_tickets);
 
+        noFilmFoundText = (TextView) findViewById(R.id.noFilmFoundText);
+
 
 
         pic = (CircleImageView) findViewById(R.id.pic);
@@ -120,9 +123,18 @@ public class SearchForTickets extends AppCompatActivity {
         Cursor data2 = helper.getUserData(uName);
         while (data2.moveToNext())
         {
-            byte[] image2 = data2.getBlob(2);
-            pic.setImageBitmap(helper.getImage(image2));
+            try
+            {
+                byte[] image2 = data2.getBlob(2);
+                pic.setImageBitmap(helper.getImage(image2));
+            }
+            catch (Exception w)
+            {
+
+            }
+
         }
+        data2.close();
 
         pic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -222,6 +234,11 @@ public class SearchForTickets extends AppCompatActivity {
 
         Adapter adapter = new Adapter();
         filmSearchList.setAdapter(adapter);
+
+        if(names.size() > 0)
+        {
+            noFilmFoundText.setVisibility(View.GONE);
+        }
 
 
     }

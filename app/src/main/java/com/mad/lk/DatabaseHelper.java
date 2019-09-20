@@ -107,22 +107,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
     }
-    public boolean update(String username,String password)
+    public boolean updateUserData(String preUserName,String username,String password,String email,byte[] image)
     {
         SQLiteDatabase db = this.getWritableDatabase();
-
         ContentValues contentValues = new ContentValues();
-        contentValues.put("USERNAME", username);
-        contentValues.put("PASSWORD", password);
-
-
-        if(db.update(TABLE_NAME, contentValues, "USERNAME=?", new String[] {username}) == 0)
+        if(image == null)
         {
-            return false;
+            contentValues.put("USERNAME", username);
+            contentValues.put("PASSWORD", password);
+            contentValues.put("EMAIL", email);
         }
         else
         {
+            contentValues.put("USERNAME", username);
+            contentValues.put("PASSWORD", password);
+            contentValues.put("IMAGE", image);
+            contentValues.put("EMAIL", email);
+        }
+
+        if(db.update(TABLE_NAME, contentValues, "USERNAME=?", new String[] {preUserName}) > 0)
+        {
             return true;
+        }
+        else
+        {
+            return false;
         }
 
 
@@ -214,9 +223,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
     public byte[] getBytes(Bitmap bitmap)
     {
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 0, stream);
-        return stream.toByteArray();
+        if(bitmap != null)
+        {
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 0, stream);
+            return stream.toByteArray();
+        }
+        return  null;
+
     }
     public Bitmap getImage(byte[] image)
     {

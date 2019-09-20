@@ -16,12 +16,14 @@ import android.widget.Toast;
 
 import java.io.IOException;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class RegisterScreen extends AppCompatActivity {
 
     EditText username,email,password,confirmPassword;
     String userNameText,emailText,passwordText,confirmPasswordText;
     DatabaseHelper databaseClass;
-    ImageView profilePic;
+    CircleImageView profilePic;
 
     private static final int PICK_IMAGE_REQUEST = 234;
     Bitmap bitmap;
@@ -60,7 +62,7 @@ public class RegisterScreen extends AppCompatActivity {
         password = (EditText)findViewById(R.id.password);
         confirmPassword = (EditText) findViewById(R.id.confirmPassword);
 
-        profilePic = (ImageView) findViewById(R.id.profilePic);
+        profilePic = (CircleImageView) findViewById(R.id.profilePic);
         profilePic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
@@ -78,6 +80,7 @@ public class RegisterScreen extends AppCompatActivity {
     {
         Intent intent = new Intent(getApplicationContext(),LoginScreen.class);
         startActivity(intent);
+        finish();
     }
     public void RegisterUser(View view)
     {
