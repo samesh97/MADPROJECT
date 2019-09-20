@@ -17,11 +17,11 @@ public class bookTicket extends AppCompatActivity {
     DBHelper_Lali dbl;
 
 Spinner spinner;
-EditText seatqua,booking_ID;
+EditText seatqua;//,booking_ID;
 Button idbtnbooking;
-Button idbtnview;
-Button btnupdate;
-Button btnDelete;
+//Button idbtnview;
+//Button btnupdate;
+//Button btnDelete;
 Intent intent;
 int numberOfSeats;
     @Override
@@ -35,19 +35,19 @@ int numberOfSeats;
         dbl = new DBHelper_Lali(this);
 
         seatqua = (EditText)findViewById(R.id.seatqua);
-        booking_ID = (EditText)findViewById(R.id.booking_ID);
+        //booking_ID = (EditText)findViewById(R.id.booking_ID);
         spinner = (Spinner)findViewById(R.id.spinner);
         idbtnbooking = (Button)findViewById((R.id.idbtnbooking));
-        idbtnview = (Button)findViewById(R.id.idbtnview);
-        btnupdate = (Button)findViewById(R.id.btnupdate);
-        btnDelete = (Button)findViewById(R.id.btndelete);
+        //idbtnview = (Button)findViewById(R.id.idbtnview);
+        //btnupdate = (Button)findViewById(R.id.btnupdate);
+        //btnDelete = (Button)findViewById(R.id.btndelete);
 
         insertbooking();
-        viewbooking();
-        updatebooking();
-        deletebooking();
+        //viewbooking();
+        //updatebooking();
+        //deletebooking();
     }
-
+/*
     public void deletebooking(){
         btnDelete.setOnClickListener(
                 new View.OnClickListener() {
@@ -64,8 +64,8 @@ int numberOfSeats;
                     }
                 }
         );
-    }
-
+    }*/
+/*
     public void updatebooking(){
         btnupdate.setOnClickListener(
                 new View.OnClickListener() {
@@ -85,7 +85,7 @@ int numberOfSeats;
                     }
                 }
         );
-    }
+    }*/
 
     public void insertbooking()
     {
@@ -109,7 +109,7 @@ int numberOfSeats;
                 }
         );
     }
-
+/*
     public void viewbooking(){
         idbtnview.setOnClickListener(
                 new View.OnClickListener() {
@@ -132,7 +132,7 @@ int numberOfSeats;
                     }
                 }
         );
-    }
+    }*/
 
     public void showMassage(String title,String massage){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

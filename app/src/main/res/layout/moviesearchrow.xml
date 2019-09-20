@@ -80,6 +80,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="2dp"
                     android:text="@string/filmName"
+                    android:textStyle="normal|bold"
                     app:layout_constraintBottom_toTopOf="@+id/filmRatings"
                     app:layout_constraintStart_toEndOf="@+id/filmPoster"
                     app:layout_constraintTop_toTopOf="parent" />
