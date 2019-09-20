@@ -15,24 +15,31 @@ import android.widget.Toast;
 public class bookTicket extends AppCompatActivity {
 
     DBHelper_Lali dbl;
+    Spinner spinner;
+    EditText seatqua;//,booking_ID;
+    Button idbtnbooking;
+    //Button idbtnview;
+    //Button btnupdate;
+    //Button btnDelete;
+    Intent intent;
+    int numberOfSeats;
+    String filmName,time,date;
 
-Spinner spinner;
-EditText seatqua;//,booking_ID;
-Button idbtnbooking;
-//Button idbtnview;
-//Button btnupdate;
-//Button btnDelete;
-Intent intent;
-int numberOfSeats;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_book_ticket);
 
         intent = getIntent();
         numberOfSeats = intent.getIntExtra("SEATS",0);
+        filmName = intent.getStringExtra("NAME");
+        time = intent.getStringExtra("TIME");
+        date = intent.getStringExtra("DATE");
 
-        setContentView(R.layout.activity_book_ticket);
-        dbl = new DBHelper_Lali(this);
+
+
+        dbl = new DBHelper_Lali(getApplicationContext());
 
         seatqua = (EditText)findViewById(R.id.seatqua);
         //booking_ID = (EditText)findViewById(R.id.booking_ID);
@@ -42,10 +49,36 @@ int numberOfSeats;
         //btnupdate = (Button)findViewById(R.id.btnupdate);
         //btnDelete = (Button)findViewById(R.id.btndelete);
 
-        insertbooking();
+
         //viewbooking();
         //updatebooking();
         //deletebooking();
+
+
+        idbtnbooking.setOnClickListener(new View.OnClickListener()
+         {
+             @Override
+             public void onClick(View view)
+             {
+
+                 if(seatqua.getText().toString().equals(""))
+                 {
+                     Toast.makeText(bookTicket.this, "Enter number of seats", Toast.LENGTH_SHORT).show();
+                     return;
+                 }
+                 boolean IsInserted = dbl.insertbooking(filmName,Integer.parseInt(seatqua.getText().toString()),spinner.getSelectedItem().toString(),time,date);
+                 if(IsInserted)
+                 {
+                     Toast.makeText(bookTicket.this,"Booking Confirmed",Toast.LENGTH_LONG).show();
+                 }
+                 else
+                 {
+                     Toast.makeText(bookTicket.this,"Booking not Confirmed",Toast.LENGTH_LONG).show();
+                 }
+
+             }
+         }
+        );
     }
 /*
     public void deletebooking(){
@@ -87,28 +120,9 @@ int numberOfSeats;
         );
     }*/
 
-    public void insertbooking()
-    {
-        idbtnbooking.setOnClickListener(
-                new View.OnClickListener()
-                {
-                    @Override
-                    public void onClick(View view)
-                    {
-                        boolean IsInserted = dbl.insertbooking(Integer.parseInt(seatqua.getText().toString()),spinner.getSelectedItem().toString());
-                        if(IsInserted)
-                        {
-                            Toast.makeText(bookTicket.this,"Booking Confirmed",Toast.LENGTH_LONG).show();
-                        }
-                         else
-                        {
-                            Toast.makeText(bookTicket.this,"Booking not Confirmed",Toast.LENGTH_LONG).show();
-                        }
 
-                    }
-                }
-        );
-    }
+
+
 /*
     public void viewbooking(){
         idbtnview.setOnClickListener(

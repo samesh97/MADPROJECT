@@ -14,9 +14,12 @@ public class DBHelper_Lali extends SQLiteOpenHelper {
 
     public static final String DATABSE_NAME = "booking.db";
     public static final String TABLE_NAME = "booking";
-    public static final String COL_1 = "booking_ID";
-    public static final String COL_2 = "seatqua";
-    public static final String COL_3 = "spinner";
+    public static final String COL_1 = "ID";
+    public static final String COL_2 = "FILMNAME";
+    public static final String COL_3 = "SEATCOUNT";
+    public static final String COL_4 = "TYPE";
+    public static final String COL_5 = "TIME";
+    public static final String COL_6 = "DATE";
 
     public DBHelper_Lali(Context context) {
         super(context, DATABSE_NAME,null,1);
@@ -24,7 +27,7 @@ public class DBHelper_Lali extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE " + TABLE_NAME + "(ID String PRIMARY KEY AUTOINCREMENT,seatqua int NOT NULL,spinner TEXT NOT NULL) " );
+        db.execSQL("CREATE TABLE " + TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT,FILMNAME TEXT NOT NULL,SEATCOUNT int NOT NULL,TYPE TEXT NOT NULL,TIME TEXT NOT NULL,DATE TEXT NOT NULL) " );
     }
 
     @Override
@@ -33,18 +36,26 @@ public class DBHelper_Lali extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertbooking(int seatqua,String spinner)
+    public boolean insertbooking(String filmname,int seats,String type,String time,String date)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL_2,seatqua);
-        contentValues.put(COL_3,spinner);
+        contentValues.put(COL_2,filmname);
+        contentValues.put(COL_3,seats);
+        contentValues.put(COL_4,type);
+        contentValues.put(COL_5,time);
+        contentValues.put(COL_6,date);
+
         long result=db.insert(TABLE_NAME,null,contentValues);
 
-        if(result==-1)
+        if(result <= 0) {
             return false;
+        }
         else
+        {
             return true;
+        }
+
     }
 
     public Cursor getAllbooking(){
