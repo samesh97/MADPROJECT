@@ -22,130 +22,133 @@
 
         <ImageView
             android:id="@+id/favoriteimage"
-            android:layout_width="105dp"
-            android:layout_height="166dp"
+            android:layout_width="107dp"
+            android:layout_height="126dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="64dp"
             android:layout_marginEnd="8dp"
             android:src="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.028"
+            app:layout_constraintHorizontal_bias="0.027"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/favoritefilmname"
-            android:layout_width="wrap_content"
+            android:layout_width="184dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:text="Film Name"
+            android:textSize="24sp"
+            android:textStyle="normal|bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintHorizontal_bias="0.045"
             app:layout_constraintStart_toEndOf="@+id/favoriteimage"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/favoritnote" />
 
         <TextView
             android:id="@+id/favoriterank"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="160dp"
+            android:layout_height="29dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:text="Rank"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.07"
+            app:layout_constraintHorizontal_bias="0.026"
             app:layout_constraintStart_toEndOf="@+id/favoriteimage"
             app:layout_constraintTop_toBottomOf="@+id/favoritefilmname" />
 
         <TextView
             android:id="@+id/favoritdate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="177dp"
+            android:layout_height="26dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="12dp"
             android:layout_marginEnd="8dp"
             android:text="Date"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.07"
+            app:layout_constraintHorizontal_bias="0.041"
             app:layout_constraintStart_toEndOf="@+id/favoriteimage"
             app:layout_constraintTop_toBottomOf="@+id/favoriterank" />
 
         <TextView
             android:id="@+id/favorittime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="184dp"
+            android:layout_height="25dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="12dp"
-            android:text="Time"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
+            android:text="Time"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.07"
+            app:layout_constraintHorizontal_bias="0.048"
             app:layout_constraintStart_toEndOf="@+id/favoriteimage"
             app:layout_constraintTop_toBottomOf="@+id/favoritdate" />
 
         <TextView
             android:id="@+id/favoriteseat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="198dp"
+            android:layout_height="29dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:text="Seats"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.068"
+            app:layout_constraintHorizontal_bias="0.04"
             app:layout_constraintStart_toEndOf="@+id/favoriteimage"
             app:layout_constraintTop_toBottomOf="@+id/favorittime" />
 
         <TextView
             android:id="@+id/favoritnote"
-            android:layout_width="343dp"
-            android:layout_height="23dp"
+            android:layout_width="324dp"
+            android:layout_height="30dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
             android:text="Note"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="18sp"
+            android:textStyle="normal|bold|italic"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.461"
+            app:layout_constraintHorizontal_bias="0.114"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/favoritdesc"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/favoritdesc"
-            android:layout_width="342dp"
-            android:layout_height="21dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_width="316dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
             android:text="Description"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.245"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/favoriteseat"
-            app:layout_constraintVertical_bias="0.17" />
+            app:layout_constraintVertical_bias="0.0" />
 
         <Button
             android:id="@+id/btndeletefavorite"
-            android:layout_width="32dp"
-            android:layout_height="33dp"
-            android:layout_marginTop="108dp"
+            android:layout_width="40dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="164dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/delete"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintHorizontal_bias="0.964"
+            app:layout_constraintStart_toEndOf="@+id/favoritdesc"
+            app:layout_constraintTop_toBottomOf="@+id/btnupdatefavorite" />
 
         <Button
             android:id="@+id/btnupdatefavorite"
-            android:layout_width="32dp"
-            android:layout_height="33dp"
-            android:layout_marginTop="28dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/bluecolor"
+            android:layout_width="42dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/editfavarite2"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.929"
+            app:layout_constraintStart_toEndOf="@+id/favoritnote"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -126,7 +126,7 @@ public class favorite_list_view extends AppCompatActivity {
             Button update =view.findViewById(R.id.btnupdatefavorite);
             Button delete = view.findViewById(R.id.btndeletefavorite);
 
-            filmName.setText("Film Name : " +names.get(position));
+            filmName.setText(names.get(position));
             filmRatings.setText("Rankings : " +rankings.get(position));
             filmShowingDate.setText("Showing Date : "+dates.get(position));
             filmShowingTime.setText("Showing Time : "+times.get(position));
@@ -179,7 +179,10 @@ public class favorite_list_view extends AppCompatActivity {
                 public void onClick(View v) {
                    Toast.makeText(favorite_list_view.this,"Update your note here",Toast.LENGTH_LONG).show();
                     Intent intent=new Intent(favorite_list_view.this,FavUpdateNote.class);
+                    intent.putExtra("ID",ids.get(position));
                    startActivity(intent);
+
+
               /* String noteText = notes.getText().toString();
 
                    if(!notef.equals(""))

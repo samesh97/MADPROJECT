@@ -121,13 +121,14 @@ public class FavoriteDatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public boolean updateFavorite(String notes){
+    public boolean updateFavorite(String notes,String id){
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("NOTES", notes);
 
-        if(db.update(TABLE_NAME, contentValues, "ID=?", new String[] {notes}) == 0)
+        long res = db.update(TABLE_NAME,contentValues,"ID = ?",new String[]{id});
+        if(res <= -1)
         {
             return false;
         }
