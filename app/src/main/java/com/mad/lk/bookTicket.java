@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,6 +25,9 @@ public class bookTicket extends AppCompatActivity {
     Intent intent;
     int numberOfSeats;
     String filmName,time,date;
+    int id;
+    DatabaseHelper helper;
+    byte[] image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -31,11 +35,21 @@ public class bookTicket extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_ticket);
 
+        helper = new DatabaseHelper(bookTicket.this);
+
+
         intent = getIntent();
         numberOfSeats = intent.getIntExtra("SEATS",0);
         filmName = intent.getStringExtra("NAME");
         time = intent.getStringExtra("TIME");
         date = intent.getStringExtra("DATE");
+        id = intent.getIntExtra("ID",0);
+
+        Cursor cursor = helper.getFilmData(String.valueOf(id));
+        while (cursor.moveToNext())
+        {
+            image = cursor.getBlob(1);
+        }
 
 
 
@@ -66,7 +80,7 @@ public class bookTicket extends AppCompatActivity {
                      Toast.makeText(bookTicket.this, "Enter number of seats", Toast.LENGTH_SHORT).show();
                      return;
                  }
-                 boolean IsInserted = dbl.insertbooking(filmName,Integer.parseInt(seatqua.getText().toString()),spinner.getSelectedItem().toString(),time,date);
+                 boolean IsInserted = dbl.insertbooking(filmName,Integer.parseInt(seatqua.getText().toString()),spinner.getSelectedItem().toString(),time,date,image,id);
                  if(IsInserted)
                  {
                      Toast.makeText(bookTicket.this,"Booking Confirmed",Toast.LENGTH_LONG).show();

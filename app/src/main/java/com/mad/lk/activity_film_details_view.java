@@ -49,6 +49,7 @@ public class activity_film_details_view extends AppCompatActivity {
     {
 
         Intent intent2 = new Intent(getApplicationContext(),bookTicket.class);
+        intent2.putExtra("ID",intent.getIntExtra("ID",0));
         intent2.putExtra("NAME",intent.getStringExtra("NAME"));
         intent2.putExtra("DATE",intent.getStringExtra("DATE"));
         intent2.putExtra("TIME",intent.getStringExtra("TIME"));
