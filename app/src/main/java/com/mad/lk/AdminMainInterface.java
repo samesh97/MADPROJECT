@@ -130,10 +130,8 @@ public class AdminMainInterface extends AppCompatActivity {
             ids.add(IDS);
             images.add(helper.getImage(image));
 
-
-
-
         }
+
 
 
         films = (ListView) findViewById(R.id.films);

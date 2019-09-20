@@ -118,7 +118,8 @@ public class RegisterScreen extends AppCompatActivity {
         }
         else
         {
-           if(databaseClass.insertData(userNameText,emailText,passwordText,databaseClass.getBytes(bitmap)))
+            Bitmap resizedImage = getResizedBitmap(bitmap,100);
+           if(databaseClass.insertData(userNameText,emailText,passwordText,databaseClass.getBytes(resizedImage)))
            {
                Toast.makeText(this, "Succefully Registered!", Toast.LENGTH_SHORT).show();
                Intent intent = new Intent(getApplicationContext(),LoginScreen.class);
@@ -137,9 +138,28 @@ public class RegisterScreen extends AppCompatActivity {
                 new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                 PICK_IMAGE_REQUEST);
 
+        ActivityCompat.requestPermissions(RegisterScreen.this,
+                new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                2);
+
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+    }
+    public Bitmap getResizedBitmap(Bitmap image, int maxSize)
+    {
+        int width = image.getWidth();
+        int height = image.getHeight();
+
+        float bitmapRatio = (float)width / (float) height;
+        if (bitmapRatio > 1) {
+            width = maxSize;
+            height = (int) (width / bitmapRatio);
+        } else {
+            height = maxSize;
+            width = (int) (height * bitmapRatio);
+        }
+        return Bitmap.createScaledBitmap(image, width, height, true);
     }
 }

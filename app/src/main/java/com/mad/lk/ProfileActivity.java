@@ -115,8 +115,8 @@ public class ProfileActivity extends AppCompatActivity {
                     }
                     else
                     {
-
-                        if(helper.updateUserData(sessionUserName,updateUsernameText,updatePasswordText,updateEmailText,helper.getBytes(bitmap)))
+                        Bitmap resizedImage = getResizedBitmap(bitmap,200);
+                        if(helper.updateUserData(sessionUserName,updateUsernameText,updatePasswordText,updateEmailText,helper.getBytes(resizedImage)))
                         {
                             sessionUserName = updateUsernameText;
                             SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -175,6 +175,21 @@ public class ProfileActivity extends AppCompatActivity {
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+    }
+    public Bitmap getResizedBitmap(Bitmap image, int maxSize)
+    {
+        int width = image.getWidth();
+        int height = image.getHeight();
+
+        float bitmapRatio = (float)width / (float) height;
+        if (bitmapRatio > 1) {
+            width = maxSize;
+            height = (int) (width / bitmapRatio);
+        } else {
+            height = maxSize;
+            width = (int) (height * bitmapRatio);
+        }
+        return Bitmap.createScaledBitmap(image, width, height, true);
     }
 
 }

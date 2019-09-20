@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient2"
+    android:scrollbars="none"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/gradient2">
-
-
+    android:layout_height="wrap_content"
+    android:paddingBottom="50dp">
 
 
     <TextView
@@ -30,6 +34,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:text="TextView"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Ratings" />
 
@@ -40,20 +45,23 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:text="TextView"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Time" />
 
     <TextView
         android:id="@+id/Description"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
         android:text="TextView"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Time" />
+        app:layout_constraintTop_toBottomOf="@+id/Seats" />
 
     <TextView
         android:id="@+id/Time"
@@ -62,6 +70,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:text="TextView"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Date" />
 
@@ -72,6 +81,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="40dp"
         android:text="TextView"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/filmName" />
 
@@ -102,4 +112,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Description" />
 </androidx.constraintlayout.widget.ConstraintLayout>
-
+</ScrollView>

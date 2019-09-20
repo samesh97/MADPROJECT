@@ -92,8 +92,8 @@ public class AddNewFilms extends AppCompatActivity {
             return;
         }
 
-
-        if(helper.insertAFilm(nameText,descriptionText,rankText,dateText,timeText,Integer.parseInt(seatsText),helper.getBytes(bitmap)))
+        Bitmap resizedImage = getResizedBitmap(bitmap,200);
+        if(helper.insertAFilm(nameText,descriptionText,rankText,dateText,timeText,Integer.parseInt(seatsText),helper.getBytes(resizedImage)))
         {
             Toast.makeText(this, "Added successfully!", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(getApplicationContext(),AdminMainInterface.class));
@@ -116,6 +116,21 @@ public class AddNewFilms extends AppCompatActivity {
             intent.setAction(Intent.ACTION_GET_CONTENT);
             startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
         }
+    public Bitmap getResizedBitmap(Bitmap image, int maxSize)
+    {
+        int width = image.getWidth();
+        int height = image.getHeight();
+
+        float bitmapRatio = (float)width / (float) height;
+        if (bitmapRatio > 1) {
+            width = maxSize;
+            height = (int) (width / bitmapRatio);
+        } else {
+            height = maxSize;
+            width = (int) (height * bitmapRatio);
+        }
+        return Bitmap.createScaledBitmap(image, width, height, true);
+    }
 
 
 }

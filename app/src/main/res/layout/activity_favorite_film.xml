@@ -100,8 +100,8 @@
 
         <TextView
             android:id="@+id/favoritnote"
-            android:layout_width="324dp"
-            android:layout_height="30dp"
+            android:layout_width="316dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:text="Note"
@@ -115,7 +115,7 @@
         <TextView
             android:id="@+id/favoritdesc"
             android:layout_width="316dp"
-            android:layout_height="28dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
@@ -128,7 +128,7 @@
         <Button
             android:id="@+id/btndeletefavorite"
             android:layout_width="40dp"
-            android:layout_height="35dp"
+            android:layout_height="40dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="164dp"
             android:layout_marginEnd="16dp"
@@ -140,8 +140,8 @@
 
         <Button
             android:id="@+id/btnupdatefavorite"
-            android:layout_width="42dp"
-            android:layout_height="34dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="12dp"
