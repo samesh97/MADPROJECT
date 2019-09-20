@@ -7,9 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -51,7 +55,6 @@ public class Transactions extends AppCompatActivity
         }
 
         adapter = new Adapter();
-
         transactionListView = (ListView) findViewById(R.id.transactionListView);
         transactionListView.setAdapter(adapter);
 
@@ -80,7 +83,22 @@ public class Transactions extends AppCompatActivity
         @Override
         public View getView(int position, View convertView, ViewGroup parent)
         {
-            return null;
+            View view = getLayoutInflater().inflate(R.layout.transactionrow,null);
+            ImageView poster = view.findViewById(R.id.filmPoster);
+            TextView filmName = view.findViewById(R.id.filmName);
+            TextView ticketType = view.findViewById(R.id.ticketType);
+            TextView filmShowingDate = view.findViewById(R.id.filmShowingDate);
+            TextView filmShowingTime = view.findViewById(R.id.filmShowingTime);
+            TextView reservedSeats = view.findViewById(R.id.reservedSeats);
+
+            poster.setImageBitmap(images.get(position));
+            filmName.setText(names.get(position));
+            ticketType.setText(types.get(position));
+            filmShowingDate.setText(dates.get(position));
+            filmShowingTime.setText(times.get(position));
+            reservedSeats.setText(seats.get(position));
+
+            return view;
         }
     }
 
