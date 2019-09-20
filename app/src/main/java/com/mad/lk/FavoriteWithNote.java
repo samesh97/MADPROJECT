@@ -61,10 +61,7 @@ DatabaseHelper helper;
             public void onClick(View v)
             {
 
-
-
                 filmnamef = intent.getStringExtra("NAME");
-
 
                 descriptionf = intent.getStringExtra("DESCRIPTION");
                 rankf = intent.getStringExtra("RANKINGS");
@@ -80,15 +77,28 @@ DatabaseHelper helper;
                 }
 
                 notef = idNote.getText().toString();
+                if(notef.equals("") || notef == null)
+                {
+                    Toast.makeText(FavoriteWithNote.this, "Enter a note first", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 if(fhelper.addfavorites(idf,filmnamef,descriptionf,rankf,datef,timef,seatsf,image2,notef))
                 {
-                    Toast.makeText(FavoriteWithNote.this,"Success",Toast.LENGTH_LONG).show();
+                    Toast.makeText(FavoriteWithNote.this,"Added to Favourites",Toast.LENGTH_LONG).show();
                     startActivity(new Intent(getApplicationContext(),favorite_list_view.class));
-                    //finish();
+                    finish();
                 }
                 else
                 {
-                    Toast.makeText(FavoriteWithNote.this,"error",Toast.LENGTH_LONG).show();
+                    if(fhelper.isFilmAlreadyExistInFavourites(String.valueOf(idf)))
+                    {
+                        Toast.makeText(FavoriteWithNote.this, "This Film is already exist in the Favourites, You can edit or delete it from there", Toast.LENGTH_LONG).show();
+                    }
+                    else
+                    {
+                        Toast.makeText(FavoriteWithNote.this,"Could not add to database",Toast.LENGTH_LONG).show();
+                    }
+
                 }
 
 

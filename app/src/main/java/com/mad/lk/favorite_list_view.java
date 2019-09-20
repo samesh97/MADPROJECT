@@ -45,6 +45,13 @@ public class favorite_list_view extends AppCompatActivity {
     ArrayList<String> notes = new ArrayList<>();
 
 
+    @Override
+    public void onBackPressed()
+    {
+        startActivity(new Intent(getApplicationContext(),SearchForTickets.class));
+        finish();
+        super.onBackPressed();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,7 +139,7 @@ public class favorite_list_view extends AppCompatActivity {
             filmShowingTime.setText("Showing Time : "+times.get(position));
             availableSeats.setText("Available Seats : " + seats.get(position));
             filmDescription.setText("Description : " +description.get(position));
-            filmnote.setText("Notes : "+notes.get(position));
+            filmnote.setText("Note : "+notes.get(position));
 
             filmPoster.setImageBitmap(images.get(position));
 

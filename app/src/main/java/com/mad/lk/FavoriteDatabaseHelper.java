@@ -137,6 +137,20 @@ public class FavoriteDatabaseHelper extends SQLiteOpenHelper {
             return true;
         }
     }
+    public boolean isFilmAlreadyExistInFavourites(String id)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE ID = " + id, null);
+        if(cursor.getCount() <= 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
 
 
 }
