@@ -91,6 +91,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME,null);
         return cursor;
     }
+    public boolean updateSeatCount(String id,int seats)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("SEATS", seats);
+        if(db.update(FILM_TABLE_NAME, contentValues, "ID=?", new String[] {id}) > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     public boolean isUserNameExist(String name)
     {
         SQLiteDatabase db = this.getWritableDatabase();

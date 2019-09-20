@@ -78,13 +78,22 @@ public class DBHelper_Lali extends SQLiteOpenHelper {
         contentValues.put(COL_1,booking_ID);
         contentValues.put(COL_2,seatqua);
         contentValues.put(COL_3,spinner);
-        db.update(TABLE_NAME,contentValues, "booking_ID = ?",new String[]{booking_ID});
+        db.update(TABLE_NAME,contentValues, "ID = ?",new String[]{booking_ID});
         return true;
     }
 
-    public Integer deletebooking(String booking_ID){
+    public boolean deletebooking(String booking_ID)
+    {
         SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete(TABLE_NAME,"booking_ID = ?",new String[] {booking_ID});
+       long res =  db.delete(TABLE_NAME,"ID = ?",new String[] {booking_ID});
+       if(res <= 0)
+       {
+           return false;
+       }
+       else
+       {
+           return true;
+       }
     }
     public byte[] getBytes(Bitmap bitmap)
     {
@@ -100,6 +109,19 @@ public class DBHelper_Lali extends SQLiteOpenHelper {
     public Bitmap getImage(byte[] image)
     {
         return BitmapFactory.decodeByteArray(image, 0, image.length);
+    }
+    public boolean isTranscationAlreadyExist(String id)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE ID = " + id, null);
+        if(cursor.getCount() <= 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
 }

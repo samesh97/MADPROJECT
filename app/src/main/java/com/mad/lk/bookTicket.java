@@ -74,20 +74,41 @@ public class bookTicket extends AppCompatActivity {
              @Override
              public void onClick(View view)
              {
-
+                 if(numberOfSeats <= 0)
+                 {
+                     Toast.makeText(bookTicket.this, "All the seats are already Reserverd", Toast.LENGTH_SHORT).show();
+                     return;
+                 }
                  if(seatqua.getText().toString().equals(""))
                  {
                      Toast.makeText(bookTicket.this, "Enter number of seats", Toast.LENGTH_SHORT).show();
                      return;
                  }
+                 if((numberOfSeats - (Integer.parseInt(seatqua.getText().toString()))) <= 0)
+                 {
+                     Toast.makeText(bookTicket.this, "You cannot reserve this amount of tickets right now because the amount you entered is larger than the available tickets", Toast.LENGTH_LONG).show();
+                     return;
+                 }
                  boolean IsInserted = dbl.insertbooking(filmName,Integer.parseInt(seatqua.getText().toString()),spinner.getSelectedItem().toString(),time,date,image,id);
                  if(IsInserted)
                  {
-                     Toast.makeText(bookTicket.this,"Booking Confirmed",Toast.LENGTH_LONG).show();
+                     if(helper.updateSeatCount(String.valueOf(id),numberOfSeats - (Integer.parseInt(seatqua.getText().toString()))))
+                     {
+                         Toast.makeText(bookTicket.this,"Booking Confirmed",Toast.LENGTH_LONG).show();
+                     }
+
                  }
                  else
                  {
-                     Toast.makeText(bookTicket.this,"Booking not Confirmed",Toast.LENGTH_LONG).show();
+                     if(dbl.isTranscationAlreadyExist(String.valueOf(id)))
+                     {
+                         Toast.makeText(bookTicket.this, "You have already booked few tickets for this film, You can edit or delete it in  transaction page", Toast.LENGTH_LONG).show();
+                     }
+                     else
+                     {
+                         Toast.makeText(bookTicket.this,"Could not add to database",Toast.LENGTH_LONG).show();
+                     }
+
                  }
 
              }

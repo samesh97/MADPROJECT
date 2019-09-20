@@ -3,6 +3,7 @@ package com.mad.lk;
 
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -81,22 +83,46 @@ public class Transactions extends AppCompatActivity
         }
 
         @Override
-        public View getView(int position, View convertView, ViewGroup parent)
+        public View getView(final int position, View convertView, ViewGroup parent)
         {
             View view = getLayoutInflater().inflate(R.layout.transactionrow,null);
             ImageView poster = view.findViewById(R.id.filmPoster);
-            TextView filmName = view.findViewById(R.id.filmName);
+            ImageView delete = view.findViewById(R.id.delete);
+            final TextView filmName = view.findViewById(R.id.filmName);
             TextView ticketType = view.findViewById(R.id.ticketType);
             TextView filmShowingDate = view.findViewById(R.id.filmShowingDate);
             TextView filmShowingTime = view.findViewById(R.id.filmShowingTime);
             TextView reservedSeats = view.findViewById(R.id.reservedSeats);
 
             poster.setImageBitmap(images.get(position));
-            filmName.setText(names.get(position));
-            ticketType.setText(types.get(position));
-            filmShowingDate.setText(dates.get(position));
-            filmShowingTime.setText(times.get(position));
-            reservedSeats.setText(seats.get(position));
+            filmName.setText("Film Name : " + names.get(position));
+            ticketType.setText("Ticket Type : " + types.get(position));
+            filmShowingDate.setText("Shwoing Date :" + dates.get(position));
+            filmShowingTime.setText("Showing Time" + times.get(position));
+            reservedSeats.setText("Reserved Seats : " + seats.get(position));
+
+            delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v)
+                {
+                    if(helper.deletebooking(String.valueOf(ids.get(position))))
+                    {
+
+                        names.remove(position);
+                        images.remove(position);
+                        ids.remove(position);
+                        dates.remove(position);
+                        times.remove(position);
+                        seats.remove(position);
+                        types.remove(position);
+                        Toast.makeText(Transactions.this, "Deleted", Toast.LENGTH_SHORT).show();
+                        transactionListView.invalidateViews();
+
+
+                    }
+
+                }
+            });
 
             return view;
         }

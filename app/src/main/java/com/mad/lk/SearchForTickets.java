@@ -172,6 +172,7 @@ public class SearchForTickets extends AppCompatActivity {
                 {
                     bottomNavigation.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.navigation_gradient));
                     filmSearchList.invalidateViews();
+                    startActivity(new Intent(getApplicationContext(),Transactions.class));
                 }
                 return false;
             }
