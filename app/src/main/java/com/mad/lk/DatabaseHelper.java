@@ -162,6 +162,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("SELECT * FROM " + FILM_TABLE_NAME +" WHERE ID = '" + id + "'",null);
         return cursor;
     }
+    public int getTicketCount(String id)
+    {
+        Cursor cursor = getFilmData(id);
+        while (cursor.moveToNext())
+        {
+            return cursor.getInt(7);
+        }
+        return 0;
+
+    }
     public Cursor getAllFimsDetails()
     {
         SQLiteDatabase db = this.getWritableDatabase();

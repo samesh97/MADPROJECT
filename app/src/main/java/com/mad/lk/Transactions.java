@@ -1,6 +1,7 @@
 package com.mad.lk;
 
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.media.Image;
@@ -27,12 +28,23 @@ public class Transactions extends AppCompatActivity
     ArrayList<Integer> ids,seats;
     ArrayList<String> names,dates,times,types;
     ArrayList<Bitmap> images;
+    DatabaseHelper dbhelper;
+
+    @Override
+    public void onBackPressed()
+    {
+        startActivity(new Intent(getApplicationContext(),SearchForTickets.class));
+        finish();
+        super.onBackPressed();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transactions);
+
+        dbhelper = new DatabaseHelper(getApplicationContext());
 
         ids = new ArrayList<>();
         seats = new ArrayList<>();
@@ -107,16 +119,18 @@ public class Transactions extends AppCompatActivity
                 {
                     if(helper.deletebooking(String.valueOf(ids.get(position))))
                     {
-
-                        names.remove(position);
-                        images.remove(position);
-                        ids.remove(position);
-                        dates.remove(position);
-                        times.remove(position);
-                        seats.remove(position);
-                        types.remove(position);
-                        Toast.makeText(Transactions.this, "Deleted", Toast.LENGTH_SHORT).show();
-                        transactionListView.invalidateViews();
+                        if(dbhelper.updateSeatCount(String.valueOf(ids.get(position)),seats.get(position) + dbhelper.getTicketCount(String.valueOf(ids.get(position)))))
+                        {
+                            names.remove(position);
+                            images.remove(position);
+                            ids.remove(position);
+                            dates.remove(position);
+                            times.remove(position);
+                            seats.remove(position);
+                            types.remove(position);
+                            Toast.makeText(Transactions.this, "Deleted", Toast.LENGTH_SHORT).show();
+                            transactionListView.invalidateViews();
+                        }
 
 
                     }

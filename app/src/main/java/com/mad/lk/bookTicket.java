@@ -84,7 +84,7 @@ public class bookTicket extends AppCompatActivity {
                      Toast.makeText(bookTicket.this, "Enter number of seats", Toast.LENGTH_SHORT).show();
                      return;
                  }
-                 if((numberOfSeats - (Integer.parseInt(seatqua.getText().toString()))) <= 0)
+                 if((numberOfSeats - (Integer.parseInt(seatqua.getText().toString()))) < 0)
                  {
                      Toast.makeText(bookTicket.this, "You cannot reserve this amount of tickets right now because the amount you entered is larger than the available tickets", Toast.LENGTH_LONG).show();
                      return;
@@ -95,6 +95,8 @@ public class bookTicket extends AppCompatActivity {
                      if(helper.updateSeatCount(String.valueOf(id),numberOfSeats - (Integer.parseInt(seatqua.getText().toString()))))
                      {
                          Toast.makeText(bookTicket.this,"Booking Confirmed",Toast.LENGTH_LONG).show();
+                         startActivity(new Intent(getApplicationContext(),SearchForTickets.class));
+                         finish();
                      }
 
                  }
