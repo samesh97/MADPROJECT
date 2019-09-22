@@ -40,7 +40,7 @@ public class AddNewNotice extends AppCompatActivity {
             boolean success = helper.insertNotice(messageText);
             if(success)
             {
-                Toast.makeText(this, "Notification was sent", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Notification was inserted", Toast.LENGTH_SHORT).show();
                 Intent intent =  new Intent(AddNewNotice.this,AdminNoticeScreen.class);
                 startActivity(intent);
                 finish();
