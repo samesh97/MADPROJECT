@@ -32,7 +32,7 @@ public class AddNewNotice extends AppCompatActivity {
         messageText = message.getText().toString();
         if(messageText.equals(""))
         {
-            Toast.makeText(this, "Enter a message first", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please enter the message", Toast.LENGTH_SHORT).show();
             return;
         }
         else
