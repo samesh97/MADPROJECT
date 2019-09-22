@@ -47,7 +47,7 @@ public class AddNewNotice extends AppCompatActivity {
             }
             else
             {
-                Toast.makeText(this, "Failed to send", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Failed to insert", Toast.LENGTH_SHORT).show();
             }
         }
     }
