@@ -19,20 +19,18 @@ import android.widget.Toast;
 public class FavoriteWithNote extends AppCompatActivity {
 
 TextView notes;
-
 FavoriteDatabaseHelper fhelper;
 Button add;
 //DatabaseHelper db;
-String filmnamef = "aaa",descriptionf="bbb",notef="ccc",rankf="ddd",datef="eee",timef="ff";
+String filmnamef = "aaa",descriptionf="bbb",notef="ccc",rankf="ddd",datef="eee",timef="ff",usernamef="Tharasha";
 int idf;
 int seatsf;
 Bitmap imagef;
 Intent intent;
 EditText idNote;
+
 DatabaseHelper helper;
     byte[] image2;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,47 +40,52 @@ DatabaseHelper helper;
         helper = new DatabaseHelper(getApplicationContext());
         fhelper = new FavoriteDatabaseHelper(getApplicationContext());
 
-
         intent = getIntent();
 
-
-
         notes = (TextView) findViewById(R.id.favoritnote);
-       add =(Button)findViewById(R.id.btnfavAdd);
 
+        add =(Button)findViewById(R.id.btnfavAdd);
 
         idNote = (EditText) findViewById(R.id.idNote);
-
-
 
         add.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                String username = preferences.getString("username", null);
+                Cursor data2 = helper.getUserData(usernamef);
 
                 filmnamef = intent.getStringExtra("NAME");
-
                 descriptionf = intent.getStringExtra("DESCRIPTION");
                 rankf = intent.getStringExtra("RANKINGS");
                 datef = intent.getStringExtra("DATE");
                 timef = intent.getStringExtra("TIME");
                 seatsf = intent.getIntExtra("SEATS",0);
+
                 idf = intent.getIntExtra("ID",0);
                 imagef = SearchForTickets.background;
-                Cursor data2 = helper.getFilmData(String.valueOf(idf));
-                while (data2.moveToNext())
+                Cursor data3 = helper.getFilmData(String.valueOf(idf));
+
+
+                while (data3.moveToNext())
                 {
-                    image2 = data2.getBlob(1);
+                    image2 = data3.getBlob(1);
                 }
 
+
+
+             //   Toast.makeText(FavoriteWithNote.this,"User Name :"+usernamef,Toast.LENGTH_LONG).show();
+
                 notef = idNote.getText().toString();
-                if(notef.equals("") || notef == null)
+                if(notef.equals("") || notef == null )
                 {
                     Toast.makeText(FavoriteWithNote.this, "Enter a note first", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if(fhelper.addfavorites(idf,filmnamef,descriptionf,rankf,datef,timef,seatsf,image2,notef))
+
+               if(fhelper.addfavorites(idf,filmnamef,descriptionf,rankf,datef,timef,seatsf,image2,notef,usernamef))
                 {
                     Toast.makeText(FavoriteWithNote.this,"Added to Favourites",Toast.LENGTH_LONG).show();
                     startActivity(new Intent(getApplicationContext(),favorite_list_view.class));
@@ -92,7 +95,7 @@ DatabaseHelper helper;
                 {
                     if(fhelper.isFilmAlreadyExistInFavourites(String.valueOf(idf)))
                     {
-                        Toast.makeText(FavoriteWithNote.this, "This Film is already exist in the Favourites, You can edit or delete it from there", Toast.LENGTH_LONG).show();
+                        Toast.makeText(FavoriteWithNote.this, "This Film is already exist in your Favourites, You can edit or delete it from there", Toast.LENGTH_LONG).show();
                     }
                     else
                     {

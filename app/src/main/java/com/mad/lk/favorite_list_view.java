@@ -3,10 +3,12 @@ package com.mad.lk;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -43,6 +45,8 @@ public class favorite_list_view extends AppCompatActivity {
     ArrayList<Integer> ids = new ArrayList<>();
     ArrayList<Bitmap> images = new ArrayList<>();
     ArrayList<String> notes = new ArrayList<>();
+   ArrayList<String> usernames = new ArrayList<>();
+//String username;
 
 
     @Override
@@ -61,7 +65,11 @@ public class favorite_list_view extends AppCompatActivity {
         helper = new FavoriteDatabaseHelper(getApplicationContext());
         films = (ListView) findViewById(R.id.favfilmlist);
 
-        Cursor data = helper.getAllFavorites();
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String user = preferences.getString("username", null);
+
+       // Toast.makeText(this, "" + user, Toast.LENGTH_SHORT).show();
+        Cursor data = helper.getAllFavorites(user);
         while (data.moveToNext())
         {
             int IDS  = data.getInt(0);
@@ -73,6 +81,7 @@ public class favorite_list_view extends AppCompatActivity {
             String TIME  = data.getString(6);
             int SEATS  = data.getInt(7);
             String NOTES  = data.getString(8);
+            String USERNAMES = data.getString(9);
 
             names.add(NAME);
             rankings.add(RANKINGS);
@@ -82,9 +91,9 @@ public class favorite_list_view extends AppCompatActivity {
             seats.add(SEATS);
             ids.add(IDS);
             notes.add(NOTES);
+            usernames.add(USERNAMES);
             images.add(helper.getImage(image));
             films.invalidateViews();
-
 
 
         }
@@ -149,7 +158,7 @@ public class favorite_list_view extends AppCompatActivity {
                 public void onClick(View v)
                 {
 
-                   //  Toast.makeText(getApplicationContext(), "" + names.size(), Toast.LENGTH_LONG).show();
+                   ////  Toast.makeText(getApplicationContext(), "" + names.size(), Toast.LENGTH_LONG).show();
                     if(helper.deleteFavoriteFilm(ids.get(position).toString()))
                     {
                         try
@@ -163,6 +172,7 @@ public class favorite_list_view extends AppCompatActivity {
                             films.invalidateViews();
                             seats.remove(position);
                             notes.remove(position);
+                            usernames.remove(position);
                         }
                         catch (Exception e)
 
