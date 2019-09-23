@@ -91,7 +91,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="104dp"
         android:layout_marginEnd="8dp"
-        android:text="Final Step"
+        android:text="One More Step"
         android:textSize="24sp"
         android:textStyle="normal|bold"
         app:layout_constraintEnd_toEndOf="parent"

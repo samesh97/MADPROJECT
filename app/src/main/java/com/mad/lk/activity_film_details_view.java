@@ -37,7 +37,7 @@ public class activity_film_details_view extends AppCompatActivity {
         intent = getIntent();
 
         filmName.setText(intent.getStringExtra("NAME"));
-        Ratings.setText("Rankings : "+intent.getStringExtra("RANKINGS"));
+        Ratings.setText("Price : Rs "+intent.getStringExtra("RANKINGS"));
         Date.setText("Date : " + intent.getStringExtra("DATE"));
         Time.setText("Time : "+intent.getStringExtra("TIME"));
         Seats.setText("Seats : " + intent.getIntExtra("SEATS",0));

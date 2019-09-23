@@ -39,6 +39,7 @@
         <activity android:name=".FavoriteWithNote" />
         <activity android:name=".FavUpdateNote" />
         <activity android:name=".UserDisplayNotice" />
+        <activity android:name=".updateBooking" />
     </application>
 
 </manifest>

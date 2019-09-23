@@ -198,7 +198,9 @@ public class AdminMainInterface extends AppCompatActivity {
                         dates.remove(position);
                         times.remove(position);
                         seats.remove(position);
+                        names.remove(position);
                         films.invalidateViews();
+
                         Toast.makeText(AdminMainInterface.this, "Deleted", Toast.LENGTH_SHORT).show();
 
                         if(names.size() <= 0)

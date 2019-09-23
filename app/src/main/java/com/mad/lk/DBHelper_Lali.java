@@ -129,8 +129,8 @@ public class DBHelper_Lali extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("SEATS", seats);
-
+        contentValues.put("SEATCOUNT", Integer.parseInt(seats));
+        contentValues.put("TYPE", spinner);
 
         long res = db.update(TABLE_NAME,contentValues,"ID = ?",new String[]{id});
         if(res <= -1)

@@ -29,11 +29,11 @@ public class updateBooking extends AppCompatActivity {
 
         helper =new DBHelper_Lali(getApplicationContext());
 
-        updatebook =(Button)findViewById(R.id.button);
-         newseats= (EditText)findViewById(R.id.editText);
-         newspinner=(Spinner)findViewById(R.id.spinner);
+        updatebook =(Button)findViewById(R.id.update);
+         newseats= (EditText)findViewById(R.id.seatsupdate);
+         newspinner=(Spinner)findViewById(R.id.spinnerupdate);
 
-         newseats.setOnClickListener(new View.OnClickListener() {
+         updatebook.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
                  if (helper.updateBooking(newseats.getText().toString(),
@@ -45,7 +45,7 @@ public class updateBooking extends AppCompatActivity {
                  }
                  else
                  {
-                     Toast.makeText(updateBooking.this, "Not Updated", Toast.LENGTH_SHORT).show();
+                     Toast.makeText(updateBooking.this, "Update Error!!!", Toast.LENGTH_SHORT).show();
                  }
              }
          });
