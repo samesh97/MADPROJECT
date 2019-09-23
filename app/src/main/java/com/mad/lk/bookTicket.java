@@ -3,6 +3,7 @@ package com.mad.lk;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -28,7 +29,7 @@ public class bookTicket extends AppCompatActivity {
     int id;
     DatabaseHelper helper;
     byte[] image;
-
+    boolean var = false;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -74,6 +75,7 @@ public class bookTicket extends AppCompatActivity {
              @Override
              public void onClick(View view)
              {
+
                  if(numberOfSeats <= 0)
                  {
                      Toast.makeText(bookTicket.this, "All the seats are already Reserverd", Toast.LENGTH_SHORT).show();
@@ -89,29 +91,33 @@ public class bookTicket extends AppCompatActivity {
                      Toast.makeText(bookTicket.this, "You cannot reserve this amount of tickets right now because the amount you entered is larger than the available tickets", Toast.LENGTH_LONG).show();
                      return;
                  }
-                 boolean IsInserted = dbl.insertbooking(filmName,Integer.parseInt(seatqua.getText().toString()),spinner.getSelectedItem().toString(),time,date,image,id);
-                 if(IsInserted)
-                 {
-                     if(helper.updateSeatCount(String.valueOf(id),numberOfSeats - (Integer.parseInt(seatqua.getText().toString()))))
+                // if(isUserReallyWantToDoThis())
+                 //{
+                     boolean IsInserted = dbl.insertbooking(filmName,Integer.parseInt(seatqua.getText().toString()),spinner.getSelectedItem().toString(),time,date,image,id);
+                     if(IsInserted)
                      {
-                         Toast.makeText(bookTicket.this,"Booking Confirmed",Toast.LENGTH_LONG).show();
-                         startActivity(new Intent(getApplicationContext(),SearchForTickets.class));
-                         finish();
-                     }
+                         if(helper.updateSeatCount(String.valueOf(id),numberOfSeats - (Integer.parseInt(seatqua.getText().toString()))))
+                         {
+                             Toast.makeText(bookTicket.this,"Booking Confirmed",Toast.LENGTH_LONG).show();
+                             startActivity(new Intent(getApplicationContext(),SearchForTickets.class));
+                             finish();
+                         }
 
-                 }
-                 else
-                 {
-                     if(dbl.isTranscationAlreadyExist(String.valueOf(id)))
-                     {
-                         Toast.makeText(bookTicket.this, "You have already booked few tickets for this film, You can edit or delete it in  transaction page", Toast.LENGTH_LONG).show();
                      }
                      else
                      {
-                         Toast.makeText(bookTicket.this,"Could not add to database",Toast.LENGTH_LONG).show();
-                     }
+                         if(dbl.isTranscationAlreadyExist(String.valueOf(id)))
+                         {
+                             Toast.makeText(bookTicket.this, "You have already booked few tickets for this film, You can edit or delete it in  transaction page", Toast.LENGTH_LONG).show();
+                         }
+                         else
+                         {
+                             Toast.makeText(bookTicket.this,"Could not add to database",Toast.LENGTH_LONG).show();
+                         }
 
-                 }
+                     }
+                // }
+
 
              }
          }
@@ -191,6 +197,35 @@ public class bookTicket extends AppCompatActivity {
         builder.setTitle(title);
         builder.setMessage(massage);
         builder.show();
+    }
+    public boolean isUserReallyWantToDoThis()
+    {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(bookTicket.this);
+        builder.setTitle(R.string.app_name);
+        builder.setMessage("Do you really want to proceed?");
+        //builder.setIcon(R.drawable.ic_launcher);
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener()
+        {
+            public void onClick(DialogInterface dialog, int id)
+            {
+                var = true;
+                dialog.dismiss();
+
+
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id)
+            {
+                dialog.dismiss();
+                var = false;
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
+
+        return var;
     }
 
 }

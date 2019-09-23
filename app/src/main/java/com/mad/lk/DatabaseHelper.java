@@ -11,11 +11,11 @@ import android.os.Build;
 
 import java.io.ByteArrayOutputStream;
 
-public class DatabaseHelper extends SQLiteOpenHelper {
+public class DatabaseHelper extends SQLiteOpenHelper
+{
     public static final String DATABSE_NAME = "Data.db";
 
-
-    public static final String TABLE_NAME = "User_Details";
+    public static final String USER_TABLE_NAME = "User_Details";
     public static final String FILM_TABLE_NAME = "Film_Details";
     public static final String NOTICE_TABLE_NAME = "Notices";
 
@@ -31,14 +31,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db)
     {
         db.execSQL("CREATE TABLE " + NOTICE_TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT,MESSAGE TEXT NOT NULL)");
-        db.execSQL("CREATE TABLE " + TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT,USERNAME TEXT NOT NULL,IMAGE BLOB NOT NULL,EMAIL TEXT NOT NULL,PASSWORD TEXT NOT NULL)");
+        db.execSQL("CREATE TABLE " + USER_TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT,USERNAME TEXT NOT NULL,IMAGE BLOB NOT NULL,EMAIL TEXT NOT NULL,PASSWORD TEXT NOT NULL)");
         db.execSQL("CREATE TABLE " + FILM_TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT,IMAGE BLOB NOT NULL,NAME TEXT NOT NULL,DESCRIPTION TEXT NOT NULL,RANKINGS TEXT NOT NULL,DATE TEXT NOT NULL,TIME TEXT NOT NULL,SEATS INT NOT NULL) ");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
     {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + USER_TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + FILM_TABLE_NAME);
         onCreate(db);
 
@@ -52,7 +52,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put("EMAIL",email);
         contentValues.put("PASSWORD",password);
         contentValues.put("IMAGE",image);
-        Long result = db.insert(TABLE_NAME,null,contentValues);
+        Long result = db.insert(USER_TABLE_NAME,null,contentValues);
         if(result == -1)
         {
             return false;
@@ -88,7 +88,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Cursor getAllUserData()
     {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME,null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + USER_TABLE_NAME,null);
         return cursor;
     }
     public boolean updateSeatCount(String id,int seats)
@@ -108,7 +108,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean isUserNameExist(String name)
     {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE USERNAME = '" + name + "'",null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + USER_TABLE_NAME + " WHERE USERNAME = '" + name + "'",null);
         if(cursor.getCount() == 0)
         {
             cursor.close();
@@ -139,7 +139,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             contentValues.put("EMAIL", email);
         }
 
-        if(db.update(TABLE_NAME, contentValues, "USERNAME=?", new String[] {preUserName}) > 0)
+        if(db.update(USER_TABLE_NAME, contentValues, "USERNAME=?", new String[] {preUserName}) > 0)
         {
             return true;
         }
@@ -153,7 +153,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Cursor getUserData(String uname)
     {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME +" WHERE USERNAME = '" + uname + "'",null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + USER_TABLE_NAME +" WHERE USERNAME = '" + uname + "'",null);
         return cursor;
     }
     public Cursor getFilmData(String id)
