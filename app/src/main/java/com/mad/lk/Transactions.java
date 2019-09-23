@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import org.w3c.dom.Text;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class Transactions extends AppCompatActivity
@@ -56,6 +58,25 @@ public class Transactions extends AppCompatActivity
 
         helper = new DBHelper_Lali(Transactions.this);
 
+        SearchView transearch = (SearchView)findViewById(R.id.searchtransaction);
+
+
+        transearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query)
+            {
+
+                setTransactionSearch();
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText)
+            {
+                return false;
+            }
+        });
         Cursor trans = helper.getAllbooking();
         while(trans.moveToNext())
         {
@@ -152,5 +173,46 @@ public class Transactions extends AppCompatActivity
             return view;
         }
     }
+
+    public void setTransactionSearch()
+    {
+
+        names.clear();
+        seats.clear();
+        dates.clear();
+        times.clear();
+        images.clear();
+        types.clear();
+
+
+
+
+
+            Cursor data = helper.getAllbooking();
+            while (data.moveToNext())
+            {
+                int IDS  = data.getInt(0);
+                byte[] image  = data.getBlob(6);
+                String NAME = data.getString(1);
+                String DATE  = data.getString(5);
+                String TIME  = data.getString(4);
+                String TYPE  = data.getString(3);
+                int SEATS  = data.getInt(2);
+
+
+                names.add(NAME);
+                dates.add(DATE);
+                times.add(TIME);
+                seats.add(SEATS);
+                ids.add(IDS);
+                images.add(helper.getImage(image));
+                types.add(TYPE);
+
+            }
+
+
+        transactionListView.invalidateViews();
+    }
+   // transactionListView.invalidateViews();
 
 }
