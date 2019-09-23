@@ -36,17 +36,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
         db.execSQL("CREATE TABLE " + USER_TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT,USERNAME TEXT NOT NULL,IMAGE BLOB NOT NULL,EMAIL TEXT NOT NULL,PASSWORD TEXT NOT NULL)");
         db.execSQL("CREATE TABLE " + FILM_TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT,IMAGE BLOB NOT NULL,NAME TEXT NOT NULL,DESCRIPTION TEXT NOT NULL,RANKINGS TEXT NOT NULL,DATE TEXT NOT NULL,TIME TEXT NOT NULL,SEATS INT NOT NULL) ");
         db.execSQL("CREATE TABLE " + Booking_TABLE_NAME + "(ID INTEGER PRIMARY KEY NOT NULL,FILMNAME TEXT NOT NULL,SEATCOUNT int NOT NULL,TYPE TEXT NOT NULL,TIME TEXT NOT NULL,DATE TEXT NOT NULL,IMAGE BLOB NOT NULL) " );
-        db.execSQL("CREATE TABLE " + Favourite_TABLE_NAME + "(" +
-                "ID INTEGER PRIMARY KEY ," +
-                "IMAGE BLOB," +
-                "NAME TEXT NOT NULL," +
-                "DESCRIPTION TEXT NOT NULL," +
-                "RANKINGS TEXT NOT NULL," +
-                "DATE TEXT NOT NULL," +
-                "TIME TEXT NOT NULL," +
-                "SEATS INT NOT NULL," +
-                "NOTES TEXT NOT NULL," +
-                "USERNAME TEXT NOT NULL) ");
+        db.execSQL("CREATE TABLE " + Favourite_TABLE_NAME + "(" + "ID INTEGER PRIMARY KEY ," + "IMAGE BLOB," + "NAME TEXT NOT NULL," + "DESCRIPTION TEXT NOT NULL," + "RANKINGS TEXT NOT NULL," + "DATE TEXT NOT NULL," + "TIME TEXT NOT NULL," + "SEATS INT NOT NULL," + "NOTES TEXT NOT NULL," + "USERNAME TEXT NOT NULL) ");
     }
 
     @Override
@@ -194,6 +184,20 @@ public class DatabaseHelper extends SQLiteOpenHelper
         Cursor cursor = db.rawQuery("SELECT * FROM " + FILM_TABLE_NAME,null);
         return cursor;
     }
+    public boolean deleteAUser(String id)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int val = db.delete(USER_TABLE_NAME, "ID =?", new String[]{id});
+
+        if(val > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     public boolean deleteAFilm(String id)
     {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -252,6 +256,51 @@ public class DatabaseHelper extends SQLiteOpenHelper
         contentValues.put("SEATS",fseats);
         Long result = db.insert(FILM_TABLE_NAME,null,contentValues);
         if(result == -1)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+
+    }
+    public boolean updateAFilmWithImage(String fname,String fdes,String frankings,String fdate,String ftime,int fseats,byte[] image,String id)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("NAME", fname);
+        contentValues.put("DESCRIPTION", fdes);
+        contentValues.put("IMAGE", image);
+        contentValues.put("RANKINGS", frankings);
+        contentValues.put("DATE", fdate);
+        contentValues.put("TIME", ftime);
+        contentValues.put("SEATS",fseats);
+
+        long res = db.update(FILM_TABLE_NAME,contentValues,"ID = ?",new String[]{id});
+        if(res <= -1)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+
+    }
+    public boolean updateAFilmWithoutImage(String fname,String fdes,String frankings,String fdate,String ftime,int fseats,String id)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("NAME", fname);
+        contentValues.put("DESCRIPTION", fdes);
+        contentValues.put("RANKINGS", frankings);
+        contentValues.put("DATE", fdate);
+        contentValues.put("TIME", ftime);
+        contentValues.put("SEATS",fseats);
+
+        long res = db.update(FILM_TABLE_NAME,contentValues,"ID = ?",new String[]{id});
+        if(res <= -1)
         {
             return false;
         }

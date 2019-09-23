@@ -17,10 +17,10 @@
         android:title="Add Films"
         app:showAsAction="always" />
     <item
-        android:id="@+id/addNewNotices"
-        android:icon="@drawable/ic_favorite"
+        android:id="@+id/showUsers"
+        android:icon="@drawable/ic_account_box"
         android:orderInCategory="100"
-        android:title="Notices"
+        android:title="Users"
         app:showAsAction="always" />
 
 

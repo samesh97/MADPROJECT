@@ -1,9 +1,11 @@
 package com.mad.lk;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -106,6 +108,14 @@ public class AdminMainInterface extends AppCompatActivity {
                 {
                     startActivity(new Intent(getApplicationContext(),AddNewFilms.class));
                 }
+                if(menuItem.getItemId() == R.id.showUsers)
+                {
+                    startActivity(new Intent(getApplicationContext(),ViewAllUsers.class));
+                }
+                if(menuItem.getItemId() == R.id.navigationOrders)
+                {
+                    startActivity(new Intent(getApplicationContext(),ViewAllOrders.class));
+                }
 
                 return false;
             }
@@ -181,7 +191,9 @@ public class AdminMainInterface extends AppCompatActivity {
                 @Override
                 public void onClick(View v)
                 {
-                    Toast.makeText(AdminMainInterface.this, "Edit Clicked", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getApplicationContext(),UpdateAFilm.class);
+                    intent.putExtra("ID",ids.get(position));
+                    startActivity(intent);
                 }
             });
 
@@ -190,28 +202,59 @@ public class AdminMainInterface extends AppCompatActivity {
                 @Override
                 public void onClick(View v)
                 {
-                    if(helper.deleteAFilm(ids.get(position).toString()))
+
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(AdminMainInterface.this);
+                    builder.setTitle("Delete");
+                    builder.setMessage("Do you really want to proceed?");
+                    builder.setIcon(R.drawable.delete);
+                    builder.setPositiveButton("Yes", new DialogInterface.OnClickListener()
                     {
-                        ids.remove(position);
-                        rankings.remove(position);
-                        images.remove(position);
-                        dates.remove(position);
-                        times.remove(position);
-                        seats.remove(position);
-                        names.remove(position);
-                        films.invalidateViews();
-
-                        Toast.makeText(AdminMainInterface.this, "Deleted", Toast.LENGTH_SHORT).show();
-
-                        if(names.size() <= 0)
+                        public void onClick(DialogInterface dialog, int id)
                         {
-                            noFilmFoundText.setVisibility(View.VISIBLE);
+                            dialog.dismiss();
+                            if(helper.deleteAFilm(ids.get(position).toString()))
+                            {
+                                ids.remove(position);
+                                rankings.remove(position);
+                                images.remove(position);
+                                dates.remove(position);
+                                times.remove(position);
+                                seats.remove(position);
+                                names.remove(position);
+                                films.invalidateViews();
+
+                                Toast.makeText(AdminMainInterface.this, "Deleted", Toast.LENGTH_SHORT).show();
+
+                                if(names.size() <= 0)
+                                {
+                                    noFilmFoundText.setVisibility(View.VISIBLE);
+                                }
+                            }
+                            else
+                            {
+                                Toast.makeText(AdminMainInterface.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                            }
+
+
+
                         }
-                    }
-                    else
-                    {
-                        Toast.makeText(AdminMainInterface.this, "Something went wrong", Toast.LENGTH_SHORT).show();
-                    }
+                    });
+                    builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id)
+                        {
+                            dialog.dismiss();
+                        }
+                    });
+                    AlertDialog alert = builder.create();
+                    alert.show();
+
+                    films.invalidateViews();
+
+
+
+
+
 
                 }
             });
