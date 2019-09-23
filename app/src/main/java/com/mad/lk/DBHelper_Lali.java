@@ -16,6 +16,8 @@ import java.lang.annotation.Target;
 
 public class DBHelper_Lali extends SQLiteOpenHelper {
 
+
+
     public static final String DATABSE_NAME = "booking.db";
     public static final String TABLE_NAME = "booking";
     public static final String COL_1 = "ID";
@@ -41,7 +43,7 @@ public class DBHelper_Lali extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
     }
-
+/*
     public boolean insertbooking(String filmname,int seats,String type,String time,String date,byte[] image,int id)
     {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -141,6 +143,6 @@ public class DBHelper_Lali extends SQLiteOpenHelper {
         {
             return true;
         }
-    }
+    }*/
 
 }

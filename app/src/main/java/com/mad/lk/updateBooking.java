@@ -17,7 +17,7 @@ public class updateBooking extends AppCompatActivity {
     Spinner newspinner;
     int updateBookingID;
 
-    DBHelper_Lali helper;
+    DatabaseHelper helper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +27,7 @@ public class updateBooking extends AppCompatActivity {
         Intent intent = getIntent();
         updateBookingID = intent.getIntExtra("ID",0);
 
-        helper =new DBHelper_Lali(getApplicationContext());
+        helper =new DatabaseHelper(getApplicationContext());
 
         updatebook =(Button)findViewById(R.id.update);
          newseats= (EditText)findViewById(R.id.seatsupdate);

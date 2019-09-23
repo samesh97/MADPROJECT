@@ -19,7 +19,7 @@ int updateItemID;
 
 
 
-    FavoriteDatabaseHelper helper;
+    DatabaseHelper helper;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +29,7 @@ int updateItemID;
         updateItemID = intent.getIntExtra("ID",0);
 
 
-        helper = new FavoriteDatabaseHelper(getApplicationContext());
+        helper = new DatabaseHelper(getApplicationContext());
 
         edit =(Button)findViewById(R.id.button);
         text = (EditText)findViewById(R.id.editText);

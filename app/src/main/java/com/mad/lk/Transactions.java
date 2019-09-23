@@ -24,7 +24,7 @@ public class Transactions extends AppCompatActivity
 {
     ListView transactionListView;
     Adapter adapter;
-    DBHelper_Lali helper;
+    DatabaseHelper helper;
     ArrayList<Integer> ids,seats;
     ArrayList<String> names,dates,times,types;
     ArrayList<Bitmap> images;
@@ -54,7 +54,7 @@ public class Transactions extends AppCompatActivity
         types = new ArrayList<>();
         images = new ArrayList<>();
 
-        helper = new DBHelper_Lali(Transactions.this);
+        helper = new DatabaseHelper(Transactions.this);
 
         Cursor trans = helper.getAllbooking();
         while(trans.moveToNext())

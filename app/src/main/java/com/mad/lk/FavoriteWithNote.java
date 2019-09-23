@@ -19,7 +19,7 @@ import android.widget.Toast;
 public class FavoriteWithNote extends AppCompatActivity {
 
 TextView notes;
-FavoriteDatabaseHelper fhelper;
+DatabaseHelper fhelper;
 Button add;
 //DatabaseHelper db;
 String filmnamef = "aaa",descriptionf="bbb",notef="ccc",rankf="ddd",datef="eee",timef="ff";
@@ -38,7 +38,7 @@ DatabaseHelper helper;
         setContentView(R.layout.activity_favorite_with_note);
 
         helper = new DatabaseHelper(getApplicationContext());
-        fhelper = new FavoriteDatabaseHelper(getApplicationContext());
+        fhelper = new DatabaseHelper(getApplicationContext());
 
         intent = getIntent();
 

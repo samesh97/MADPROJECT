@@ -62,13 +62,13 @@ public class FavoriteDatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-
+/*
    /* public Cursor getAllFavorites() {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME , null);
         return cursor;
     }*/
-
+/*
     public Cursor getAllFavorites(String fusername) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE USERNAME = '" + fusername + "'",  null);
@@ -159,7 +159,7 @@ public class FavoriteDatabaseHelper extends SQLiteOpenHelper {
         {
             return true;
         }
-    }
+    }*/
 
 
 

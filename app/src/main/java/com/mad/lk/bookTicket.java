@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 public class bookTicket extends AppCompatActivity {
 
-    DBHelper_Lali dbl;
+    DatabaseHelper dbl;
     Spinner spinner;
     EditText seatqua;//,booking_ID;
     Button idbtnbooking;
@@ -54,7 +54,7 @@ public class bookTicket extends AppCompatActivity {
 
 
 
-        dbl = new DBHelper_Lali(getApplicationContext());
+        dbl = new DatabaseHelper(getApplicationContext());
 
         seatqua = (EditText)findViewById(R.id.seatqua);
         //booking_ID = (EditText)findViewById(R.id.booking_ID);
