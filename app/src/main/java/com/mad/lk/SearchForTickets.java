@@ -113,7 +113,6 @@ public class SearchForTickets extends AppCompatActivity {
         noFilmFoundText = (TextView) findViewById(R.id.noFilmFoundText);
 
 
-
         pic = (CircleImageView) findViewById(R.id.pic);
 
         helper = new DatabaseHelper(getApplicationContext());

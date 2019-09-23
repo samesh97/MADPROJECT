@@ -32,6 +32,8 @@ public class FavoriteDatabaseHelper extends SQLiteOpenHelper {
     public static final String FAVORITE_COL_6 = "TIME";
     public static final String FAVORITE_COL_7 = "SEATS";
     public static final String FAVORITE_COL_8 = "NOTES";
+    public static final String FAVORITE_COL_9 = "USERNAME";
+
 
     public FavoriteDatabaseHelper(Context context)
     {
@@ -49,7 +51,8 @@ public class FavoriteDatabaseHelper extends SQLiteOpenHelper {
                 "DATE TEXT NOT NULL," +
                 "TIME TEXT NOT NULL," +
                 "SEATS INT NOT NULL," +
-                "NOTES TEXT NOT NULL) ");
+                "NOTES TEXT NOT NULL," +
+                "USERNAME TEXT NOT NULL) ");
 
     }
 
@@ -60,13 +63,19 @@ public class FavoriteDatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public Cursor getAllFavorites() {
+   /* public Cursor getAllFavorites() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME , null);
+        return cursor;
+    }*/
+
+    public Cursor getAllFavorites(String fusername) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE USERNAME = '" + fusername + "'",  null);
         return cursor;
     }
 
-    public boolean addfavorites(int id,String fname, String fdes, String frankings, String fdate, String ftime, int fseats, byte[] fimage, String fnotes) {
+    public boolean addfavorites(int id,String fname, String fdes, String frankings, String fdate, String ftime, int fseats, byte[] fimage, String fnotes,String fusername) {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -81,6 +90,7 @@ public class FavoriteDatabaseHelper extends SQLiteOpenHelper {
         contentValues.put("TIME", ftime);
         contentValues.put("SEATS", fseats);
         contentValues.put("NOTES", fnotes);
+        contentValues.put("USERNAME", fusername);
 
         Long result = db.insert(TABLE_NAME, null, contentValues);
         if (result == -1) {

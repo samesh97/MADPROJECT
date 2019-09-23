@@ -10,8 +10,11 @@ public class classFavorites {
     private String TIME;
     private String SEATS;
     private String NOTES;
+    private String USERNMAE;
 
-    public classFavorites(String NAME, String IMAGE, String DESCRIPTION, String RANKINGS, String DATE, String TIME, String SEATS, String NOTES) {
+
+
+    public classFavorites(String NAME, String IMAGE, String DESCRIPTION, String RANKINGS, String DATE, String TIME, String SEATS, String NOTES, String USERNMAE) {
         this.NAME = NAME;
         this.IMAGE = IMAGE;
         this.DESCRIPTION = DESCRIPTION;
@@ -20,6 +23,7 @@ public class classFavorites {
         this.TIME = TIME;
         this.SEATS = SEATS;
         this.NOTES = NOTES;
+        this.USERNMAE = USERNMAE;
     }
 
     public classFavorites(){
@@ -79,6 +83,14 @@ public class classFavorites {
 
     public void setSEATS(String SEATS) {
         this.SEATS = SEATS;
+    }
+
+    public String getUSERNMAE() {
+        return USERNMAE;
+    }
+
+    public void setUSERNMAE(String USERNMAE) {
+        this.USERNMAE = USERNMAE;
     }
 
     public String getNOTES() {

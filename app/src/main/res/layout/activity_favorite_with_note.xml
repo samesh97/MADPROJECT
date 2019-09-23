@@ -10,18 +10,18 @@
 
     <Button
         android:id="@+id/btnfavAdd"
-        android:layout_width="315dp"
-        android:layout_height="45dp"
+        android:layout_width="257dp"
+        android:layout_height="57dp"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/border"
         android:text="@string/filmadd"
-
+android:gravity="center"
         android:textColor="@color/red"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintHorizontal_bias="0.574"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idNote" />
 
@@ -30,12 +30,12 @@
         android:id="@+id/idNote"
         android:layout_width="348dp"
         android:layout_height="218dp"
-
         android:layout_marginStart="8dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="84dp"
         android:layout_marginEnd="8dp"
         android:alpha="0.9"
         android:background="@drawable/opaciy"
+        android:gravity="center"
         android:hint="@string/enter_your_note"
         android:inputType="textMultiLine"
         android:padding="20dp"
@@ -43,9 +43,8 @@
         android:textColorHint="@color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.33"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
