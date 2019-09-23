@@ -35,7 +35,7 @@ public class favorite_list_view extends AppCompatActivity {
 
     Adapter adapter;
 
-    FavoriteDatabaseHelper helper;
+    DatabaseHelper helper;
 
     ArrayList<String> names = new ArrayList<>();
     ArrayList<String> rankings = new ArrayList<>();
@@ -63,7 +63,7 @@ public class favorite_list_view extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorite_list_view);
 
-        helper = new FavoriteDatabaseHelper(getApplicationContext());
+        helper = new DatabaseHelper(getApplicationContext());
         films = (ListView) findViewById(R.id.favfilmlist);
 
         SearchView favsearch = (SearchView) findViewById(R.id.filmSearchViewfavorite);
