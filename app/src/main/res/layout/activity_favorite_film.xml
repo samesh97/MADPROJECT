@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="Film Name"
+            android:text="@string/film_name"
             android:textSize="24sp"
             android:textStyle="normal|bold"
             app:layout_constraintStart_toEndOf="@+id/favoriteimage"
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
-            android:text="Rank"
+            android:text="@string/rank"
             app:layout_constraintStart_toEndOf="@+id/favoriteimage"
             app:layout_constraintTop_toBottomOf="@+id/favoritefilmname" />
 
@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
-            android:text="Date"
+            android:text="@string/date"
             app:layout_constraintStart_toEndOf="@+id/favoriteimage"
             app:layout_constraintTop_toBottomOf="@+id/favoriterank" />
 
@@ -67,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
-            android:text="Time"
+            android:text="@string/time"
             app:layout_constraintStart_toEndOf="@+id/favoriteimage"
             app:layout_constraintTop_toBottomOf="@+id/favoritdate" />
 
@@ -77,7 +77,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
-            android:text="Seats"
+            android:text="@string/seats2"
             app:layout_constraintStart_toEndOf="@+id/favoriteimage"
             app:layout_constraintTop_toBottomOf="@+id/favorittime" />
 
@@ -87,7 +87,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:text="Note"
+            android:text="@string/note"
             android:paddingLeft="8dp"
             android:textSize="18sp"
             android:textStyle="normal|bold|italic"
@@ -104,7 +104,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
-            android:text="Description"
+            android:text="@string/description1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

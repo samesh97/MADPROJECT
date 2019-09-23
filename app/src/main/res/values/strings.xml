@@ -76,6 +76,32 @@
     <string name="deletebooking">Delete Booking</string>
     <string name="updateid">ID</string>
     <string name="gotofavorite">Go to Favourite</string>
+    <string name="film_name">Film Name</string>
+    <string name="description1">Description</string>
+    <string name="price">Price</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="seats1">Seats</string>
+    <string name="addDetails">Add</string>
+    <string name="no_films_found">No Films Found</string>
+    <string name="no_notice_found">No Notice Found</string>
+    <string name="one_more_step">One More Step</string>
+    <string name="film_name">Film Name</string>
+    <string name="rank">Rank</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="seats2">Seats</string>
+    <string name="note">Note</string>
+    <string name="description1">Description</string>
+    <string name="textview">TextView</string>
+    <string name="book">Book</string>
+    <string name="need_to_register_click_here">Need to Register? Click Here</string>
+    <string name="message">Message</string>
+    <string name="update">Update</string>
+    <string name="no_films_found">No Films Found</string>
+    <string name="amc_cinema">AMC Cinema</string>
+    <string name="message">Message</string>
+    <string name="obc">OBC</string>
 
 
 </resources>

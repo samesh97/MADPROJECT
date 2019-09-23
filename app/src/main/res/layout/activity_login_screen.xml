@@ -103,7 +103,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:text="Need to Register? Click Here"
+        android:text="@string/need_to_register_click_here"
         android:onClick="RegisterLink"
         android:textColor="@color/red"
         android:textSize="15sp"
