@@ -3,11 +3,16 @@ package com.mad.lk;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class FavUpdateNote extends AppCompatActivity {
 
@@ -17,8 +22,9 @@ EditText text;
 Button gotofav;
 int updateItemID;
 
-
-
+    ArrayList<Integer> ids = new ArrayList<>();
+    ArrayList<String> usernames = new ArrayList<>();
+    ArrayList<String> notes = new ArrayList<>();
     FavoriteDatabaseHelper helper;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +41,22 @@ int updateItemID;
         text = (EditText)findViewById(R.id.editText);
 
 
-       ///// text.setVisibility(View.GONE);
+       /* SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String user = preferences.getString("username", null);
+
+
+        Cursor details = helper.getAllFavorites(user);
+        while (details.moveToNext())
+        {
+
+            notes.add(details.getString(1));
+
+        }
+
+
+      //   Toast.makeText(FavUpdateNote.this,""+notes,Toast.LENGTH_LONG).show();
+*/
+        ///// text.setVisibility(View.GONE);
 
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
