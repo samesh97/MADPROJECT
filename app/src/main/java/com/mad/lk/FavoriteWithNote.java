@@ -22,7 +22,7 @@ TextView notes;
 FavoriteDatabaseHelper fhelper;
 Button add;
 //DatabaseHelper db;
-String filmnamef = "aaa",descriptionf="bbb",notef="ccc",rankf="ddd",datef="eee",timef="ff",usernamef="Tharasha";
+String filmnamef = "aaa",descriptionf="bbb",notef="ccc",rankf="ddd",datef="eee",timef="ff";
 int idf;
 int seatsf;
 Bitmap imagef;
@@ -55,7 +55,7 @@ DatabaseHelper helper;
             {
                 SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 String username = preferences.getString("username", null);
-                Cursor data2 = helper.getUserData(usernamef);
+                Cursor data2 = helper.getUserData(username);
 
                 filmnamef = intent.getStringExtra("NAME");
                 descriptionf = intent.getStringExtra("DESCRIPTION");
@@ -76,7 +76,7 @@ DatabaseHelper helper;
 
 
 
-             //   Toast.makeText(FavoriteWithNote.this,"User Name :"+usernamef,Toast.LENGTH_LONG).show();
+               Toast.makeText(FavoriteWithNote.this,"User Name :"+username,Toast.LENGTH_LONG).show();
 
                 notef = idNote.getText().toString();
                 if(notef.equals("") || notef == null )
@@ -85,7 +85,7 @@ DatabaseHelper helper;
                     return;
                 }
 
-               if(fhelper.addfavorites(idf,filmnamef,descriptionf,rankf,datef,timef,seatsf,image2,notef,usernamef))
+               if(fhelper.addfavorites(idf,filmnamef,descriptionf,rankf,datef,timef,seatsf,image2,notef,username))
                 {
                     Toast.makeText(FavoriteWithNote.this,"Added to Favourites",Toast.LENGTH_LONG).show();
                     startActivity(new Intent(getApplicationContext(),favorite_list_view.class));
