@@ -17,6 +17,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -65,10 +66,32 @@ public class favorite_list_view extends AppCompatActivity {
         helper = new FavoriteDatabaseHelper(getApplicationContext());
         films = (ListView) findViewById(R.id.favfilmlist);
 
+        SearchView favsearch = (SearchView) findViewById(R.id.filmSearchViewfavorite);
+
+
+        favsearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query)
+            {
+
+                setFavSearch(query);
+
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText)
+            {
+                return false;
+            }
+        });
+
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String user = preferences.getString("username", null);
 
-       // Toast.makeText(this, "" + user, Toast.LENGTH_SHORT).show();
+
+       Toast.makeText(this, "" + user, Toast.LENGTH_SHORT).show();
+
         Cursor data = helper.getAllFavorites(user);
         while (data.moveToNext())
         {
@@ -138,7 +161,6 @@ public class favorite_list_view extends AppCompatActivity {
             TextView filmnote = view.findViewById(R.id.favoritnote);
 
 
-
             Button update =view.findViewById(R.id.btnupdatefavorite);
             Button delete = view.findViewById(R.id.btndeletefavorite);
 
@@ -158,7 +180,7 @@ public class favorite_list_view extends AppCompatActivity {
                 public void onClick(View v)
                 {
 
-                   ////  Toast.makeText(getApplicationContext(), "" + names.size(), Toast.LENGTH_LONG).show();
+                     Toast.makeText(getApplicationContext(), "" + names.size(), Toast.LENGTH_LONG).show();
                     if(helper.deleteFavoriteFilm(ids.get(position).toString()))
                     {
                         try
@@ -218,5 +240,59 @@ public class favorite_list_view extends AppCompatActivity {
         }
     }
 
+
+public void setFavSearch(String text){
+    names.clear();
+    rankings.clear();
+    dates.clear();
+    seats.clear();
+    times.clear();
+    images.clear();
+    description.clear();
+    times.clear();
+    usernames.clear();
+    notes.clear();
+
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String user = preferences.getString("username", null);
+
+        Cursor data = helper.getAllFavorites(user);
+        while (data.moveToNext())
+        {
+            if(text.contains(data.getString(8)))
+            {
+                int IDS  = data.getInt(0);
+                byte[] image  = data.getBlob(1);
+                String NAME = data.getString(2);
+                String DESCRIPTION  = data.getString(3);
+                String RANKINGS  = data.getString(4);
+                String DATE  = data.getString(5);
+                String TIME  = data.getString(6);
+                int SEATS  = data.getInt(7);
+                String NOTES  = data.getString(8);
+                String USERNAMES = data.getString(9);
+
+                names.add(NAME);
+                rankings.add(RANKINGS);
+                description.add(DESCRIPTION);
+                dates.add(DATE);
+                times.add(TIME);
+                seats.add(SEATS);
+                ids.add(IDS);
+                notes.add(NOTES);
+                usernames.add(USERNAMES);
+                images.add(helper.getImage(image));
+            }
+
+
+            films.invalidateViews();
+
+
+
+    }
+
+    films.invalidateViews();
+}
 
 }
