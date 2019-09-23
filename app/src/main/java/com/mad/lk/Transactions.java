@@ -100,6 +100,7 @@ public class Transactions extends AppCompatActivity
             View view = getLayoutInflater().inflate(R.layout.transactionrow,null);
             ImageView poster = view.findViewById(R.id.filmPoster);
             ImageView delete = view.findViewById(R.id.delete);
+            ImageView edit = view.findViewById(R.id.edit);
             final TextView filmName = view.findViewById(R.id.filmName);
             TextView ticketType = view.findViewById(R.id.ticketType);
             TextView filmShowingDate = view.findViewById(R.id.filmShowingDate);
@@ -135,6 +136,16 @@ public class Transactions extends AppCompatActivity
 
                     }
 
+                }
+            });
+
+            edit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(Transactions.this,"Update Your Booking",Toast.LENGTH_LONG).show();
+                    Intent intent=new Intent(Transactions.this,updateBooking.class);
+                    intent.putExtra("ID",ids.get(position));
+                    startActivity(intent);
                 }
             });
 

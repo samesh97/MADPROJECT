@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.widget.Spinner;
 
 import androidx.annotation.Nullable;
 
@@ -115,6 +116,24 @@ public class DBHelper_Lali extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE ID = " + id, null);
         if(cursor.getCount() <= 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+    public boolean updateBooking(String seats, String id, String spinner){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("SEATS", seats);
+
+
+        long res = db.update(TABLE_NAME,contentValues,"ID = ?",new String[]{id});
+        if(res <= -1)
         {
             return false;
         }
