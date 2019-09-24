@@ -333,6 +333,11 @@ public class DatabaseHelper extends SQLiteOpenHelper
         Cursor cursor = db.rawQuery("SELECT * FROM " + Favourite_TABLE_NAME + " WHERE USERNAME = '" + fusername + "'",  null);
         return cursor;
     }
+    public Cursor getAllFavorites(String fusername,String id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + Favourite_TABLE_NAME + " WHERE USERNAME = '" + fusername + "' AND ID = ''" + id +"'",  null);
+        return cursor;
+    }
 
     public boolean addfavorites(int id,String fname, String fdes, String frankings, String fdate, String ftime, int fseats, byte[] fimage, String fnotes,String fusername) {
 

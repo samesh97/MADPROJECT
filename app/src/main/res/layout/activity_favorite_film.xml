@@ -41,6 +41,7 @@
             app:layout_constraintStart_toEndOf="@+id/favoriteimage"
             app:layout_constraintTop_toTopOf="@+id/favoriteimage" />
 
+
         <TextView
             android:id="@+id/favoriterank"
             android:layout_width="wrap_content"

@@ -90,7 +90,7 @@ public class favorite_list_view extends AppCompatActivity {
         String user = preferences.getString("username", null);
 
 
-       Toast.makeText(this, "" + user, Toast.LENGTH_SHORT).show();
+    //   Toast.makeText(this, "" + user, Toast.LENGTH_SHORT).show();
 
         Cursor data = helper.getAllFavorites(user);
         while (data.moveToNext())
@@ -180,7 +180,8 @@ public class favorite_list_view extends AppCompatActivity {
                 public void onClick(View v)
                 {
 
-                     Toast.makeText(getApplicationContext(), "" + names.size(), Toast.LENGTH_LONG).show();
+                  //   Toast.makeText(getApplicationContext(), "" + names.size(), Toast.LENGTH_LONG).show();
+
                     if(helper.deleteFavoriteFilm(ids.get(position).toString()))
                     {
                         try
@@ -203,6 +204,8 @@ public class favorite_list_view extends AppCompatActivity {
                         }
 
                         Toast.makeText(favorite_list_view.this, "Deleted", Toast.LENGTH_SHORT).show();
+                        Intent intent=new Intent(favorite_list_view.this,favorite_list_view.class);
+                        startActivity(intent);
                     }
                     else
                     {

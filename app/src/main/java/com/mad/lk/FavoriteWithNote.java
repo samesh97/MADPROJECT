@@ -76,7 +76,7 @@ DatabaseHelper helper;
 
 
 
-               Toast.makeText(FavoriteWithNote.this,"User Name :"+username,Toast.LENGTH_LONG).show();
+            ///   Toast.makeText(FavoriteWithNote.this,"User Name :"+username,Toast.LENGTH_LONG).show();
 
                 notef = idNote.getText().toString();
                 if(notef.equals("") || notef == null )
