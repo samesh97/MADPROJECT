@@ -61,22 +61,8 @@ public class Transactions extends AppCompatActivity
         SearchView transearch = (SearchView)findViewById(R.id.searchtransaction);
 
 
-        transearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query)
-            {
 
-                setTransactionSearch();
 
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText)
-            {
-                return false;
-            }
-        });
         Cursor trans = helper.getAllbooking();
         while(trans.moveToNext())
         {
@@ -92,6 +78,22 @@ public class Transactions extends AppCompatActivity
         adapter = new Adapter();
         transactionListView = (ListView) findViewById(R.id.transactionListView);
         transactionListView.setAdapter(adapter);
+
+        transearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query)
+            {
+
+                setTransactionSearch(query);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText)
+            {
+                return false;
+            }
+        });
 
     }
     public class Adapter extends BaseAdapter
@@ -174,7 +176,7 @@ public class Transactions extends AppCompatActivity
         }
     }
 
-    public void setTransactionSearch()
+    public void setTransactionSearch(String key)
     {
 
         names.clear();
@@ -183,23 +185,23 @@ public class Transactions extends AppCompatActivity
         times.clear();
         images.clear();
         types.clear();
+        ids.clear();
 
 
+        Cursor data = helper.getAllbooking();
+        while (data.moveToNext())
+        {
+            int IDS  = data.getInt(0);
+            byte[] image  = data.getBlob(6);
+            String NAME = data.getString(1);
+            String DATE  = data.getString(5);
+            String TIME  = data.getString(4);
+            String TYPE  = data.getString(3);
+            int SEATS  = data.getInt(2);
 
 
-
-            Cursor data = helper.getAllbooking();
-            while (data.moveToNext())
+            if(key.equals(NAME))
             {
-                int IDS  = data.getInt(0);
-                byte[] image  = data.getBlob(6);
-                String NAME = data.getString(1);
-                String DATE  = data.getString(5);
-                String TIME  = data.getString(4);
-                String TYPE  = data.getString(3);
-                int SEATS  = data.getInt(2);
-
-
                 names.add(NAME);
                 dates.add(DATE);
                 times.add(TIME);
@@ -207,12 +209,14 @@ public class Transactions extends AppCompatActivity
                 ids.add(IDS);
                 images.add(helper.getImage(image));
                 types.add(TYPE);
-
             }
+            transactionListView.invalidateViews();
 
 
-        transactionListView.invalidateViews();
+        }
+
+
+
     }
-   // transactionListView.invalidateViews();
 
 }

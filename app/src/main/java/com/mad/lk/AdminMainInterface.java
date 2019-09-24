@@ -299,7 +299,7 @@ public class AdminMainInterface extends AppCompatActivity {
             try
             {
                 filmName.setText("Film Name : " +names.get(position));
-                filmRatings.setText("Rankings : " +rankings.get(position));
+                filmRatings.setText("Price : Rs " +rankings.get(position));
                 filmShowingDate.setText("Showing Date : "+dates.get(position));
                 filmShowingTime.setText("Showing Time : "+times.get(position));
                 availableSeats.setText("Available Seats : " + seats.get(position));
